@@ -11,7 +11,7 @@ namespace SalesAdventure3000
         {
             Console.WriteLine("");
 
-            int width = 25;
+            int width = 42;
             int height = 15;
 
             DrawWorld(width, height);
@@ -21,24 +21,25 @@ namespace SalesAdventure3000
 
             static void DrawWorld(int width, int height)
             {
-                string mapSketch = "XXXXXXXX~~~~~~~~~~~~~XXXXX\r\nXXXXXXXXX~~~~~~~~~..XXX.XX\r\nXXX..XXXXX~~~~~~~..XXX...X\r\nXX........~~~~~...XXX.....\r\nXXX.........~~..XXX.......\r\nX.........................\r\n..........~~..............\r\n.........~...............~\r\n......~~.........XXX....~~\r\n.....~~........XXX...~~~~~\r\n~~~.~~...........~~~~~~~~~\r\n~~~~~........~~~~~~~~~~~~~\r\n~~~~~.........~~~~~..~~~~~\r\n~~~~~~~...............~~~~\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~".Replace("\r", "").Replace("\n", ""); ;
+                string mapSketch = "XXXXXXXX~~~~~~~~~~~~~XXXXXXXXXXXXXX~~~~~~~\r\nXXXXXXXXX~~~~~~~~~..XXX.XXXXXXXXXXXXX~~~~~\r\nXXX..XXXXX~~~~~~~..XXX.........XXXXXXXX..~\r\nXX........~~~~~...XXX.............XXXXXX..\r\nXXX.........~~..XXX.............XXXX..XXX.\r\nX...........~..................XX.........\r\n..........~~.........................~....\r\n.........~........................X.~~~...\r\n......~~.........XXX.............XX..~~~..\r\n.....~~........XXX...~~~~~.......XX.......\r\n~~~.~~...........~~~~~~~~~~~~......XX.....\r\n~~~~~........~~~~~~~~~~~~~~~~~~....XXXX..X\r\n~~~~~.........~~~~~..~~~~~~~~~~......XXXXX\r\n~~~~~~~...............~~~~~~~~~~~......XXX\r\n~~~~~~~~~..~~~.........~~~~~~~~~~~~~~...XX".Replace("\r", "").Replace("\n", ""); ;
+                //string mapSketch2 = "XXXXXXXX~~~~~~~~~~~~~XXXXX\r\nXXXXXXXXX~~~~~~~~~..XXX.XX\r\nXXX..XXXXX~~~~~~~..XXX...X\r\nXX........~~~~~...XXX.....\r\nXXX.........~~..XXX.......\r\nX.........................\r\n..........~~..............\r\n.........~...............~\r\n......~~.........XXX....~~\r\n.....~~........XXX...~~~~~\r\n~~~.~~...........~~~~~~~~~\r\n~~~~~........~~~~~~~~~~~~~\r\n~~~~~.........~~~~~..~~~~~\r\n~~~~~~~...............~~~~\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~".Replace("\r", "").Replace("\n", "");
                 char[] mapArray = mapSketch.ToCharArray();
 
                 Tile[,] map = new Tile[height,width];
 
                 int i = 0;
 
-                for (int y = 0; y < 15; y++)
+                for (int y = 0; y < height; y++)
                 {
-                    for(int x = 0; x < 25; x++)
+                    for(int x = 0; x < width; x++)
                     {
                         map[y, x] = new Tile(y, x, null, mapArray[i].ToString());
                         i++;
                     }
                 }
-                for (int y = 0; y < 15; y++)
+                for (int y = 0; y < height; y++)
                 {
-                    for (int x = 0; x < 25; x++)
+                    for (int x = 0; x < width; x++)
                     {
                         map[y, x].DrawTile();
                     }
@@ -59,7 +60,7 @@ namespace SalesAdventure3000
                 //    //Kör inte funktionen om spelaren tagit flera steg utan att något hänt
                 //}
                 List<string> gameMessages = new List<string>();
-                string[] messages = { "You healed 5 hp", "You picked up {playerbackpack[-1].name}", "The dragon breathed fire at you for 15 damage" };
+                string[] messages = { "You healed 5 hp", "You picked up {playerbackpack[pbp.Count-1].name}", "The dragon breathed fire at you for 15 damage" };
                 gameMessages.AddRange(messages);
 
                 Console.ResetColor();

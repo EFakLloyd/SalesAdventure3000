@@ -20,7 +20,7 @@ namespace SalesAdventure3000
         protected int Luck { get; set; }
 
 
-        public Creature(int Id, string Name, int[] Coordinates, char Character, ConsoleColor bGColor, List<Item> backpack) : base(Id, Name, Character, bGColor,backpack)
+        public Creature(int Id, int y, int x, string Name, int[] Coordinates, char Character, ConsoleColor bGColor, List<Item> backpack) : base(Id, y, x, Name, Character, bGColor,backpack)
         {
             this.Strenght = 9;
             this.Vitality = 7;

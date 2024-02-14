@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace SalesAdventure3000
 {
-    public class Player : Creature
-    {
-        public Player(int Id, string Name, int[] Coordinates, char Character, ConsoleColor bGColor, List<Item> backpack) : base(Id, Name, Coordinates, Character, bGColor, backpack)
-        {
-        }
-    }
+    //public class Player : Creature
+    //{
+    //    public Player(int Id, string Name, int[] Coordinates, char Character, ConsoleColor bGColor, List<Item> backpack) : 
+    //        base(Id, Name, Coordinates, Character, bGColor, backpack)
+    //    {
+    //    }
+    //}
 }
