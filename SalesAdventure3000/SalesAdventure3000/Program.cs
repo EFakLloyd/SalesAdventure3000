@@ -8,11 +8,12 @@ namespace SalesAdventure3000
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("");
             DrawWorld();
 
             static void DrawWorld()
             {
-                string map =
+                string map2 =
                 ":.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.##################" +
                 ":.:.:.:.:.:.:.:.:.:.:.:.:.:.:.################:.:.:." +
                 ":.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.##########:.:.:.:.:." +
@@ -30,16 +31,41 @@ namespace SalesAdventure3000
                 ":.:.:.:.:.:.:.:.:.:.:.##:.:.:.:.:.:.:.:.:.:.:.:.:.:." +
                 ":.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.";
 
-                for (int i = 0; i < 15; i++)
+                string mapSketch = "XXXXXXXX~~~~~~~~~~~~~XXXXX\r\nXXXXXXXXX~~~~~~~~~..XXX.XX\r\nXXX..XXXXX~~~~~~~..XXX...X\r\nXX........~~~~~...XXX.....\r\nXXX.........~~..XXX.......\r\nX.........................\r\n..........~~..............\r\n.........~...............~\r\n......~~.........XXX....~~\r\n.....~~........XXX...~~~~~\r\n~~~.~~...........~~~~~~~~~\r\n~~~~~........~~~~~~~~~~~~~\r\n~~~~~.........~~~~~..~~~~~\r\n~~~~~~~...............~~~~\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~".Replace("\r", "").Replace("\n", ""); ;
+                char[] mapArray = mapSketch.ToCharArray();
+
+                Tile[,] map = new Tile[15,25];
+
+                int i = 0;
+
+                for (int y = 0; y < 15; y++)
                 {
-                    for(int j = 0; j < 25; j++)
+                    for(int x = 0; x < 25; x++)
                     {
-                        Console.Write(":.");
+                        map[y, x] = new Tile(y, x, null, mapArray[i].ToString());
+                        //if (mapArray[i] == 88 || mapArray[i] == 126 || mapArray[i] == 46)
+                        //{
+                            
+                        //}
+                        i++;
                     }
-                    Console.WriteLine();
+                }
+                for (int y = 0; y < 15; y++)
+                {
+                    for (int x = 0; x < 25; x++)
+                    {
+                        map[y, x].DrawTile();
+
+                    }
+                    DrawEdge();
+                }
+
+                static void DrawEdge() 
+                {
+                    Console.ForegroundColor = Console.BackgroundColor = ConsoleColor.Black;
+                    Console.WriteLine(".");
                 }
             }
-            Tile ruta = new Tile();
         }
     }
 }
