@@ -4,9 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine.Models
+namespace Models.Models
 {
-    internal class Creature
+    public class Creature : Entity
     {
+        public Creature(char Character) : base(Character){ 
+        
+        }
+
+
+
+
     }
 }
