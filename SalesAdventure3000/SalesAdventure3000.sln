@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesAdventure3000_UI", "SalesAdventure3000\SalesAdventure3000_UI.csproj", "{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Models\Engine.csproj", "{C7E1370D-969F-4D96-AB82-841C44E55CF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7E1370D-969F-4D96-AB82-841C44E55CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7E1370D-969F-4D96-AB82-841C44E55CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7E1370D-969F-4D96-AB82-841C44E55CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7E1370D-969F-4D96-AB82-841C44E55CF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D65D50D-B263-4F28-BFAE-8AF097581C17}
+	EndGlobalSection
+EndGlobal
