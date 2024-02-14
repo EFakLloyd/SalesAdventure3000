@@ -9,7 +9,7 @@ namespace Models.Models
 {
     public class Tile
     {
-        public static int Id { get; set; }
+        public int Id { get; set; }
         public int[,] Coordinates { get; set; }
         public ConsoleColor FGColor { get; set; }
         public ConsoleColor BGColor { get; set; }
@@ -52,7 +52,7 @@ namespace Models.Models
             Occupant = Passable ? occupant : null;
         }
 
-        public void DrawTile ()
+        public void DrawTile()
         {
             
             if (Occupant != null)
