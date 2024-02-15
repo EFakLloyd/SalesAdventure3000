@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Engine.Models;
 
-namespace Models.Models
+namespace Engine.Models
 {
     public class Tile
     {
@@ -48,17 +43,18 @@ namespace Models.Models
                 BGColor = ConsoleColor.DarkGray;
                 Texture = "▲▲";
             }
-
             Occupant = Passable ? occupant : null;
         }
 
-        public void DrawTile()
+        public void DrawTile(List<Entity> entities)
         {
-            
             if (Occupant != null)
             {
-                //Call on occupant via ID and use its draw function.
-                Console.Write("&&");
+                Console.BackgroundColor = this.BGColor;
+                Entity currentOccupant = entities.Find(a => a.Id == this.Occupant);
+                Console.ForegroundColor = currentOccupant.FGColor;
+                Console.Write(currentOccupant.Character.ToString()+ ' ');
+                         
             }
             else
             {

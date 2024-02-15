@@ -9,3 +9,15 @@ C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\
 C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\refint\Engine.dll
 C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.pdb
 C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\ref\Engine.dll
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\bin\Debug\net7.0\Engine.deps.json
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\bin\Debug\net7.0\Engine.dll
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\bin\Debug\net7.0\Engine.pdb
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.csproj.AssemblyReference.cache
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.AssemblyInfoInputs.cache
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.AssemblyInfo.cs
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.csproj.CoreCompileInputs.cache
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.dll
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\refint\Engine.dll
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.pdb
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\ref\Engine.dll

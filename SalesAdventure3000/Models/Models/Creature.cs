@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesAdventure3000
+namespace Engine.Models
 {
     
 
@@ -19,8 +19,8 @@ namespace SalesAdventure3000
         protected int Wisdom { get; set; }
         protected int Luck { get; set; }
 
-
-        public Creature(int Id, int y, int x, string Name, int[] Coordinates, char Character, ConsoleColor bGColor, List<Item> backpack) : base(Id, y, x, Name, Character, bGColor,backpack)
+        //public Creature(int Id, int y, int x, string Name, int[] Coordinates, char Character, ConsoleColor bGColor, List<Item> backpack) : base(Id, y, x, Name, Character, bGColor, backpack)
+        public Creature(string Name, char Character, ConsoleColor FGColor ) : base(Name, Character, FGColor)
         {
             this.Strenght = 9;
             this.Vitality = 7;
