@@ -5,55 +5,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesAdventure3000
+namespace Engine.Models
 {
     public class Entity
     {
         public int Id { get; set; }
         protected string Name { get; set; }
-        public int[,] Coordinates { get; set; }
-        protected char Character { get; set; }
+        //public int[,] Coordinates { get; set; }
+        public char Character { get; set; }
         public ConsoleColor FGColor { get; set; }
-        public ConsoleColor BGColor { get; set; }
-        public int Idseed { get; }
+        //public ConsoleColor BGColor { get; set; }
+        //public int Idseed { get; }
 
-        protected List<Item> backpack = new List<Item>();
+        //protected List<Item> backpack = new List<Item>();
         protected static int IdSeed = 4000;
 
-        public int X { get; set; }
-        public int Y { get; set; }
-        
+        //public int X { get; set; }
+        //public int Y { get; set; }
 
-        public Entity(int Id, int y, int x, string name, char character, ConsoleColor bGColor, List<Item> backpack)
+        //public Entity(int Id, int y, int x, string name, char character, ConsoleColor bGColor, List<Item> backpack)
+        public Entity(string name, char character, ConsoleColor fGColor)
         {
             Id = IdSeed++;
             Name = name;
             Character = character;
-            BGColor = bGColor;
+            FGColor = fGColor;
             
-            this.backpack = backpack;
-            X = x;
-            Y = y;
-            Coordinates = new int[y, x];
+            //this.backpack = backpack;
+            //X = x;
+            //Y = y;
+            //Coordinates = new int[y, x];
 
         }
 
-        public void MoveRight()
-        {
-             X++;
-        }
-        public void MoveLeft()
-        {
-            X--;
-        }
-        public void MoveUp()
-        {
-            Y++;
-        }
-        public void MoveDown()
-        {
-            Y--;
-        }
+        //public void MoveRight()
+        //{
+        //     X++;
+        //}
+        //public void MoveLeft()
+        //{
+        //    X--;
+        //}
+        //public void MoveUp()
+        //{
+        //    Y++;
+        //}
+        //public void MoveDown()
+        //{
+        //    Y--;
+        //}
 
         
     }

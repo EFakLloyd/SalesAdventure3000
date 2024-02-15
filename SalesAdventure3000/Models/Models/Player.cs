@@ -1,17 +1,20 @@
-﻿using SalesAdventure3000;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesAdventure3000
+namespace Engine.Models
 {
-    //public class Player : Creature
-    //{
-    //    public Player(int Id, string Name, int[] Coordinates, char Character, ConsoleColor bGColor, List<Item> backpack) : 
-    //        base(Id, Name, Coordinates, Character, bGColor, backpack)
-    //    {
-    //    }
-    //}
+    public class Player : Creature
+    {
+        public Player(string Name, char Character, ConsoleColor FGColor) : base(Name, Character, FGColor)
+        {
+
+        }
+        //public Player(int Id, string Name, int[] Coordinates, char Character, ConsoleColor bGColor, List<Item> backpack) :
+        //    base(Id, Name, Coordinates, Character, bGColor, backpack)
+        //{
+        //}
+    }
 }
