@@ -10,7 +10,7 @@ namespace Engine.Models
         public ConsoleColor BGColor { get; set; }
         public string Texture { get; set; }
         public bool Passable { get; set; }
-        public int? Occupant { get; set; }
+        public Entity? Occupant { get; set; }
 
         private static int IdSeed = 2000;
 
@@ -43,23 +43,21 @@ namespace Engine.Models
                 BGColor = ConsoleColor.DarkGray;
                 Texture = "▲▲";
             }
-            Occupant = Passable ? occupant : null;
         }
 
         public void DrawTile(List<Entity> entities)
         {
+            Console.BackgroundColor = this.BGColor;
             if (Occupant != null)
             {
-                Console.BackgroundColor = this.BGColor;
-                Entity currentOccupant = entities.Find(a => a.Id == this.Occupant);
-                Console.ForegroundColor = currentOccupant.FGColor;
-                Console.Write(currentOccupant.Character.ToString()+ ' ');
+                //Entity currentOccupant = entities.Find(a => a.Id == this.Occupant);
+                Console.ForegroundColor = Occupant.FGColor;
+                Console.Write(Occupant.Character.ToString()+ ' ');
                          
             }
             else
             {
                 Console.ForegroundColor = this.FGColor;
-                Console.BackgroundColor = this.BGColor;
                 Console.Write(this.Texture);
             }
         }

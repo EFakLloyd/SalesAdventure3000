@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Engine.Models;
-using SalesAdventure3000_UI;
+using SalesAdventure3000_UI.Views;
+using static SalesAdventure3000_UI.Views.ViewType;
 
 namespace SalesAdventure3000
 {
@@ -11,15 +12,27 @@ namespace SalesAdventure3000
     {
         static void Main(string[] args)
         {
-            Startscreen startscreen = new Startscreen();
-            startscreen.PrintStartMenu();
-
             int width = 42;
             int height = 15;
 
-            Console.WriteLine("");
-
+            View currentScreen = View.Start;
+            
             Session currentSession = new Session();
+
+            //Startscreen startscreen = new Startscreen();
+
+            //startscreen.PrintAndGetInput(currentSession);
+
+            while (true)
+            {
+                if (currentScreen == View.Start)
+                    currentScreen = MenuView.Display(currentSession);
+                if (currentScreen == View.Adventure)
+                    break;
+                    //currentScreen = AdventureView.Display(currentSession);
+            }
+
+            //currentSession.CreateNewWorld();
 
             DrawWorld(width, height, currentSession);
 
@@ -111,7 +124,7 @@ namespace SalesAdventure3000
                 DrawEdge();
             }
 
-            static void DrawEdge()
+            void DrawEdge()
             {
                 Console.ForegroundColor = Console.BackgroundColor = ConsoleColor.Black;
                 Console.WriteLine(".");
