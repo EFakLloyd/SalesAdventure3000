@@ -13,7 +13,25 @@ namespace Engine.Models
 
         public Session()
         {
-            CurrentWorld = new World();
+        }
+
+        public void CreatePlayer(string name)
+        {
+            //this.CurrentPlayer = new Player();
+        }
+        public void CreateNewWorld()
+        {
+            this.CurrentWorld = new World();
+        }
+
+        public void LoadSession()
+        {
+            //Load session
+        }
+
+        public void SaveSession()
+        {
+            //Save session
         }
     }
 }

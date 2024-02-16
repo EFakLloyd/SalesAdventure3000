@@ -20,7 +20,7 @@ namespace Engine.Models
             this.Width = 42;
             this.Height = 15;
             this.Entities = CreateEntities();
-            this.Map = CreateWorld(Entities);
+            this.Map = CreateAndPopulateWorld(Entities);
         }
         private List<Entity> CreateEntities()
         {
@@ -34,7 +34,7 @@ namespace Engine.Models
             }
             return entities;
         }
-        private Tile[,] CreateWorld(List<Entity> entities)
+        private Tile[,] CreateAndPopulateWorld(List<Entity> entities)
         {
             Random rnd = new Random();
             string mapSketch = "XXXXXXXX~~~~~~~~~~~~~XXXXXXXXXXXXXX~~~~~~~\r\nXXXXXXXXX~~~~~~~~~..XXX.XXXXXXXXXXXXX~~~~~\r\nXXX..XXXXX~~~~~~~..XXX.........XXXXXXXX..~\r\nXX........~~~~~...XXX.............XXXXXX..\r\nXXX.........~~..XXX.............XXXX..XXX.\r\nX...........~..................XX.........\r\n..........~~.........................~....\r\n.........~........................X.~~~...\r\n......~~.........XXX.............XX..~~~..\r\n.....~~........XXX...~~~~~.......XX.......\r\n~~~.~~...........~~~~~~~~~~~~......XX.....\r\n~~~~~........~~~~~~~~~~~~~~~~~~....XXXX..X\r\n~~~~~.........~~~~~..~~~~~~~~~~......XXXXX\r\n~~~~~~~...............~~~~~~~~~~~......XXX\r\n~~~~~~~~~..~~~.........~~~~~~~~~~~~~~...XX".Replace("\r", "").Replace("\n", ""); ;
@@ -62,7 +62,7 @@ namespace Engine.Models
                     int y = rnd.Next(0, 15);
                     if (map[y, x].Occupant == null && map[y, x].Passable)
                     {
-                        map[y, x].Occupant = entity.Id;
+                        map[y, x].Occupant = entity;
                         break;
                     }
                 }
