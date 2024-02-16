@@ -38,22 +38,7 @@ namespace Engine.Models
 
         }
 
-        //public void MoveRight()
-        //{
-        //     X++;
-        //}
-        //public void MoveLeft()
-        //{
-        //    X--;
-        //}
-        //public void MoveUp()
-        //{
-        //    Y++;
-        //}
-        //public void MoveDown()
-        //{
-        //    Y--;
-        //}
+        
 
         
     }
