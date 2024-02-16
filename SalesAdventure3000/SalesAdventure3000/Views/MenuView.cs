@@ -38,8 +38,8 @@ namespace SalesAdventure3000_UI.Views
                     }
 
                     var input = MenuControl.GetInput(SelectedCommand, commands.Length);
-                    SelectedCommand = input.Item1;
-                    if (input.Item2)
+                    SelectedCommand = input.val;
+                    if (input.enter)
                         break;
                 }
                 Console.Clear();
@@ -49,8 +49,8 @@ namespace SalesAdventure3000_UI.Views
                         Console.Write("\n\tEnter your name, brave adventurer: ");
                         string adventurerName = Console.ReadLine();
                         Console.WriteLine($"\n\tReady yourself, brave {adventurerName}!");
-                        currentSession.CreatePlayer(adventurerName);
                         currentSession.CreateNewWorld();
+                        currentSession.CreatePlayer(adventurerName);              
                         menuLoop = false;
                         returnView = View.Adventure;
                         break;

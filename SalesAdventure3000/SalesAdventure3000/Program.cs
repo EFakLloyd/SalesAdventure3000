@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Engine.Models;
+using SalesAdventure3000_UI.Controllers;
 using SalesAdventure3000_UI.Views;
 using static SalesAdventure3000_UI.Views.ViewType;
 
@@ -32,6 +33,7 @@ namespace SalesAdventure3000
                     //currentScreen = AdventureView.Display(currentSession);
             }
 
+            
             //currentSession.CreateNewWorld();
 
             DrawWorld(width, height, currentSession);
@@ -39,6 +41,10 @@ namespace SalesAdventure3000
             DrawInfoWindow(width);
             DrawEquipment(width);
             DrawBackpack(width);
+
+            while (true) { 
+            MapControl.Control(currentSession);
+            }
 
             static void DrawInfoWindow(int width)
             {

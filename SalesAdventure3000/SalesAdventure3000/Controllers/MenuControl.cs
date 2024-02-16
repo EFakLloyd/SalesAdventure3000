@@ -13,7 +13,7 @@ namespace SalesAdventure3000_UI.Controllers
         //    Start,
         //    Ingame
         //}
-        public static (int, bool) GetInput(int selectedCommand, int upperLimit)
+        public static (int val, bool enter) GetInput(int selectedCommand, int upperLimit)
         {
             bool confirmedChoice = false;
             string input = Console.ReadKey().Key.ToString();
@@ -27,14 +27,14 @@ namespace SalesAdventure3000_UI.Controllers
                     if (selectedCommand < upperLimit - 1)
                         selectedCommand++;
                     break;
-                case "RightArrow":
-                    if (menu == MenuType.Ingame && selectedCommand + 2 < upperLimit - 1)
-                        selectedCommand = selectedCommand + 2;
-                    break;
-                case "LeftArrow":
-                    if (menu == MenuType.Ingame && selectedCommand - 2 > 0)
-                        selectedCommand = selectedCommand - 2;
-                    break;
+                //case "RightArrow":
+                //    if (menu == MenuType.Ingame && selectedCommand + 2 < upperLimit - 1)
+                //        selectedCommand = selectedCommand + 2;
+                //    break;
+                //case "LeftArrow":
+                    //if (menu == MenuType.Ingame && selectedCommand - 2 > 0)
+                    //    selectedCommand = selectedCommand - 2;
+                    //break;
                 case "Enter":
                     confirmedChoice = true;
                     break;
