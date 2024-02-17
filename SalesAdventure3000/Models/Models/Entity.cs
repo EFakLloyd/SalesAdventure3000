@@ -10,7 +10,7 @@ namespace Engine.Models
     public class Entity
     {
         public int Id { get; set; }
-        protected string Name { get; set; }
+        public string Name { get; set; }
         //public int[,] Coordinates { get; set; }
         public char Character { get; set; }
         public ConsoleColor FGColor { get; set; }

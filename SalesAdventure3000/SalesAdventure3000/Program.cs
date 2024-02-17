@@ -33,9 +33,9 @@ namespace SalesAdventure3000
                     //currentScreen = AdventureView.Display(currentSession);
             }
 
-            
-            //currentSession.CreateNewWorld();
 
+            //currentSession.CreateNewWorld();
+            Console.WriteLine(currentSession.CurrentPlayer.Name);
             DrawWorld(width, height, currentSession);
 
             DrawInfoWindow(width);

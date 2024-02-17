@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Engine.Models
@@ -27,12 +28,31 @@ namespace Engine.Models
 
         public void LoadSession()
         {
-            //Load session
+            //Skräddarsydd inmatning av värden från sparfil-klass till Session.
+
+
+            //string fileName = "SavedSession.json";
+            //string jsonString = File.ReadAllText(fileName);
+            //Session currentSession = JsonSerializer.Deserialize<Session>(jsonString)!;
         }
 
         public void SaveSession()
         {
-            //Save session
+            //Behöver göra en skräddarsydd klass för att hålla information på ett sätt som går att serialisera till json, och bryta ut den manuellt. Inga [,]-arrayer (som finns bl.a. finns i World och Player).
+
+
+            //Session testSession = new Session();
+            //testSession.CreateNewWorld();
+            //testSession.CreatePlayer("Berit");
+            //string fileName = "SavedSession.json";
+            //string jsonString = JsonSerializer.Serialize(testSession.CurrentPlayer);
+            //File.Create(fileName);
+
+            //File.WriteAllText(fileName, jsonString);
+
+            //Console.WriteLine(File.ReadAllText(fileName));
+
+            //Console.WriteLine(jsonString);
         }
     }
 }
