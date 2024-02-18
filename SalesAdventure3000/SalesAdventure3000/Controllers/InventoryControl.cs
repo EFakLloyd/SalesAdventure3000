@@ -6,21 +6,29 @@ using System.Threading.Tasks;
 
 namespace SalesAdventure3000_UI.Controllers
 {
-    public class MenuControl
+    public class InventoryControl
     {
-        public static (int val, bool enter) GetInput(int selectedCommand, int upperLimit)
+        public static (int, bool) GetInput(int selectedCommand, int upperLimit)
         {
             bool confirmedChoice = false;
             string input = Console.ReadKey().Key.ToString();
             switch (input)
             {
-                case "UpArrow":
+                case "LeftArrow":
                     if (selectedCommand > 0)
                         selectedCommand--;
                     break;
-                case "DownArrow":
+                case "RightArrow":
                     if (selectedCommand < upperLimit - 1)
                         selectedCommand++;
+                    break;
+                case "DownArrow":
+                    if (selectedCommand + 2 < upperLimit - 1)
+                        selectedCommand = selectedCommand + 2;
+                    break;
+                case "UpArrow":
+                    if (selectedCommand - 2 > 0)
+                        selectedCommand = selectedCommand - 2;
                     break;
                 case "Enter":
                     confirmedChoice = true;

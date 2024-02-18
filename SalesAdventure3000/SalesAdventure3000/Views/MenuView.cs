@@ -62,12 +62,11 @@ namespace SalesAdventure3000_UI.Views
                         break;
                     case 2:
                         Console.Write("\n\tGame Saved.");
-                        currentSession.LoadSession();
+                        currentSession.SaveSession();
                         returnView = View.Start;
                         break;
                     case 3:
                         Console.Write("\n\tExiting game.");
-                        currentSession.LoadSession();
                         menuLoop = false;
                         returnView = View.Exit;
                         break;

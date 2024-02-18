@@ -29,7 +29,7 @@ namespace Engine.Models
 
             for (int i = 0; i < 20; i++)
             {
-                Entity entity = rnd.Next(1, 3) == 2 ? new Creature("Orm", 'S', ConsoleColor.Cyan) : new Item("Kudde", '#', ConsoleColor.White);
+                Entity entity = rnd.Next(1, 3) == 2 ? MonsterFactory.CreateMonster(rnd.Next(1000,1004)) : new Item("Kudde", "#", ConsoleColor.White);
                 entities.Add(entity);
             }
             return entities;
@@ -37,8 +37,7 @@ namespace Engine.Models
         private Tile[,] CreateAndPopulateWorld(List<Entity> entities)
         {
             Random rnd = new Random();
-            string mapSketch = "XXXXXXXX~~~~~~~~~~~~~XXXXXXXXXXXXXX~~~~~~~\r\nXXXXXXXXX~~~~~~~~~..XXX.XXXXXXXXXXXXX~~~~~\r\nXXX..XXXXX~~~~~~~..XXX.........XXXXXXXX..~\r\nXX........~~~~~...XXX.............XXXXXX..\r\nXXX.........~~..XXX.............XXXX..XXX.\r\nX...........~..................XX.........\r\n..........~~.........................~....\r\n.........~........................X.~~~...\r\n......~~.........XXX.............XX..~~~..\r\n.....~~........XXX...~~~~~.......XX.......\r\n~~~.~~...........~~~~~~~~~~~~......XX.....\r\n~~~~~........~~~~~~~~~~~~~~~~~~....XXXX..X\r\n~~~~~.........~~~~~..~~~~~~~~~~......XXXXX\r\n~~~~~~~...............~~~~~~~~~~~......XXX\r\n~~~~~~~~~..~~~.........~~~~~~~~~~~~~~...XX".Replace("\r", "").Replace("\n", ""); ;
-            //string mapSketch2 = "XXXXXXXX~~~~~~~~~~~~~XXXXX\r\nXXXXXXXXX~~~~~~~~~..XXX.XX\r\nXXX..XXXXX~~~~~~~..XXX...X\r\nXX........~~~~~...XXX.....\r\nXXX.........~~..XXX.......\r\nX.........................\r\n..........~~..............\r\n.........~...............~\r\n......~~.........XXX....~~\r\n.....~~........XXX...~~~~~\r\n~~~.~~...........~~~~~~~~~\r\n~~~~~........~~~~~~~~~~~~~\r\n~~~~~.........~~~~~..~~~~~\r\n~~~~~~~...............~~~~\r\n~~~~~~~~~~~~~~~~~~~~~~~~~~".Replace("\r", "").Replace("\n", "");
+            string mapSketch = "XXXXXXXX~~~~~~~~~~~~~XXXXXXXXXXXXXX~~~~~~~\r\nXXXXXXXXX~~~~~~~~~..XXX.XXXXXXXXXXXXX~~~~~\r\nXXX..XXXXX~~~~~~~..XXX.........XXXXXXXX..~\r\nXX........~~~~~...XXX.............XXXXXX..\r\nXXX.........~~..XXX.............XXXX..XXX.\r\nX...........~..................XX.........\r\n..........~~.........................~....\r\n.........~........................X.~~~...\r\n......~~.........XXX.............XX..~~~..\r\n.....~~........XXX...~~~~~.......XX.......\r\n~~~.~~...........~~~~~~~~~~~~......XX.....\r\n~~~~~........~~~~~~~~~~~~~~~~~~....XXXX..X\r\n~~~~~.........~~~~~..~~~~~~~~~~......XXXXX\r\n~~~~~~~...............~~~~~~~~~~~......XXX\r\n~~~~~~~~~..~~~.........~~~~~~~~~~~~~~...XX".Replace("\r", "").Replace("\n", "");
             char[] mapArray = mapSketch.ToCharArray();
 
             Tile[,] map = new Tile[Height, Width];
@@ -49,7 +48,7 @@ namespace Engine.Models
             {
                 for (int x = 0; x < Width; x++)
                 {
-                    map[y, x] = new Tile(y, x, null, mapArray[i].ToString());
+                    map[y, x] = new Tile(mapArray[i].ToString());
                     i++;
                 }
             }

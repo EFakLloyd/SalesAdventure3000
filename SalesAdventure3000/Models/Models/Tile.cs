@@ -5,7 +5,7 @@ namespace Engine.Models
     public class Tile
     {
         public int Id { get; set; }
-        public int[,] Coordinates { get; set; }
+        //public int[,] Coordinates { get; set; }
         public ConsoleColor FGColor { get; set; }
         public ConsoleColor BGColor { get; set; }
         public string Texture { get; set; }
@@ -14,11 +14,11 @@ namespace Engine.Models
 
         private static int IdSeed = 2000;
 
-        public Tile(int x, int y, int? occupant, string type)
+        public Tile(string type)
         {
             Random textureFlip = new Random();
 
-            Coordinates = new int[y,x];
+            //Coordinates = new int[y,x];
             Id = IdSeed;
             IdSeed++;
 
@@ -27,14 +27,15 @@ namespace Engine.Models
                 Passable = true;
                 FGColor = ConsoleColor.Green;
                 BGColor = ConsoleColor.DarkGreen;
-                Texture = textureFlip.Next(1, 3) == 1 ? " ." : "  ";
+                //Texture = textureFlip.Next(1, 3) == 1 ? " ." : "  ";
+                Texture = textureFlip.Next(1, 4) == 1 ? " ." : textureFlip.Next(1, 3) == 1 ? ". " : "  ";
             }
             else if (type == "~")
             {
                 Passable = false;
                 FGColor = ConsoleColor.Blue;
                 BGColor = ConsoleColor.DarkBlue;
-                Texture = textureFlip.Next(1, 4) == 1 ? "~~" : " ~";
+                Texture = textureFlip.Next(1, 4) == 1 ? "~~" : textureFlip.Next(1, 3) == 1 ? "~ " : " ~";
             }
             else
             {
@@ -52,7 +53,7 @@ namespace Engine.Models
             {
                 //Entity currentOccupant = entities.Find(a => a.Id == this.Occupant);
                 Console.ForegroundColor = Occupant.FGColor;
-                Console.Write(Occupant.Character.ToString()+ ' ');
+                Console.Write(Occupant.Appearance.PadRight(2, ' '));
                          
             }
             else

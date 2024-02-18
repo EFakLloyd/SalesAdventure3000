@@ -20,10 +20,6 @@ namespace SalesAdventure3000
             
             Session currentSession = new Session();
 
-            //Startscreen startscreen = new Startscreen();
-
-            //startscreen.PrintAndGetInput(currentSession);
-
             while (true)
             {
                 if (currentScreen == View.Start)
@@ -33,8 +29,7 @@ namespace SalesAdventure3000
                     //currentScreen = AdventureView.Display(currentSession);
             }
 
-            
-            //currentSession.CreateNewWorld();
+            DrawPlayerStats(width, currentSession);
 
             DrawWorld(width, height, currentSession);
 
@@ -44,6 +39,16 @@ namespace SalesAdventure3000
 
             while (true) { 
             MapControl.Control(currentSession);
+            }
+
+            static void DrawPlayerStats(int width, Session currentSession)
+            {              
+                Console.ResetColor();
+                Console.WriteLine("╔".PadRight(width * 2 - 1, '═') + "╗");
+                Console.WriteLine(
+                    $"║ Name: {currentSession.CurrentPlayer.Name}".PadRight(width - 1, ' ') + $"Coolness: {currentSession.CurrentPlayer.Coolness.ToString()}".PadRight(width, ' ') + "║\n"+
+                    $"║ Strength: {currentSession.CurrentPlayer.Strength}".PadRight(width - 1, ' ') + $"Vitality: {currentSession.CurrentPlayer.Vitality.ToString()}".PadRight(width, ' ') + "║\n" +
+                    "╚".PadRight(width * 2 - 1, '═') + "╝");
             }
 
             static void DrawInfoWindow(int width)
@@ -58,7 +63,7 @@ namespace SalesAdventure3000
 
                 Console.ResetColor();
                 Console.WriteLine("╔".PadRight(width * 2 - 1, '═') + "╗");
-                for (int i = 2; i > 0; i--)
+                for (int i = 3; i > 0; i--)
                 {
                     Console.Write($"║ {gameMessages[gameMessages.Count-i]}".PadRight(width*2 - 1, ' ') + "║\n");
                 }

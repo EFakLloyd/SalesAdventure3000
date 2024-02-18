@@ -8,7 +8,7 @@ namespace Engine.Models
 {
     public class Item : Entity
     {
-        public Item(string Name, char Character, ConsoleColor FGColor) : base(Name, Character, FGColor)
+        public Item(string name, string appearance, ConsoleColor fgColor) : base(name, appearance, fgColor)
         {
             
         }
