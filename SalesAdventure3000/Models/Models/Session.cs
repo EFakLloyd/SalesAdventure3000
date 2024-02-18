@@ -18,7 +18,7 @@ namespace Engine.Models
 
         public void CreatePlayer(string name)
         {
-            CurrentPlayer = new Player(name, '.', ConsoleColor.Red, new int[7,22]);
+            CurrentPlayer = new Player(name, new int[] { 7, 22 });
             CurrentWorld.Map[7, 22].Occupant=CurrentPlayer;
         }
         public void CreateNewWorld()
