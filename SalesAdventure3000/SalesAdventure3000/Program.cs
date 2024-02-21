@@ -44,10 +44,10 @@ namespace SalesAdventure3000
             static void DrawPlayerStats(int width, Session currentSession)
             {              
                 Console.ResetColor();
-                Console.WriteLine("╔".PadRight(width * 2 - 1, '═') + "╗");
+                Console.WriteLine($"╔═{currentSession.CurrentPlayer.Name}".PadRight(width * 2 - 1, '═') + "╗");
                 Console.WriteLine(
-                    $"║ Name: {currentSession.CurrentPlayer.Name}".PadRight(width - 1, ' ') + $"Coolness: {currentSession.CurrentPlayer.Coolness.ToString()}".PadRight(width, ' ') + "║\n"+
-                    $"║ Strength: {currentSession.CurrentPlayer.Strength}".PadRight(width - 1, ' ') + $"Vitality: {currentSession.CurrentPlayer.Vitality.ToString()}".PadRight(width, ' ') + "║\n" +
+                    $"║ Strength: {currentSession.CurrentPlayer.Strength}".PadRight(width - 1, ' ') + $"Vitality: {currentSession.CurrentPlayer.Vitality}".PadRight(width, ' ') + "║\n"+
+                    $"║ Coolness: {currentSession.CurrentPlayer.Coolness}".PadRight(width - 1, ' ') + $"Armour: {currentSession.CurrentPlayer.Armour}".PadRight(width, ' ') + "║\n" +
                     "╚".PadRight(width * 2 - 1, '═') + "╝");
             }
 
