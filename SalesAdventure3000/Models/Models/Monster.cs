@@ -13,5 +13,24 @@ namespace Engine.Models
         {
             this.AttackMessage = attackMessage;
         }
+        public string MessageUponAttack(int damage)
+        {
+            if (damage == 0)
+                return "The " + Name + " misses you, barely.";
+            else
+                return AttackMessage + damage + " damage.";
+        }
+        public int RollForAttack(int playerArmour)
+        {
+            int damage = 0;
+            Random roll = new Random();
+            for (int i = 0; i < Strength; i++)
+            {
+                damage = roll.Next(1,4) == 1 ? damage++ : damage;
+            }
+            damage -= playerArmour;
+            return damage < 0 ? 0 : damage;
+        }
+
     }
 }

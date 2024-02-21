@@ -10,9 +10,10 @@ namespace Engine
 {
     public static class MonsterFactory
     {
-        public static Monster CreateMonster(int monsterTypeId)
+        public static Monster CreateMonster()
         {
-            switch (monsterTypeId)
+            Random random = new Random();
+            switch (random.Next(1000, 1004))
             {
                 case 1000:
                     Monster snake = new Monster("Snake", "Sn", ConsoleColor.Cyan, 5, 5, 15, "The snake slithers up your leg and bites your chin for ");
@@ -21,13 +22,13 @@ namespace Engine
                     Monster orc = new Monster("Orc", "Oc", ConsoleColor.DarkCyan, 10, 10, 5, "Recklessly slashing its scimitar, the orc deals you ");
                     return orc;
                 case 1002:
-                    Monster tintin = new Monster("Tintin", "TT", ConsoleColor.Yellow, 30, 20, 99, "Tintin makes you feel insufficent with his Linux skills. You take ");
+                    Monster tintin = new Monster("Tintin-beast", "TT", ConsoleColor.Yellow, 30, 20, 99, "Tintin makes you feel insufficent with his Linux skills. You take ");
                     return tintin;
                 case 1003:
                     Monster dragon = new Monster("Dragon", "Dn", ConsoleColor.DarkRed, 35, 35, 20, "The dragon breathed fire at you for ");
                     return dragon;
                 default:
-                    throw new ArgumentException($"MonsterTypeId '{monsterTypeId}' does not exist");
+                    return null;
             }
         }
     }

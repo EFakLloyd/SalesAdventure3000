@@ -8,9 +8,31 @@ namespace Engine.Models
 {
     public class Item : Entity
     {
-        public Item(string name, string appearance, ConsoleColor fgColor) : base(name, appearance, fgColor)
+        public enum Stat
         {
-            
+            Strength,
+            Vitality,
+            MaxVitality,
+            Armour,
+            Coolness
+        }
+
+        public Stat AffectedStat { get; set; }
+        public int Modifier { get; set; }
+        public string UseMessage { get; set; }
+        public Item(string name, string appearance, ConsoleColor fgColor, Stat stat, int modifier, string useMessage) : base(name, appearance, fgColor)
+        {
+            this.AffectedStat = stat;
+            this.Modifier = modifier;
+            this.UseMessage = useMessage;
+        }
+        public string MessageUponUse()
+        {
+            return UseMessage + Modifier + " " + AffectedStat + "."; 
+        }
+        public string MessageUponPickUp() 
+        {
+            return "You picked up: " + Name;
         }
     }
 }

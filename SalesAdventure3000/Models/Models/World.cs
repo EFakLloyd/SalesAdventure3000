@@ -29,7 +29,7 @@ namespace Engine.Models
 
             for (int i = 0; i < 20; i++)
             {
-                Entity entity = rnd.Next(1, 3) == 2 ? MonsterFactory.CreateMonster(rnd.Next(1000,1004)) : new Item("Kudde", "#", ConsoleColor.White);
+                Entity entity = rnd.Next(1, 3) == 2 ? MonsterFactory.CreateMonster() : ItemFactory.CreateItem();
                 entities.Add(entity);
             }
             return entities;
