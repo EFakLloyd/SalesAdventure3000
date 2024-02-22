@@ -1,4 +1,5 @@
 ﻿using Engine.Models;
+using SalesAdventure3000_UI.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,85 +12,63 @@ namespace SalesAdventure3000_UI.Controllers
 {
     public class MapControl
     {
-        public static bool Control(Session currentSession)
+        public static AdventureView.Actions Control(Session currentSession)
+            //public static (int[] coordinates, AdventureView.Actions Action) Control(Session currentSession)
         {
+
+            int y = currentSession.CurrentPlayer.Coordinate[0];
+            int x = currentSession.CurrentPlayer.Coordinate[1];
+            int oldX=x;
+            int oldY= y;
+            ConsoleKeyInfo input = Console.ReadKey();
+            switch (input.Key)
+            {
+                case ConsoleKey.LeftArrow:
+                    x --;
+                    break;
+
+                case ConsoleKey.RightArrow:
+                    x ++;
+                    break;
+
+                case ConsoleKey.DownArrow:
+                    y--;
+                    break;
+
+                case ConsoleKey.UpArrow:
+                    y++;
+                    break;
+                case ConsoleKey.B:
+                    return AdventureView.Actions.OpenBackpack;
+                    
+                case ConsoleKey.E:
+                    return AdventureView.Actions.OpenEquipment;
+
+                case ConsoleKey.Escape:
+                    return AdventureView.Actions.GoToMenu;
+
+                default:
+                    return AdventureView.Actions.StayOnMap;
+                                       
+            }
             
-            //int y = currentSession.CurrentPlayer.Coordinate[0,0];
-            //int x = currentSession.CurrentPlayer.Coordinate[0,1];
-            //ConsoleKeyInfo input = Console.ReadKey();
-            //    switch (input.Key)
-            //    {
-            //        case ConsoleKey.LeftArrow:
-            //            if (x - 1 >= 0 && currentSession.CurrentWorld.Map[y, x - 1].Passable)
-            //            {
-            //                currentSession.CurrentWorld.Map[y, x - 1].Occupant = currentSession.CurrentPlayer;
-            //                currentSession.CurrentWorld.Map[y, x].Occupant = null;
-            //                currentSession.CurrentPlayer.Coordinate[0, 1] = x - 1;
+            if (Ispassable(y, x))
+            {
+                currentSession.CurrentWorld.Map[y, x].Occupant = currentSession.CurrentPlayer;
+                currentSession.CurrentWorld.Map[oldY, oldX].Occupant = null;
+                currentSession.CurrentPlayer.Coordinate = new int[] {y,x};
+            }
+            return AdventureView.Actions.StayOnMap;
+            
 
-            //            }
-            //            return true;
-                        
-            //        case ConsoleKey.RightArrow:
-            //            if (x + 1 < currentSession.CurrentWorld.Map.GetLength(1) && currentSession.CurrentWorld.Map[y, x + 1].Passable)
-            //            {
-            //                currentSession.CurrentWorld.Map[y, x + 1].Occupant = currentSession.CurrentPlayer;
-            //                currentSession.CurrentWorld.Map[y, x].Occupant = null;
-            //                currentSession.CurrentPlayer.Coordinate[0, 1] = x + 1;
-            //            }
-            //        return true;
-                    
-            //        case ConsoleKey.DownArrow:
-            //            if (y - 1 >= 0 && currentSession.CurrentWorld.Map[y - 1, x].Passable)
-            //            {
-            //                currentSession.CurrentWorld.Map[y - 1, x].Occupant = currentSession.CurrentPlayer;
-            //                currentSession.CurrentWorld.Map[y, x].Occupant = null;
-            //                currentSession.CurrentPlayer.Coordinate[0, 0] = y - 1;
-            //            }
-            //        return true;
-                    
-            //        case ConsoleKey.UpArrow:
-            //            if (y + 1 < currentSession.CurrentWorld.Map.GetLength(0) && currentSession.CurrentWorld.Map[y + 1, x].Passable)
-            //            {
-            //                currentSession.CurrentWorld.Map[y + 1, x].Occupant = currentSession.CurrentPlayer;
-            //                currentSession.CurrentWorld.Map[y + 1, x].Occupant = null;
-            //                currentSession.CurrentPlayer.Coordinate[0, 0] = y + 1;
-            //            }
-            //        return true;
-                    
-            //        case ConsoleKey.Escape:
-            //        return false;
-                        
-                
-                    
-            //}
+            bool Ispassable(int y, int x)
+            {
+                return currentSession.CurrentWorld.Map[y, x].Passable && y>=0 && y<=14 && x>=0 && x<42;
 
-                return false;
+            }
 
         }
-        //public static (int, bool) GetInput(int selectedCommand, int upperLimit)
-        //{
-            
+            }
 
-            
-        //}
-
-       
-        //public void MoveLeft()
-        //{
-        //    X--;
-        //}
-        //public void MoveUp()
-        //{
-        //    Y++;
-        //}
-        //public void MoveDown()
-        //{
-        //    Y--;
-        //}
-        //esc - till menu
-        //e- equipment
-        //b- backpack
-        //currentsession.currentplayer
-        //currentsession.currentWorld.map[].occupant=currentplayer
-    } 
-}
+        }
+    
