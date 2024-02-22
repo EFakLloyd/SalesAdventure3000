@@ -18,7 +18,7 @@ namespace Engine.Models
             //this.Vitality = 15;
             //this.Coolness = 5;
             this.Coordinate = coordinate;
-            //this.Coordinate = new int[] {Coordinate[0, 0], Coordinate[0, 1]};
+            //this.Coordinate = new int[] {Coordinate[0, 0]};
         }
         //public Player(int Id, string Name, int[] Coordinates, char Character, ConsoleColor bGColor, List<Item> backpack) :
         //    base(Id, Name, Coordinates, Character, bGColor, backpack)
