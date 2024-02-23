@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static Engine.Models.Equipment;
@@ -68,27 +69,32 @@ namespace Engine.Models
                     break;
             }
         }
-        public void ToggleEquipmentOn(Equipment equipment, bool toggle) //Keff kod. Fundera på det här.
+        public void TakeOff(Equipment.EqType type)
         {
-            //if (toggle && this.EquippedItems[equipment.Type] != null)
-            //{
-            //    this.PutInBackpack(this.EquippedItems[equipment.Type]);
-            //    this.EquippedItems[equipment.Type].EquipItem
-            //}
-
-                
-            //if (toggle)
-            //    this.EquippedItems[equipment.Type] = equipment;
-            //if (!toggle)
-            //    this.EquippedItems[equipment.Type].
+            PutInBackpack(EquippedItems[type]);
+            AdjustPlayerStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier*-1);
+            EquippedItems[type] = null;
+        }
+        public void PutOn(Equipment equipment)
+        {
+            if (EquippedItems[equipment.Type] != null)
+                TakeOff(equipment.Type);
+            AdjustPlayerStat(equipment.AffectedStat, equipment.Modifier);
+            RemoveFromBackpack(equipment);
+        }
+        public void UseConsumable(Consumable consumable)
+        {
+            AdjustPlayerStat(consumable.AffectedStat, consumable.Modifier);
+            if (consumable.Duration != null)
+                consumable.Timer = true;
         }
         public void PutInBackpack(Item item)
         {
             Backpack.Add(item);
         }
-        public void RemoveFromBackpack(int index)
+        public void RemoveFromBackpack(Item item)
         {
-            Backpack.RemoveAt(index);
+            Backpack.Remove(item);
         }
     }
 }

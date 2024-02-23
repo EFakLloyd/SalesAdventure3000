@@ -15,7 +15,6 @@ namespace SalesAdventure3000
         {
             //int width = 42;
             //int height = 15;
-
             View currentScreen = View.Start;
             
             Session currentSession = new Session();
