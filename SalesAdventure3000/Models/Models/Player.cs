@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static Engine.Models.Equipment;
@@ -21,11 +22,12 @@ namespace Engine.Models
             this.Name = name;
             this.Coordinate = coordinate;
             this.Armour = 0;
+            this.EquippedItems = new Dictionary<Equipment.EqType, Equipment?>();
             this.EquippedItems.Add(EqType.Head, null);
             this.EquippedItems.Add(EqType.Weapon, null);
             this.EquippedItems.Add(EqType.Torso, null);
             this.EquippedItems.Add(EqType.Bling, null);
-
+            this.Backpack = new List<Item>();
             Backpack.Add(ItemFactory.CreateItem(2006));
         }
         public string MessageUponAttack(int damage)
@@ -66,27 +68,32 @@ namespace Engine.Models
                     break;
             }
         }
-        public void ToggleEquipmentOn(Equipment equipment, bool toggle) //Keff kod. Fundera på det här.
+        public void TakeOff(Equipment.EqType type)
         {
-            //if (toggle && this.EquippedItems[equipment.Type] != null)
-            //{
-            //    this.PutInBackpack(this.EquippedItems[equipment.Type]);
-            //    this.EquippedItems[equipment.Type].EquipItem
-            //}
-
-                
-            //if (toggle)
-            //    this.EquippedItems[equipment.Type] = equipment;
-            //if (!toggle)
-            //    this.EquippedItems[equipment.Type].
+            PutInBackpack(EquippedItems[type]);
+            AdjustPlayerStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier*-1);
+            EquippedItems[type] = null;
+        }
+        public void PutOn(Equipment equipment)
+        {
+            if (EquippedItems[equipment.Type] != null)
+                TakeOff(equipment.Type);
+            AdjustPlayerStat(equipment.AffectedStat, equipment.Modifier);
+            RemoveFromBackpack(equipment);
+        }
+        public void UseConsumable(Consumable consumable)
+        {
+            AdjustPlayerStat(consumable.AffectedStat, consumable.Modifier);
+            if (consumable.Duration != null)
+                consumable.Timer = true;
         }
         public void PutInBackpack(Item item)
         {
             Backpack.Add(item);
         }
-        public void RemoveFromBackpack(int index)
+        public void RemoveFromBackpack(Item item)
         {
-            Backpack.RemoveAt(index);
+            Backpack.Remove(item);
         }
     }
 }
