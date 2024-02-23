@@ -4,8 +4,6 @@ namespace Engine.Models
 {
     public class Tile
     {
-        public int Id { get; set; }
-        //public int[,] Coordinates { get; set; }
         public ConsoleColor FGColor { get; set; }
         public ConsoleColor BGColor { get; set; }
         public string Texture { get; set; }
@@ -17,10 +15,6 @@ namespace Engine.Models
         public Tile(string type)
         {
             Random textureFlip = new Random();
-
-            //Coordinates = new int[y,x];
-            Id = IdSeed;
-            IdSeed++;
 
             if (type == ".")
             {
@@ -42,7 +36,7 @@ namespace Engine.Models
                 Passable = false;
                 FGColor = ConsoleColor.Gray;
                 BGColor = ConsoleColor.DarkGray;
-                Texture = "▲▲";
+                Texture = "^^";
             }
         }
 

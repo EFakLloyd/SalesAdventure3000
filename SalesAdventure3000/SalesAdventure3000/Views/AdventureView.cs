@@ -11,34 +11,35 @@ namespace SalesAdventure3000_UI.Views
 {
     public class AdventureView
     {
-        
-        public static Actions Control(Session currentSession) {
-
+        public enum Actions
+        {
+            StayOnMap,
+            OpenEquipment,
+            OpenBackpack,
+            GoToMenu
+        }
+        public static Actions Control(Session currentSession)
+        {
             Actions currentAction = Actions.StayOnMap;
 
             while (true)
             {
-                if (currentAction == Actions.StayOnMap) { 
+                if (currentAction == Actions.StayOnMap)
+                {
                     currentAction = (Actions)Display(currentSession);
-                    
+
                 }
                 if (currentAction == Actions.OpenEquipment)
-                currentAction = (Actions)Display(currentSession);
+                    currentAction = (Actions)Display(currentSession);
                 if (currentAction == Actions.OpenBackpack)
                     currentAction = (Actions)Display(currentSession);
                 if (currentAction == Actions.GoToMenu)
                 {
+                    return currentAction;
+                }
                 return currentAction;
             }
-                    
-
-                return currentAction;
         }
-
-
-    }
-
-
         public static View Display(Session currentSession)
         {
             int width = 42;
@@ -50,19 +51,20 @@ namespace SalesAdventure3000_UI.Views
                 DrawInfoWindow();
                 DrawEquipment();
                 DrawBackpack();
-
+                // stannar koden här just nu /Jens 22/2
+                Console.ReadLine();
+                return View.Start;
             }
 
-             void DrawPlayerStats()
+            void DrawPlayerStats()
             {
                 Console.ResetColor();
-                Console.WriteLine("╔".PadRight(width * 2 - 1, '═') + "╗");
+                Console.WriteLine($"╔═{currentSession.CurrentPlayer.Name}".PadRight(width * 2 - 1, '═') + "╗");
                 Console.WriteLine(
-                    $"║ Name: {currentSession.CurrentPlayer.Name}".PadRight(width - 1, ' ') + $"Coolness: {currentSession.CurrentPlayer.Coolness.ToString()}".PadRight(width, ' ') + "║\n" +
-                    $"║ Strength: {currentSession.CurrentPlayer.Strength}".PadRight(width - 1, ' ') + $"Vitality: {currentSession.CurrentPlayer.Vitality.ToString()}".PadRight(width, ' ') + "║\n" +
+                    $"║ Strength: {currentSession.CurrentPlayer.Strength}".PadRight(width - 1, ' ') + $"Vitality: {currentSession.CurrentPlayer.Vitality}".PadRight(width, ' ') + "║\n" +
+                    $"║ Coolness: {currentSession.CurrentPlayer.Coolness}".PadRight(width - 1, ' ') + $"Armour: {currentSession.CurrentPlayer.Armour}".PadRight(width, ' ') + "║\n" +
                     "╚".PadRight(width * 2 - 1, '═') + "╝");
             }
-
             void DrawInfoWindow()
             {
                 //if (currentSession.frame > lastMessageFrame + 4)
@@ -81,8 +83,7 @@ namespace SalesAdventure3000_UI.Views
                 }
                 Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
             }
-
-             void DrawEquipment()
+            void DrawEquipment()
             {
                 List<string> equippedItems = new List<string>();
                 string[] items = { "Banana", "Chain Mail", "Dane Axe", "Sunglasses", "Trusty Boots" };
@@ -107,8 +108,7 @@ namespace SalesAdventure3000_UI.Views
                 }
                 Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
             }
-
-             void DrawBackpack()
+            void DrawBackpack()
             {
                 List<string> equippedItems = new List<string>();
                 string[] items = { "Banana", "Chain Mail", "Dane Axe", "Sunglasses", "Trusty Boots" };
@@ -133,47 +133,23 @@ namespace SalesAdventure3000_UI.Views
                 }
                 Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
             }
-        
-
-         void DrawWorld()
+            void DrawWorld()
             {
 
                 for (int y = 0; y < height; y++)
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        //DrawTile(currentSession.CurrentWorld.Map[y, x]) // Om vi lägger alla skriva ut-funktioner i separat klass.
                         currentSession.CurrentWorld.Map[y, x].DrawTile(currentSession.CurrentWorld.Entities);
                     }
                     DrawEdge();
                 }
-
-
                 void DrawEdge()
                 {
                     Console.ForegroundColor = Console.BackgroundColor = ConsoleColor.Black;
                     Console.WriteLine(".");
                 }
-                // Skriva själva metoderna här(inte kalla på dessa här)
-                //DrawPlayerStats(width, currentSession);
-
-                //DrawWorld(width, height, currentSession);
-                //DrawEquipment(width);
-                //DrawBackpack(width);
-                //return View.Start;
-
             }
-            return View.Adventure;
-        
-        }
-    
-
-    public enum Actions
-        {
-            StayOnMap,
-            OpenEquipment,
-            OpenBackpack,
-            GoToMenu
         }
     }
 }

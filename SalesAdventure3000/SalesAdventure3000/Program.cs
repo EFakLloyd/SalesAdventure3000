@@ -13,8 +13,8 @@ namespace SalesAdventure3000
     {
         static void Main(string[] args)
         {
-            int width = 42;
-            int height = 15;
+            //int width = 42;
+            //int height = 15;
 
             View currentScreen = View.Start;
             
@@ -34,15 +34,15 @@ namespace SalesAdventure3000
             MapControl.Control(currentSession);
             }
 
-            static void DrawPlayerStats(int width, Session currentSession)
-            {              
-                Console.ResetColor();
-                Console.WriteLine($"╔═{currentSession.CurrentPlayer.Name}".PadRight(width * 2 - 1, '═') + "╗");
-                Console.WriteLine(
-                    $"║ Strength: {currentSession.CurrentPlayer.Strength}".PadRight(width - 1, ' ') + $"Vitality: {currentSession.CurrentPlayer.Vitality}".PadRight(width, ' ') + "║\n"+
-                    $"║ Coolness: {currentSession.CurrentPlayer.Coolness}".PadRight(width - 1, ' ') + $"Armour: {currentSession.CurrentPlayer.Armour}".PadRight(width, ' ') + "║\n" +
-                    "╚".PadRight(width * 2 - 1, '═') + "╝");
-            }
+            //static void DrawPlayerStats(int width, Session currentSession)
+            //{
+            //    Console.ResetColor();
+            //    Console.WriteLine($"╔═{currentSession.CurrentPlayer.Name}".PadRight(width * 2 - 1, '═') + "╗");
+            //    Console.WriteLine(
+            //        $"║ Strength: {currentSession.CurrentPlayer.Strength}".PadRight(width - 1, ' ') + $"Vitality: {currentSession.CurrentPlayer.Vitality}".PadRight(width, ' ') + "║\n" +
+            //        $"║ Coolness: {currentSession.CurrentPlayer.Coolness}".PadRight(width - 1, ' ') + $"Armour: {currentSession.CurrentPlayer.Armour}".PadRight(width, ' ') + "║\n" +
+            //        "╚".PadRight(width * 2 - 1, '═') + "╝");
+            //}
 
             //static void DrawInfoWindow(int width)
             //{
@@ -89,44 +89,44 @@ namespace SalesAdventure3000
             //    Console.WriteLine("╚".PadRight(width*2-1, '═') + "╝");
             //}
 
-        //    static void DrawBackpack(int width)
-        //    {
-        //        List<string> equippedItems = new List<string>();
-        //        string[] items = { "Banana", "Chain Mail", "Dane Axe", "Sunglasses", "Trusty Boots" };
-        //        equippedItems.AddRange(items);
+            //    static void DrawBackpack(int width)
+            //    {
+            //        List<string> equippedItems = new List<string>();
+            //        string[] items = { "Banana", "Chain Mail", "Dane Axe", "Sunglasses", "Trusty Boots" };
+            //        equippedItems.AddRange(items);
 
-        //        //string frontSelect = equippedItems[i].Id == selectedItem ? " " : "[";
-        //        //string backSelect = equippedItems[i].Id == selectedItem ? " " : "[";
+            //        //string frontSelect = equippedItems[i].Id == selectedItem ? " " : "[";
+            //        //string backSelect = equippedItems[i].Id == selectedItem ? " " : "[";
 
-        //        string frontSelect = ".";
-        //        string backSelect = ".";
+            //        string frontSelect = ".";
+            //        string backSelect = ".";
 
-        //        Console.ResetColor();
-        //        Console.WriteLine("╔═Backpack═[B]".PadRight(width * 2 - 1, '═') + "╗");
-        //        for (int i = 0; i < equippedItems.Count; i++)
-        //        {
-        //            if (i % 2 == 0)
-        //                Console.Write($"║ {frontSelect}{equippedItems[i]}{backSelect}".PadRight(width - 1, ' '));
-        //            else
-        //                Console.Write($"{frontSelect}{equippedItems[i]}{backSelect}".PadRight(width, ' ') + "║\n");
-        //            if (i == equippedItems.Count - 1)
-        //                Console.Write("".PadRight(width, ' ') + "║\n");
-        //        }
-        //        Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
-        //    }
-        //}
-        //public static void DrawWorld(int width, int height, Session currentSession)
-        //{
+            //        Console.ResetColor();
+            //        Console.WriteLine("╔═Backpack═[B]".PadRight(width * 2 - 1, '═') + "╗");
+            //        for (int i = 0; i < equippedItems.Count; i++)
+            //        {
+            //            if (i % 2 == 0)
+            //                Console.Write($"║ {frontSelect}{equippedItems[i]}{backSelect}".PadRight(width - 1, ' '));
+            //            else
+            //                Console.Write($"{frontSelect}{equippedItems[i]}{backSelect}".PadRight(width, ' ') + "║\n");
+            //            if (i == equippedItems.Count - 1)
+            //                Console.Write("".PadRight(width, ' ') + "║\n");
+            //        }
+            //        Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
+            //    }
+            //}
+            //public static void DrawWorld(int width, int height, Session currentSession)
+            //{
 
-        //    for (int y = 0; y < height; y++)
-        //    {
-        //        for (int x = 0; x < width; x++)
-        //        {
-        //            //DrawTile(currentSession.CurrentWorld.Map[y, x]) // Om vi lägger alla skriva ut-funktioner i separat klass.
-        //            currentSession.CurrentWorld.Map[y, x].DrawTile(currentSession.CurrentWorld.Entities);
-        //        }
-        //        DrawEdge();
-        //    }
+            //    for (int y = 0; y < height; y++)
+            //    {
+            //        for (int x = 0; x < width; x++)
+            //        {
+            //            //DrawTile(currentSession.CurrentWorld.Map[y, x]) // Om vi lägger alla skriva ut-funktioner i separat klass.
+            //            currentSession.CurrentWorld.Map[y, x].DrawTile(currentSession.CurrentWorld.Entities);
+            //        }
+            //        DrawEdge();
+            //    }
 
             //void DrawEdge()
             //{

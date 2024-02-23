@@ -9,7 +9,7 @@ namespace Engine.Models
 {
     public abstract class Entity
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Name { get; set; }
         
         public string Appearance { get; set; }
@@ -19,7 +19,7 @@ namespace Engine.Models
         //public int Idseed { get; }
         //public int[,] Coordinates { get; set; }
         //protected List<Item> backpack = new List<Item>();
-        protected static int IdSeed { get; set; } = 4000;
+        //protected static int IdSeed { get; set; } = 4000;
 
         //public int X { get; set; }
         //public int Y { get; set; }
@@ -27,7 +27,7 @@ namespace Engine.Models
         //public Entity(int Id, int y, int x, string name, char character, ConsoleColor bGColor, List<Item> backpack)
         public Entity(string name, string appearance, ConsoleColor fGColor)
         {
-            Id = IdSeed++;
+            //Id = IdSeed++;
             Name = name;
             Appearance = appearance;
             FGColor = fGColor;

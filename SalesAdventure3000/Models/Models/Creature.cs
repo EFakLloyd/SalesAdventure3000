@@ -11,6 +11,11 @@ namespace Engine.Models
         public int Strength { get; set; }
         public int Vitality { get; set; }
         public int Coolness { get; set; }
+
+        public List<Item?> Backpack { get; set; }
+
+
+
         //protected int Patience {  get; set; }
         //protected int Charisma {  get; set; }
         //protected int Speed { get; set; }

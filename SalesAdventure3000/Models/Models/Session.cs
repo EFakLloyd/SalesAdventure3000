@@ -11,6 +11,7 @@ namespace Engine.Models
     {
         public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
+        public List<string> GameMessages { get; set; }
 
         public Session()
         {
