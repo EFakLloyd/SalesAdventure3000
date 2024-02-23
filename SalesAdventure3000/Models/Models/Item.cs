@@ -16,10 +16,10 @@ namespace Engine.Models
             Armour,
             Coolness
         }
-
         public Stat AffectedStat { get; set; }
         public int Modifier { get; set; }
         public string UseMessage { get; set; }
+        protected static int IdSeed = 4000;
         public Item(string name, string appearance, ConsoleColor fgColor, Stat stat, int modifier, string useMessage) : base(name, appearance, fgColor)
         {
             this.AffectedStat = stat;
