@@ -21,12 +21,14 @@ namespace Engine.Models
             this.Name = name;
             this.Coordinate = coordinate;
             this.Armour = 0;
+            this.EquippedItems = new Dictionary<Equipment.EqType, Equipment?>();
             this.EquippedItems.Add(EqType.Head, null);
             this.EquippedItems.Add(EqType.Weapon, null);
             this.EquippedItems.Add(EqType.Torso, null);
             this.EquippedItems.Add(EqType.Bling, null);
-
+            this.Backpack = new List<Item>();
             Backpack.Add(ItemFactory.CreateItem(2006));
+
         }
         public string MessageUponAttack(int damage)
         {
