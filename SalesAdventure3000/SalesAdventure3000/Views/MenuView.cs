@@ -1,6 +1,7 @@
 ﻿using Engine.Models;
 using SalesAdventure3000_UI.Controllers;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using static SalesAdventure3000_UI.Views.ViewType;
 
@@ -13,13 +14,13 @@ namespace SalesAdventure3000_UI.Views
         public static View Display(Session currentSession)
         {
             View returnView = View.Start;
-            string[] commands = { "New game", "Load game", "Save game", "Exit" };
+            List<string> commands = new List<string>(new string[] { "New game", "Load game", "Save game", "Exit" });
+            if (currentSession.CurrentPlayer != null)
+                commands.Insert(0, "Continue");
             bool menuLoop = true;
 
             while (menuLoop)
             {
-                menuLoop = false;
-
                 while (true)
                 {
                     Console.Clear();
@@ -31,20 +32,24 @@ namespace SalesAdventure3000_UI.Views
                                         "\tS\n\n" +
                                         "".PadRight(42 * 2, '-') + "\n\n");
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    for (int i = 0; i < commands.Length; i++)
+                    for (int i = 0; i < commands.Count; i++)
                     {
                         string[] selection = i == SelectedCommand ? new string[] { "[", "]" } : new string[] { " ", " " };
                         Console.Write($"\t{selection[0]}{commands[i]}{selection[1]}\n\n");
                     }
 
-                    var input = MenuControl.GetInput(SelectedCommand, commands.Length);
-                    SelectedCommand = input.val;
+                    var input = MenuControl.GetInput(SelectedCommand, commands.Count);
                     if (input.enter)
                         break;
+                    SelectedCommand = input.val + (currentSession.CurrentPlayer != null ? -1 : 0);
                 }
                 Console.Clear();
                 switch (SelectedCommand)
                 {
+                    case -1:
+                        menuLoop = false;
+                        returnView = View.Adventure;
+                        break;
                     case 0:
                         Console.Write("\n\tEnter your name, brave adventurer: ");
                         string adventurerName = Console.ReadLine();
@@ -64,6 +69,7 @@ namespace SalesAdventure3000_UI.Views
                         Console.Write("\n\tGame Saved.");
                         currentSession.SaveSession();
                         returnView = View.Start;
+                        menuLoop = true;
                         break;
                     case 3:
                         Console.Write("\n\tExiting game.");
@@ -72,7 +78,7 @@ namespace SalesAdventure3000_UI.Views
                         break;
 
                 }
-                Thread.Sleep(2000);
+                Thread.Sleep(1400);
                 Console.Clear();
             }
             return returnView;

@@ -13,6 +13,7 @@ namespace SalesAdventure3000
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
             //int width = 42;
             //int height = 15;
             View currentScreen = View.Start;

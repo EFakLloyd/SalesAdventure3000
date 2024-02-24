@@ -34,5 +34,9 @@ namespace Engine.Models
         {
             return "You picked up: " + Name;
         }
+        public virtual string GetName()
+        {
+            return Name;
+        }
     }
 }

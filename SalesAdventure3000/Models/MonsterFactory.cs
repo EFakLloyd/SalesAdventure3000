@@ -10,9 +10,9 @@ namespace Engine
 {
     public static class MonsterFactory
     {
-        public static Monster CreateMonster(int monsterId)
+        public static Monster CreateMonster(int id)
         {
-            switch (monsterId)
+            switch (id)
             {
                 case 1000:
                     Monster snake = new Monster("Snake", "Sn", ConsoleColor.Cyan, 5, 5, 15, "The snake slithers up your leg and bites your chin for ");

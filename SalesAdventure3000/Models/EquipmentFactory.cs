@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public static class ItemFactory
+    public static class EquipmentFactory
     {
-        public static Item CreateItem(int id)
+        public static Equipment CreateEquipment(int id)
         {
             switch (id)
             {
@@ -32,18 +32,6 @@ namespace Engine
                     Equipment powerMedallion = new Equipment("Power Medallion", "Q", ConsoleColor.White, Equipment.EqType.Bling, Item.Stat.Strength, 6, "The medallion boost your martial provice. It gives you ");
                     return powerMedallion;
                 case 2006:
-                    Consumable bread = new Consumable("Bread", "B", ConsoleColor.Yellow, Item.Stat.Vitality, 3, null, 3, "You munch down on the bread. It gives you ");
-                    return bread;
-                case 2007:
-                    Consumable healthPotion = new Consumable("Health Potion", "H", ConsoleColor.Yellow, Item.Stat.Vitality, 10, null, 1, "The health potion restores you for ");
-                    return healthPotion;
-                case 2008:
-                    Consumable coolPotion = new Consumable("Potion of Cool", "C", ConsoleColor.Yellow, Item.Stat.Coolness, 15, 10, 1, "Such style! The potion temporarily grants you ");
-                    return coolPotion;
-                case 2009:
-                    Consumable rageShroom = new Consumable("Rage Shroom", "R", ConsoleColor.Yellow, Item.Stat.Strength, 10, 10, 1, "You get angry! The potion temporarily grants you ");
-                    return rageShroom;
-                case 2010:
                     Equipment backwardsCap = new Equipment("Backwards Cap", "d", ConsoleColor.White, Equipment.EqType.Head, Item.Stat.Coolness, 6, "Sick cap dawg... It provides ");
                     return backwardsCap;
                 default:
