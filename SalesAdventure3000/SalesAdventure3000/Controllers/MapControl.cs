@@ -54,6 +54,10 @@ namespace SalesAdventure3000_UI.Controllers
             
             if (Ispassable(y, x))
             {
+                if (currentSession.CurrentWorld.Map[y, x].Occupant is Item item)
+                {
+                    currentSession.CurrentPlayer.PutInBackpack(item);
+                }
                 currentSession.CurrentWorld.Map[y, x].Occupant = currentSession.CurrentPlayer;
                 currentSession.CurrentWorld.Map[oldY, oldX].Occupant = null;
                 currentSession.CurrentPlayer.Coordinate = new int[] {y,x};

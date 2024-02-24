@@ -28,18 +28,18 @@ namespace Engine.Models
             this.EquippedItems.Add(EqType.Torso, EquipmentFactory.CreateEquipment(2001));
             this.EquippedItems.Add(EqType.Bling, EquipmentFactory.CreateEquipment(2005));
             this.Backpack = new List<Item>();
-            Backpack.Add(ItemFactory.CreateItem(2006));
+            Backpack.Add(ConsumableFactory.CreateConsumable(3000));
             Backpack.Add(ItemFactory.CreateItem(2000));
-            Backpack.Add(ItemFactory.CreateItem(2002));
-            Backpack.Add(ItemFactory.CreateItem(2003));
-            Backpack.Add(ItemFactory.CreateItem(2009));
+            Backpack.Add(ConsumableFactory.CreateConsumable(3002));
+            Backpack.Add(ConsumableFactory.CreateConsumable(3003));
+            Backpack.Add(ItemFactory.CreateItem(2010));
         }
         public string MessageUponAttack(int damage)
         {
             string weapon = EquippedItems[EqType.Weapon] == null ? "fists" : EquippedItems[EqType.Weapon].Name;
             return "You swing your " + weapon + " for " + damage + " damage.";
         }
-        public int RollForAttack(int playerArmour)
+        public int RollForAttack()
         {
             int damage = 0;
             Random roll = new Random();

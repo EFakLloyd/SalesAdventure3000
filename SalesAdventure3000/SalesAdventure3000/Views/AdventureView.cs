@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static SalesAdventure3000_UI.Views.AdventureView;
 using static SalesAdventure3000_UI.Views.ViewType;
 
 namespace SalesAdventure3000_UI.Views
@@ -20,6 +21,11 @@ namespace SalesAdventure3000_UI.Views
             OpenBackpack,
             GoToMenu
         }
+        public enum State
+        {
+            Active,
+            Inactive
+        }
         public static Actions Control(Session currentSession)
         {
             Actions currentAction = Actions.StayOnMap;
@@ -29,7 +35,6 @@ namespace SalesAdventure3000_UI.Views
                 if (currentAction == Actions.StayOnMap)
                 {
                     currentAction = (Actions)Display(currentSession);
-
                 }
                 if (currentAction == Actions.OpenEquipment)
                     currentAction = (Actions)Display(currentSession);
@@ -48,6 +53,8 @@ namespace SalesAdventure3000_UI.Views
             int height = 15;
 
             Actions currentAction = Actions.StayOnMap;
+            State backpackState = State.Inactive;
+            State equipmentState = State.Inactive;
 
             while (true)
             {
@@ -55,29 +62,29 @@ namespace SalesAdventure3000_UI.Views
                 DrawPlayerStats();
                 DrawWorld();
                 DrawInfoWindow();
-                DrawEquipment();
-                DrawBackpack();
+                DrawEquipment(equipmentState);
+                DrawBackpack(backpackState);
 
                 if (currentAction == Actions.StayOnMap)
                 {
-                    MapControl.Control(currentSession);
+                    equipmentState = backpackState = State.Inactive;
+                    currentAction = MapControl.Control(currentSession);
+                    backpackState = currentAction == Actions.OpenBackpack ? State.Active : State.Inactive;
+                    equipmentState = currentAction == Actions.OpenEquipment ? State.Active : State.Inactive;
                 }             
-                                 
-                if (currentAction == Actions.OpenBackpack) { 
+                else if (currentAction == Actions.OpenBackpack) 
+                {
                     PlayerInventoryControl.GetInput(1, currentSession.CurrentPlayer.Backpack.Count);
                 }
-                if (currentAction == Actions.OpenEquipment)
+                else if (currentAction == Actions.OpenEquipment)
                 {
                     InventoryControl.GetInput(1,currentSession.CurrentPlayer.EquippedItems.Count);
                 }
-                if (currentAction == Actions.GoToMenu)
+                else if (currentAction == Actions.GoToMenu)
                 {
                     return View.Exit;
                 }
-                   
-
-                
-                
+                Console.Clear();
             }
 
             void DrawPlayerStats()
@@ -89,10 +96,6 @@ namespace SalesAdventure3000_UI.Views
             }
             void DrawInfoWindow()
             {
-                //if (currentSession.frame > lastMessageFrame + 4)
-                //{
-                //    //Kör inte funktionen om spelaren tagit flera steg utan att något hänt
-                //}
                 List<string> gameMessages = new List<string>();
                 string[] messages = { "You healed 5 hp", "You picked up {playerbackpack[pbp.Count-1].name}", "The dragon breathed fire at you for 15 damage" };
                 gameMessages.AddRange(messages);
@@ -104,7 +107,7 @@ namespace SalesAdventure3000_UI.Views
                 }
                 Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
             }
-            void DrawEquipment(bool active)
+            void DrawEquipment(State state)
             {
 
                 List<string> slots = new List<string>();
@@ -120,7 +123,7 @@ namespace SalesAdventure3000_UI.Views
 
                 int selectedCommand = 0;
 
-                Console.ForegroundColor = active ? ConsoleColor.Cyan : ConsoleColor.Gray;
+                Console.ForegroundColor = state == State.Active ? ConsoleColor.Cyan : ConsoleColor.Gray;
                 Console.WriteLine("╔═EQUIPMENT═[E]".PadRight(width * 2 - 1, '═') + "╗");
                 for (int i = 0; i < slots.Count; i++)
                 {
@@ -135,36 +138,11 @@ namespace SalesAdventure3000_UI.Views
                 Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
                 Console.ResetColor();
             }
-            //void DrawEquipment2()
-            //{
-            //    List<string> equippedItems = new List<string>();
-            //    string[] items = { "Banana", "Chain Mail", "Dane Axe", "Sunglasses", "Trusty Boots" };
-            //    equippedItems.AddRange(items);
-            //    string frontSelect = ".";
-            //    string backSelect = ".";
-            //    string statBonus = "+5 Stat";
-
-            //    //string frontSelect = equippedItems[i].Id == selectedItem ? " " : "[";
-            //    //string backSelect = equippedItems[i].Id == selectedItem ? " " : "[";
-
-            //    Console.ResetColor();
-            //    Console.WriteLine("╔═EQUIPMENT═[E]".PadRight(width * 2 - 1, '═') + "╗");
-            //    for (int i = 0; i < equippedItems.Count; i++)
-            //    {
-            //        if (i % 2 == 0)
-            //            Console.Write($"║ {frontSelect}{equippedItems[i]}{backSelect} {statBonus}".PadRight(width - 1, ' '));
-            //        else
-            //            Console.Write($"{frontSelect}{equippedItems[i]}{backSelect} {statBonus}".PadRight(width, ' ') + "║\n");
-            //        if (i == equippedItems.Count - 1)
-            //            Console.Write("".PadRight(width, ' ') + "║\n");
-            //    }
-            //    Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
-            //}
-            void DrawBackpack(bool active)
+            void DrawBackpack(State state)
             {
                 int selectedCommand = 0;
 
-                Console.ForegroundColor = active ? ConsoleColor.Cyan : ConsoleColor.Gray;
+                Console.ForegroundColor = state == State.Active ? ConsoleColor.Cyan : ConsoleColor.Gray;
                 Console.WriteLine("╔═BACKPACK═[B]".PadRight(width * 2 - 1, '═') + "╗");
                 for (int i = 0; i < currentSession.CurrentPlayer.Backpack.Count; i++)
                 {

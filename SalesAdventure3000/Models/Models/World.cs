@@ -29,8 +29,15 @@ namespace Engine.Models
 
             for (int i = 0; i < 20; i++)
             {
-                Entity entity = rnd.Next(1, 3) == 2 ? MonsterFactory.CreateMonster(rnd.Next(1000, 1004)) : ItemFactory.CreateItem(rnd.Next(2000, 2011));
-                entities.Add(entity);
+                int entityType =  rnd.Next(1,5);
+                if (entityType == 1)
+                    entities.Add(ConsumableFactory.CreateConsumable(rnd.Next(3000, 3004)));
+                if (entityType == 2)
+                    entities.Add(EquipmentFactory.CreateEquipment(rnd.Next(2000, 2007)));
+                if (entityType >= 3)
+                    entities.Add(MonsterFactory.CreateMonster(rnd.Next(1000, 1004)));
+                ////Entity entity = rnd.Next(1, 3) == 2 ? MonsterFactory.CreateMonster(rnd.Next(1000, 1004)) : ItemFactory.CreateItem(rnd.Next(2000, 2011));
+                //entities.Add(entity);
             }
             return entities;
         }

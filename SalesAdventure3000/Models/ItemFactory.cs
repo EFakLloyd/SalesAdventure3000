@@ -9,9 +9,9 @@ namespace Engine
 {
     public static class ItemFactory
     {
-        public static Item CreateItem(int itemId)
+        public static Item CreateItem(int id)
         {
-            switch (itemId)
+            switch (id)
             {
                 case 2000:
                     Equipment hornedHelmet = new Equipment("Horned Helmet", "V", ConsoleColor.White, Equipment.EqType.Head, Item.Stat.Armour, 5, "The helmet frames your face menacingly. It provides ");

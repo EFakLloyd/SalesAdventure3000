@@ -9,9 +9,9 @@ namespace Engine
 {
     public static class EquipmentFactory
     {
-        public static Equipment CreateEquipment(int itemId)
+        public static Equipment CreateEquipment(int id)
         {
-            switch (itemId)
+            switch (id)
             {
                 case 2000:
                     Equipment hornedHelmet = new Equipment("Horned Helmet", "V", ConsoleColor.White, Equipment.EqType.Head, Item.Stat.Armour, 5, "The helmet frames your face menacingly. It provides ");
@@ -31,6 +31,9 @@ namespace Engine
                 case 2005:
                     Equipment powerMedallion = new Equipment("Power Medallion", "Q", ConsoleColor.White, Equipment.EqType.Bling, Item.Stat.Strength, 6, "The medallion boost your martial provice. It gives you ");
                     return powerMedallion;
+                case 2006:
+                    Equipment backwardsCap = new Equipment("Backwards Cap", "d", ConsoleColor.White, Equipment.EqType.Head, Item.Stat.Coolness, 6, "Sick cap dawg... It provides ");
+                    return backwardsCap;
                 default:
                     return null;
             }

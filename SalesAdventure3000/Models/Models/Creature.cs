@@ -33,9 +33,5 @@ namespace Engine.Models
             //this.Wisdom = 4;
             //this.Luck = 1;
         }
-
-      
-
-
     }
 }
