@@ -1,4 +1,5 @@
 ﻿using Engine.Models;
+using SalesAdventure3000_UI.Controllers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -45,16 +46,38 @@ namespace SalesAdventure3000_UI.Views
         {
             int width = 42;
             int height = 15;
+
+            Actions currentAction = Actions.StayOnMap;
+
             while (true)
             {
+                Console.Clear();
                 DrawPlayerStats();
                 DrawWorld();
                 DrawInfoWindow();
-                DrawEquipment(true);
-                DrawBackpack(false);
-                // stannar koden här just nu /Jens 22/2
-                Console.ReadLine();
-                return View.Start;
+                DrawEquipment();
+                DrawBackpack();
+
+                if (currentAction == Actions.StayOnMap)
+                {
+                    MapControl.Control(currentSession);
+                }             
+                                 
+                if (currentAction == Actions.OpenBackpack) { 
+                    PlayerInventoryControl.GetInput(1, currentSession.CurrentPlayer.Backpack.Count);
+                }
+                if (currentAction == Actions.OpenEquipment)
+                {
+                    InventoryControl.GetInput(1,currentSession.CurrentPlayer.EquippedItems.Count);
+                }
+                if (currentAction == Actions.GoToMenu)
+                {
+                    return View.Exit;
+                }
+                   
+
+                
+                
             }
 
             void DrawPlayerStats()
