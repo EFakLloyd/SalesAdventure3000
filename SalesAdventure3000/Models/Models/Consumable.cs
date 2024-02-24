@@ -18,7 +18,7 @@ namespace Engine.Models
             this.Timer = false;
             this.Uses = uses;
         }
-        public string GetNameForBackpack()
+        public override string GetName()
         {
             return Name + (Uses > 1 ? " x" + Uses : "");
         }

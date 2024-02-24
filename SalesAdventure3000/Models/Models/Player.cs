@@ -23,12 +23,16 @@ namespace Engine.Models
             this.Coordinate = coordinate;
             this.Armour = 0;
             this.EquippedItems = new Dictionary<Equipment.EqType, Equipment?>();
-            this.EquippedItems.Add(EqType.Head, null);
-            this.EquippedItems.Add(EqType.Weapon, null);
-            this.EquippedItems.Add(EqType.Torso, null);
-            this.EquippedItems.Add(EqType.Bling, null);
+            this.EquippedItems.Add(EqType.Head, EquipmentFactory.CreateEquipment(2000));
+            this.EquippedItems.Add(EqType.Weapon, EquipmentFactory.CreateEquipment(2002));
+            this.EquippedItems.Add(EqType.Torso, EquipmentFactory.CreateEquipment(2001));
+            this.EquippedItems.Add(EqType.Bling, EquipmentFactory.CreateEquipment(2005));
             this.Backpack = new List<Item>();
             Backpack.Add(ItemFactory.CreateItem(2006));
+            Backpack.Add(ItemFactory.CreateItem(2000));
+            Backpack.Add(ItemFactory.CreateItem(2002));
+            Backpack.Add(ItemFactory.CreateItem(2003));
+            Backpack.Add(ItemFactory.CreateItem(2009));
         }
         public string MessageUponAttack(int damage)
         {

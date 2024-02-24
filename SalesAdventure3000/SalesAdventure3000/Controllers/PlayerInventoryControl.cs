@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesAdventure3000_UI.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,10 @@ namespace SalesAdventure3000_UI.Controllers
 {
     public class PlayerInventoryControl
     {
-        public static (int, bool) GetInput(int selectedCommand, int upperLimit)
+        public static (int selectedCommand, bool confirmedChoice, bool stayInLoop) GetInput(int selectedCommand, int upperLimit)
         {
             bool confirmedChoice = false;
+            bool stayInLoop = true;
             string input = Console.ReadKey().Key.ToString();
             switch (input)
             {
@@ -33,8 +35,12 @@ namespace SalesAdventure3000_UI.Controllers
                 case "Enter":
                     confirmedChoice = true;
                     break;
+                case "Esc":
+                    confirmedChoice = true;
+                    stayInLoop = false;
+                    break;
             }
-            return (selectedCommand, confirmedChoice);
+            return (selectedCommand, confirmedChoice, stayInLoop);
         }
     }
 }
