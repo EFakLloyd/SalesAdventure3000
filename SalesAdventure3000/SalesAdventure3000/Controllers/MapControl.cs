@@ -32,11 +32,11 @@ namespace SalesAdventure3000_UI.Controllers
                     break;
 
                 case ConsoleKey.DownArrow:
-                    y--;
+                    y++;
                     break;
 
                 case ConsoleKey.UpArrow:
-                    y++;
+                    y--;
                     break;
                 case ConsoleKey.B:
                     return AdventureView.Actions.OpenBackpack;

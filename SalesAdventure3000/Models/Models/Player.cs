@@ -29,6 +29,7 @@ namespace Engine.Models
             this.EquippedItems.Add(EqType.Bling, null);
             this.Backpack = new List<Item>();
             Backpack.Add(ItemFactory.CreateItem(2006));
+
         }
         public string MessageUponAttack(int damage)
         {
