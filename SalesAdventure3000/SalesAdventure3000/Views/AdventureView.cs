@@ -57,8 +57,7 @@ namespace SalesAdventure3000_UI.Views
             State equipmentState = State.Inactive;
 
             while (true)
-            {
-                Console.Clear();
+            {                    
                 DrawPlayerStats();
                 DrawWorld();
                 DrawInfoWindow();
@@ -96,14 +95,18 @@ namespace SalesAdventure3000_UI.Views
             }
             void DrawInfoWindow()
             {
-                List<string> gameMessages = new List<string>();
-                string[] messages = { "You healed 5 hp", "You picked up {playerbackpack[pbp.Count-1].name}", "The dragon breathed fire at you for 15 damage" };
-                gameMessages.AddRange(messages);
-
                 Console.WriteLine("╔".PadRight(width * 2 - 1, '═') + "╗");
+
                 for (int i = 3; i > 0; i--)
                 {
-                    Console.Write($"║ {gameMessages[gameMessages.Count - i]}".PadRight(width * 2 - 1, ' ') + "║\n");
+                    if (i <= currentSession.GameMessages.Count())
+                    {
+                        Console.Write($"║ ");
+                        Console.ForegroundColor = i == 1 ? ConsoleColor.Cyan : ConsoleColor.Gray;
+                        Console.Write($"{currentSession.GameMessages[currentSession.GameMessages.Count() - i]}".PadRight(width * 2 - 3, ' '));
+                        Console.ResetColor();
+                        Console.Write("║\n");
+                    }
                 }
                 Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
             }
@@ -164,7 +167,7 @@ namespace SalesAdventure3000_UI.Views
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        currentSession.CurrentWorld.Map[y, x].DrawTile(currentSession.CurrentWorld.Entities);
+                        currentSession.CurrentWorld.Map[y, x].DrawTile();
                     }
                     DrawEdge();
                 }

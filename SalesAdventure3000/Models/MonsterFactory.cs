@@ -12,7 +12,7 @@ namespace Engine
     {
         public static Monster CreateMonster(int id)
         {
-            switch (id)
+            switch (id) //Select among prepared entities. May be done at random or via feeding a specific id.
             {
                 case 1000:
                     Monster snake = new Monster("Snake", "Sn", ConsoleColor.Cyan, 5, 5, 15, "The snake slithers up your leg and bites your chin for ");
@@ -26,7 +26,7 @@ namespace Engine
                 case 1003:
                     Monster dragon = new Monster("Dragon", "Dn", ConsoleColor.DarkRed, 35, 35, 20, "The dragon breathed fire at you for ");
                     return dragon;
-                default:
+                default:            //In case id is incorrect.
                     return null;
             }
         }
