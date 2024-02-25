@@ -15,6 +15,7 @@ namespace Engine.Models
 
         public Session()
         {
+            GameMessages = new List<string>();
         }
 
         public void CreatePlayer(string name)

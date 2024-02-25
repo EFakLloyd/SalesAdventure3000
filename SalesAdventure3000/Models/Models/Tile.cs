@@ -40,7 +40,7 @@ namespace Engine.Models
             }
         }
 
-        public void DrawTile(List<Entity> entities)
+        public void DrawTile()
         {
             Console.BackgroundColor = this.BGColor;
             if (Occupant != null)

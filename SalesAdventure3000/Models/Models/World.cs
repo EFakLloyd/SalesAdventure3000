@@ -10,7 +10,7 @@ namespace Engine.Models
 {
     public class World
     {
-        public Tile[,] Map { get; set; }
+        public Tile[,] Map { get; set; }    //Multi-d. array to  
         public int Width { get; set; }
         public int Height { get; set; }
         public List<Entity> Entities { get; set; }
@@ -36,8 +36,6 @@ namespace Engine.Models
                     entities.Add(EquipmentFactory.CreateEquipment(rnd.Next(2000, 2007)));
                 if (entityType >= 3)
                     entities.Add(MonsterFactory.CreateMonster(rnd.Next(1000, 1004)));
-                ////Entity entity = rnd.Next(1, 3) == 2 ? MonsterFactory.CreateMonster(rnd.Next(1000, 1004)) : ItemFactory.CreateItem(rnd.Next(2000, 2011));
-                //entities.Add(entity);
             }
             return entities;
         }

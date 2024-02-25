@@ -76,7 +76,6 @@ namespace SalesAdventure3000_UI.Views
                         menuLoop = false;
                         returnView = View.Exit;
                         break;
-
                 }
                 Thread.Sleep(1400);
                 Console.Clear();

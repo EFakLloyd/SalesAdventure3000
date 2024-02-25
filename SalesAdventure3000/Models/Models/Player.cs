@@ -12,10 +12,11 @@ namespace Engine.Models
 {
     public class Player : Creature
     {
-        public int MaxVitality { get; set; }
-        public int[] Coordinate { get; set; }
-        public int Armour { get; set; }
-        public Dictionary<Equipment.EqType,Equipment?> EquippedItems { get; set; }
+        public int MaxVitality { get; set; }    //Upper limit of player Vit.
+        public int[] Coordinate { get; set; }   //Coordinates saved separately for ease of access.
+        public int Armour { get; set; }         //Only player objects have armour.
+        public Dictionary<Equipment.EqType,Equipment?> EquippedItems { get; set; }  //Dict with a key for each of the equipment slots. Null = empty.
+                                                                                    //Dict only takes unique keys, so we cannot wear more than one item per slot.
         public Player(string name, int[] coordinate) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5)
         {
             this.MaxVitality = 25;
@@ -29,17 +30,15 @@ namespace Engine.Models
             this.EquippedItems.Add(EqType.Bling, EquipmentFactory.CreateEquipment(2005));
             this.Backpack = new List<Item>();
             Backpack.Add(ConsumableFactory.CreateConsumable(3000));
-            Backpack.Add(ItemFactory.CreateItem(2000));
             Backpack.Add(ConsumableFactory.CreateConsumable(3002));
             Backpack.Add(ConsumableFactory.CreateConsumable(3003));
-            Backpack.Add(ItemFactory.CreateItem(2010));
         }
-        public string MessageUponAttack(int damage)
+        public string MessageUponAttack(int damage) //Returns string for GameMessage. Takes into account the weapon used.
         {
             string weapon = EquippedItems[EqType.Weapon] == null ? "fists" : EquippedItems[EqType.Weapon].Name;
             return "You swing your " + weapon + " for " + damage + " damage.";
         }
-        public int RollForAttack()
+        public int RollForAttack()  //Rolls damage. See Monster class.
         {
             int damage = 0;
             Random roll = new Random();
@@ -49,7 +48,7 @@ namespace Engine.Models
             }
             return damage;
         }
-        public void AdjustPlayerStat(Item.Stat affectedStat, int modifier) // Justerar en av spelarens stats
+        public void AdjustPlayerStat(Item.Stat affectedStat, int modifier) //Adjusts one of the players stats by the supplied modifer.
         {
             switch (affectedStat)
             {
@@ -57,7 +56,7 @@ namespace Engine.Models
                     Strength += modifier;
                     break;
                 case Stat.Vitality:
-                    Vitality = Math.Min(Vitality + modifier, MaxVitality);
+                    Vitality = Math.Min(Vitality + modifier, MaxVitality); //Ensures that Vitality does not go above the maximum value.
                     break;
                 case Stat.MaxVitality:
                     MaxVitality += modifier;
@@ -72,24 +71,24 @@ namespace Engine.Models
                     break;
             }
         }
-        public void TakeOff(Equipment.EqType type)
+        public void TakeOff(Equipment.EqType type)  //Removes equipment from slot and places it in the backpack.
         {
             PutInBackpack(EquippedItems[type]);
-            AdjustPlayerStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier*-1);
+            AdjustPlayerStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier*-1);    //Readjusts player stats.
             EquippedItems[type] = null;
         }
-        public void PutOn(Equipment equipment)
+        public void PutOn(Equipment equipment)  //Applies equipment to the appropriate equipment slot.
         {
-            if (EquippedItems[equipment.Type] != null)
+            if (EquippedItems[equipment.Type] != null)  //Removes existing item from slot, if any.
                 TakeOff(equipment.Type);
-            AdjustPlayerStat(equipment.AffectedStat, equipment.Modifier);
-            RemoveFromBackpack(equipment);
+            AdjustPlayerStat(equipment.AffectedStat, equipment.Modifier);   //Apply bonus from equipment.
+            RemoveFromBackpack(equipment);  
         }
-        public void UseConsumable(Consumable consumable)
+        public void UseConsumable(Consumable consumable)    //
         {
             AdjustPlayerStat(consumable.AffectedStat, consumable.Modifier);
             if (consumable.Duration != null)
-                consumable.Timer = true;
+                consumable.TimerIsOn = true;
         }
         public void PutInBackpack(Item item)
         {
