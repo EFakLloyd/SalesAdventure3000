@@ -11,7 +11,7 @@ namespace Engine
     {
         public static Consumable CreateConsumable(int id)
         {
-            switch (id)
+            switch (id) //Select among prepared entities. May be done at random or via feeding a specific id.
             {
                 case 3000:
                     Consumable bread = new Consumable("Bread", "B", ConsoleColor.Yellow, Item.Stat.Vitality, 3, null, 3, "You munch down on the bread. It gives you ");
@@ -25,7 +25,7 @@ namespace Engine
                 case 3003:
                     Consumable rageShroom = new Consumable("Rage Shroom", "R", ConsoleColor.Yellow, Item.Stat.Strength, 10, 10, 1, "You get angry! The potion temporarily grants you ");
                     return rageShroom;
-                default:
+                default:            //In case id is incorrect.
                     return null;
             }
         }

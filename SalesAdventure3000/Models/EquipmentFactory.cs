@@ -11,7 +11,7 @@ namespace Engine
     {
         public static Equipment CreateEquipment(int id)
         {
-            switch (id)
+            switch (id) //Select among prepared entities. May be done at random or via feeding a specific id.
             {
                 case 2000:
                     Equipment hornedHelmet = new Equipment("Horned Helmet", "V", ConsoleColor.White, Equipment.EqType.Head, Item.Stat.Armour, 5, "The helmet frames your face menacingly. It provides ");
@@ -34,7 +34,7 @@ namespace Engine
                 case 2006:
                     Equipment backwardsCap = new Equipment("Backwards Cap", "d", ConsoleColor.White, Equipment.EqType.Head, Item.Stat.Coolness, 6, "Sick cap dawg... It provides ");
                     return backwardsCap;
-                default:
+                default:            //In case id is incorrect.
                     return null;
             }
         }

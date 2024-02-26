@@ -8,7 +8,7 @@ namespace Engine.Models
 {
     public class Item : Entity
     {
-        public enum Stat
+        public enum Stat    //Iems may affect one of the players stats.
         {
             Strength,
             Vitality,
@@ -16,21 +16,20 @@ namespace Engine.Models
             Armour,
             Coolness
         }
-        public Stat AffectedStat { get; set; }
-        public int Modifier { get; set; }
+        public Stat AffectedStat { get; set; }  //The stat to be altered.
+        public int Modifier { get; set; }   //By how much?
         public string UseMessage { get; set; }
-        protected static int IdSeed = 4000;
         public Item(string name, string appearance, ConsoleColor fgColor, Stat stat, int modifier, string useMessage) : base(name, appearance, fgColor)
         {
             this.AffectedStat = stat;
             this.Modifier = modifier;
             this.UseMessage = useMessage;
         }
-        public string MessageUponUse()
+        public string MessageUponUse()  //String that goes in GameMessages.
         {
             return UseMessage + Modifier + " " + AffectedStat + "."; 
         }
-        public string MessageUponPickUp() 
+        public string MessageUponPickUp() //String that goes in GameMessages.
         {
             return "You picked up: " + Name;
         }

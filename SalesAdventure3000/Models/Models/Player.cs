@@ -84,7 +84,7 @@ namespace Engine.Models
             AdjustPlayerStat(equipment.AffectedStat, equipment.Modifier);   //Apply bonus from equipment.
             RemoveFromBackpack(equipment);  
         }
-        public void UseConsumable(Consumable consumable)    //
+        public void UseConsumable(Consumable consumable)    //Raises relevant stat, turns on timer for consumables which have one.
         {
             AdjustPlayerStat(consumable.AffectedStat, consumable.Modifier);
             if (consumable.Duration != null)
