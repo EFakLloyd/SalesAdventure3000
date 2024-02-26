@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-    public class Session
-    {
+    public class Session    //Session class handles world and player creation, interaction between the player and the world based on input, saving and loading the game.
+    {                       
         public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
-        public List<string> GameMessages { get; set; }
+        public List<string> GameMessages { get; set; }  //Holds strings that are displyed in the info box.
 
         public Session()
         {
@@ -20,7 +20,7 @@ namespace Engine.Models
 
         public void CreatePlayer(string name)
         {
-            CurrentPlayer = new Player(name, new int[] { 7, 22 });
+            CurrentPlayer = new Player(name, new int[] { 7, 22 });  //Standard player starting coordinates.
             CurrentWorld.Map[7, 22].Occupant=CurrentPlayer;
         }
         public void CreateNewWorld()
