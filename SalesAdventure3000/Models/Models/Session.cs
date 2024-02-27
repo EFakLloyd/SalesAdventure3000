@@ -1,9 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using static Engine.Models.Item;
 
 namespace Engine.Models
 {
@@ -11,50 +16,49 @@ namespace Engine.Models
     {                       
         public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
-        public List<string> GameMessages { get; set; }  //Holds strings that are displyed in the info box.
-
+        public List<string> GameMessages { get; set; }  //Holds strings that are displayed in the info box.
         public Session()
         {
             GameMessages = new List<string>();
         }
-
-        public void CreatePlayer(string name)
+        public void StartNewSession(string name)
         {
             CurrentPlayer = new Player(name, new int[] { 7, 22 });  //Standard player starting coordinates.
+            CurrentWorld = new World();
+            CurrentWorld.CreateWorld();
             CurrentWorld.Map[7, 22].Occupant=CurrentPlayer;
+            CurrentWorld.CreateEntities();
+            CurrentWorld.PopulateWorld(CurrentWorld.WorldEntities);
         }
-        public void CreateNewWorld()
-        {
-            this.CurrentWorld = new World();
-        }
-
         public void LoadSession()
         {
-            //Skräddarsydd inmatning av värden från sparfil-klass till Session.
-
-
-            //string fileName = "SavedSession.json";
-            //string jsonString = File.ReadAllText(fileName);
-            //Session currentSession = JsonSerializer.Deserialize<Session>(jsonString)!;
+            CurrentPlayer = new Player();
+            CurrentPlayer = JsonPackaging.LoadPlayer();
+            CurrentWorld = new World();
+            CurrentWorld.CreateWorld();
+            CurrentWorld.Map[CurrentPlayer.Coordinates[0], CurrentPlayer.Coordinates[1]].Occupant = CurrentPlayer;
+            CurrentWorld.WorldEntities = JsonPackaging.LoadEntities();
+            CurrentWorld.PopulateWorld(CurrentWorld.WorldEntities);
         }
-
         public void SaveSession()
         {
-            //Behöver göra en skräddarsydd klass för att hålla information på ett sätt som går att serialisera till json, och bryta ut den manuellt. Inga [,]-arrayer (som finns bl.a. finns i World och Player).
+            JsonPackaging.CreateJson(this);
+        }
+        public void MovePlayer()
+        {
 
+        }
+        public void HandleCombat()
+        {
 
-            //Session testSession = new Session();
-            //testSession.CreateNewWorld();
-            //testSession.CreatePlayer("Berit");
-            //string fileName = "SavedSession.json";
-            //string jsonString = JsonSerializer.Serialize(testSession.CurrentPlayer);
-            //File.Create(fileName);
+        }
+        public void PickupItem()
+        {
 
-            //File.WriteAllText(fileName, jsonString);
+        }
+        public void UseItem()
+        {
 
-            //Console.WriteLine(File.ReadAllText(fileName));
-
-            //Console.WriteLine(jsonString);
         }
     }
 }

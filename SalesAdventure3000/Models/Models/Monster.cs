@@ -9,7 +9,7 @@ namespace Engine.Models
     public class Monster : Creature
     {
         public string AttackMessage { get; set; }
-        public Monster(string name, string appearance, ConsoleColor fgColor, int strength, int vitality, int coolness, string attackMessage) :base(name, appearance, fgColor, strength, vitality, coolness) 
+        public Monster(string name, string appearance, ConsoleColor fgColor, int strength, int vitality, int coolness, string attackMessage, int id) :base(name, appearance, fgColor, strength, vitality, coolness, id) 
         {
             this.AttackMessage = attackMessage;
         }
