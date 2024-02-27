@@ -17,7 +17,8 @@ namespace Engine.Models
             Bling
         }
         public EqType Type { get; set; }    
-        public Equipment(string name, string appearance, ConsoleColor fgColor, EqType type, Stat stat, int modifier, string useMessage) : base(name, appearance, fgColor, stat, modifier, useMessage)
+        public Equipment() { }
+        public Equipment(string name, string appearance, ConsoleColor fgColor, EqType type, Stat stat, int modifier, string useMessage, int id) : base(name, appearance, fgColor, stat, modifier, useMessage, id)
         {
             this.Type = type;
         }

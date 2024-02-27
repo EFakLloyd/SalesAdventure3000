@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static Engine.Models.Equipment;
 using static Engine.Models.Item;
 
@@ -13,15 +14,18 @@ namespace Engine.Models
     public class Player : Creature
     {
         public int MaxVitality { get; set; }    //Upper limit of player Vit.
-        public int[] Coordinate { get; set; }   //Coordinates saved separately for ease of access.
         public int Armour { get; set; }         //Only player objects have armour.
         public Dictionary<Equipment.EqType,Equipment?> EquippedItems { get; set; }  //Dict with a key for each of the equipment slots. Null = empty.
                                                                                     //Dict only takes unique keys, so we cannot wear more than one item per slot.
-        public Player(string name, int[] coordinate) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5)
+        public Player()
+        {
+            this.EquippedItems = new Dictionary<Equipment.EqType, Equipment?>();
+        }
+        public Player(string name, int[] coordinates) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, 0000)
         {
             this.MaxVitality = 25;
             this.Name = name;
-            this.Coordinate = coordinate;
+            this.Coordinates = coordinates;
             this.Armour = 0;
             this.EquippedItems = new Dictionary<Equipment.EqType, Equipment?>();
             this.EquippedItems.Add(EqType.Head, EquipmentFactory.CreateEquipment(2000));
