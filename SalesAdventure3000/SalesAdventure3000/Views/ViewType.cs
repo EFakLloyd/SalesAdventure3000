@@ -6,6 +6,7 @@
         {
             Start,
             Adventure,
+            Battle,
             Exit
         }
     }

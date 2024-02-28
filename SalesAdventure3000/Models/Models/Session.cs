@@ -17,15 +17,17 @@ namespace Engine.Models
         public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
         public List<string> GameMessages { get; set; }  //Holds strings that are displayed in the info box.
+        public List<string[]> Avatars { get; set; }
         public Session()
         {
-            GameMessages = new List<string>();
+            this.GameMessages = new List<string>();
+            this.Avatars = LoadAvatars();
         }
         public void StartNewSession(string name)
         {
             CurrentPlayer = new Player(name, new int[] { 7, 22 });  //Standard player starting coordinates.
             CurrentWorld = new World();
-            CurrentWorld.CreateWorld();
+            CurrentWorld.CreateMap();
             CurrentWorld.Map[7, 22].Occupant=CurrentPlayer;
             CurrentWorld.CreateEntities();
             CurrentWorld.PopulateWorld(CurrentWorld.WorldEntities);
@@ -35,7 +37,7 @@ namespace Engine.Models
             CurrentPlayer = new Player();
             CurrentPlayer = JsonPackaging.LoadPlayer();
             CurrentWorld = new World();
-            CurrentWorld.CreateWorld();
+            CurrentWorld.CreateMap();
             CurrentWorld.Map[CurrentPlayer.Coordinates[0], CurrentPlayer.Coordinates[1]].Occupant = CurrentPlayer;
             CurrentWorld.WorldEntities = JsonPackaging.LoadEntities();
             CurrentWorld.PopulateWorld(CurrentWorld.WorldEntities);
@@ -52,13 +54,37 @@ namespace Engine.Models
         {
 
         }
-        public void PickupItem()
+        public void PickupItem(Item item)
         {
 
         }
-        public void UseItem()
+        public void UseItem(Item item)
         {
 
+        }
+        private List<string[]> LoadAvatars()
+        {
+            List<string[]> avatars = new List<string[]>();
+
+            using (StreamReader inputFile = new StreamReader("Images/avatars.txt"))
+            {
+                List<string> currentAvatar = new List<string>();
+                string line;
+                int lineCount = 0;
+
+                while ((line = inputFile.ReadLine()) != null)
+                {
+                    currentAvatar.Add(line);
+                    lineCount++;
+
+                    if (lineCount % 10 == 0)
+                    {
+                        avatars.Add(currentAvatar.ToArray());
+                        currentAvatar.Clear();
+                    }
+                }
+            }
+            return avatars;
         }
     }
 }

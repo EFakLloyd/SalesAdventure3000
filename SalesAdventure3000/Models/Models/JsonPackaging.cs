@@ -69,7 +69,7 @@ namespace Engine.Models
                 string itemName = kvp.Key;
                 JObject itemData = (JObject)kvp.Value;
                 if (itemData == null)
-                    player.EquippedItems.Add((Equipment.EqType)Enum.Parse(typeof(Equipment.EqType), itemName), null);
+                    player.EquippedItems.Add((Equipment.Slot)Enum.Parse(typeof(Equipment.Slot), itemName), null);
                 else
                 {
                     Equipment equipment = (EquipmentFactory.CreateEquipment((int)itemData["Id"]));

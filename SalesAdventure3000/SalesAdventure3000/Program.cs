@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using System.Xml;
 using Engine.Models;
 using SalesAdventure3000_UI.Controllers;
@@ -23,6 +25,11 @@ namespace SalesAdventure3000
             {
                 if (currentView == View.Start)
                     currentView = MenuView.Display(currentSession);
+
+                AdventureView2.Display(currentSession);
+
+
+
                 if (currentView == View.Adventure)                
                     currentView = AdventureView.Display(currentSession);
             }
