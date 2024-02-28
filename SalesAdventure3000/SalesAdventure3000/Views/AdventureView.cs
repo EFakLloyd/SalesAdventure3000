@@ -3,6 +3,7 @@ using SalesAdventure3000_UI.Controllers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -19,65 +20,67 @@ namespace SalesAdventure3000_UI.Views
             StayOnMap,
             OpenEquipment,
             OpenBackpack,
-            GoToMenu
+            GoToMenu,
+            ContinueFight
         }
-        public enum State
-        {
-            Active,
-            Inactive
-        }
-        public static Actions Control(Session currentSession)
-        {
-            Actions currentAction = Actions.StayOnMap;
+        private static int backpackIndex = 0;
+        private static int equipmentIndex = 0;
+        private static List<Equipment?> equipment = new List<Equipment>();
 
-            while (true)
-            {
-                if (currentAction == Actions.StayOnMap)
-                {
-                    currentAction = (Actions)Display(currentSession);
-                }
-                if (currentAction == Actions.OpenEquipment)
-                    currentAction = (Actions)Display(currentSession);
-                if (currentAction == Actions.OpenBackpack)
-                    currentAction = (Actions)Display(currentSession);
-                if (currentAction == Actions.GoToMenu)
-                {
-                    return currentAction;
-                }
-                return currentAction;
-            }
-        }
+        //public static Actions Control(Session currentSession)
+        //{
+        //    Actions currentAction = Actions.StayOnMap;
+
+        //    while (true)
+        //    {
+        //        if (currentAction == Actions.StayOnMap)
+        //        {
+        //            currentAction = (Actions)Display(currentSession);
+        //        }
+        //        if (currentAction == Actions.OpenEquipment)
+        //            currentAction = (Actions)Display(currentSession);
+        //        if (currentAction == Actions.OpenBackpack)
+        //            currentAction = (Actions)Display(currentSession);
+        //        if (currentAction == Actions.GoToMenu)
+        //        {
+        //            return currentAction;
+        //        }
+        //        return currentAction;
+        //    }
+        //}
         public static View Display(Session currentSession)
         {
             int width = 42;
             int height = 15;
-
             Actions currentAction = Actions.StayOnMap;
-            State backpackState = State.Inactive;
-            State equipmentState = State.Inactive;
 
             while (true)
             {                    
                 DrawPlayerStats();
                 DrawWorld();
                 DrawInfoWindow();
-                DrawEquipment(equipmentState);
-                DrawBackpack(backpackState);
+                DrawEquipment();
+                DrawBackpack();
 
                 if (currentAction == Actions.StayOnMap)
                 {
-                    equipmentState = backpackState = State.Inactive;
                     currentAction = MapControl.Control(currentSession);
-                    backpackState = currentAction == Actions.OpenBackpack ? State.Active : State.Inactive;
-                    equipmentState = currentAction == Actions.OpenEquipment ? State.Active : State.Inactive;
                 }             
                 else if (currentAction == Actions.OpenBackpack) 
                 {
-                    PlayerInventoryControl.GetInput(1, currentSession.CurrentPlayer.Backpack.Count);
+                    var input = PlayerInventoryControl.GetInput(backpackIndex, currentSession.CurrentPlayer.Backpack.Count);
+                    backpackIndex = input.selectedIndex;
+                    if (input.confirmedChoice == true)
+                        currentSession.UseItem(currentSession.CurrentPlayer.Backpack[backpackIndex]);
+                    currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;
                 }
                 else if (currentAction == Actions.OpenEquipment)
                 {
-                    InventoryControl.GetInput(1,currentSession.CurrentPlayer.EquippedItems.Count);
+                    var input = PlayerInventoryControl.GetInput(equipmentIndex,currentSession.CurrentPlayer.EquippedItems.Count);
+                    equipmentIndex = input.selectedIndex;
+                    if (input.confirmedChoice == true)
+                        currentSession.UseItem(equipment[equipmentIndex]);
+                    currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;
                 }
                 else if (currentAction == Actions.GoToMenu)
                 {
@@ -95,7 +98,7 @@ namespace SalesAdventure3000_UI.Views
             }
             void DrawInfoWindow()
             {
-                Console.WriteLine("╔".PadRight(width * 2 - 1, '═') + "╗");
+                Console.WriteLine("╔═MESSAGES".PadRight(width * 2 - 1, '═') + "╗");
 
                 for (int i = 3; i > 0; i--)
                 {
@@ -107,15 +110,15 @@ namespace SalesAdventure3000_UI.Views
                         Console.ResetColor();
                         Console.Write("║\n");
                     }
+                    else
+                        Console.Write($"║".PadRight(width * 2 - 1) + "║\n");
                 }
                 Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
             }
-            void DrawEquipment(State state)
+            void DrawEquipment()
             {
-
                 List<string> slots = new List<string>();
-                List<Equipment?> equipment = new List<Equipment?>();
-                foreach (KeyValuePair<Equipment.EqType, Equipment?> post in currentSession.CurrentPlayer.EquippedItems)
+                foreach (KeyValuePair<Equipment.Slot, Equipment?> post in currentSession.CurrentPlayer.EquippedItems)
                 {
                     if (post.Value == null)
                         slots.Add(post.Key + ":");
@@ -124,13 +127,11 @@ namespace SalesAdventure3000_UI.Views
                     equipment.Add(post.Value);
                 }
 
-                int selectedCommand = 0;
-
-                Console.ForegroundColor = state == State.Active ? ConsoleColor.Cyan : ConsoleColor.Gray;
+                Console.ForegroundColor = currentAction == Actions.OpenEquipment ? ConsoleColor.Cyan : ConsoleColor.Gray;
                 Console.WriteLine("╔═EQUIPMENT═[E]".PadRight(width * 2 - 1, '═') + "╗");
                 for (int i = 0; i < slots.Count; i++)
                 {
-                    string[] selection = i == selectedCommand ? new string[] { "[", "]" } : new string[] { " ", " " };
+                    string[] selection = i == equipmentIndex ? new string[] { "[", "]" } : new string[] { " ", " " };
                     if (i % 2 == 0)
                         Console.Write($"║ {selection[0]}{slots[i]}{selection[1]}".PadRight(width - 1, ' '));
                     else
@@ -141,15 +142,13 @@ namespace SalesAdventure3000_UI.Views
                 Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
                 Console.ResetColor();
             }
-            void DrawBackpack(State state)
+            void DrawBackpack()
             {
-                int selectedCommand = 0;
-
-                Console.ForegroundColor = state == State.Active ? ConsoleColor.Cyan : ConsoleColor.Gray;
+                Console.ForegroundColor = currentAction == Actions.OpenBackpack ? ConsoleColor.Cyan : ConsoleColor.Gray;
                 Console.WriteLine("╔═BACKPACK═[B]".PadRight(width * 2 - 1, '═') + "╗");
                 for (int i = 0; i < currentSession.CurrentPlayer.Backpack.Count; i++)
                 {
-                    string[] selection = i == selectedCommand ? new string[] { "[", "]" } : new string[] { " ", " " };
+                    string[] selection = i == backpackIndex ? new string[] { "[", "]" } : new string[] { " ", " " };
                     if (i % 2 == 0)
                         Console.Write($"║ {selection[0]}{currentSession.CurrentPlayer.Backpack[i].GetName()}{selection[1]}".PadRight(width - 1, ' '));
                     else
@@ -162,7 +161,6 @@ namespace SalesAdventure3000_UI.Views
             }
             void DrawWorld()
             {
-
                 for (int y = 0; y < height; y++)
                 {
                     for (int x = 0; x < width; x++)

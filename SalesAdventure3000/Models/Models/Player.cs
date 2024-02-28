@@ -15,23 +15,23 @@ namespace Engine.Models
     {
         public int MaxVitality { get; set; }    //Upper limit of player Vit.
         public int Armour { get; set; }         //Only player objects have armour.
-        public Dictionary<Equipment.EqType,Equipment?> EquippedItems { get; set; }  //Dict with a key for each of the equipment slots. Null = empty.
+        public Dictionary<Equipment.Slot,Equipment?> EquippedItems { get; set; }  //Dict with a key for each of the equipment slots. Null = empty.
                                                                                     //Dict only takes unique keys, so we cannot wear more than one item per slot.
         public Player()
         {
-            this.EquippedItems = new Dictionary<Equipment.EqType, Equipment?>();
+            this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>();
         }
-        public Player(string name, int[] coordinates) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, 0000)
+        public Player(string name, int[] coordinates) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, 0000, 1)
         {
             this.MaxVitality = 25;
             this.Name = name;
             this.Coordinates = coordinates;
             this.Armour = 0;
-            this.EquippedItems = new Dictionary<Equipment.EqType, Equipment?>();
-            this.EquippedItems.Add(EqType.Head, EquipmentFactory.CreateEquipment(2000));
-            this.EquippedItems.Add(EqType.Weapon, EquipmentFactory.CreateEquipment(2002));
-            this.EquippedItems.Add(EqType.Torso, EquipmentFactory.CreateEquipment(2001));
-            this.EquippedItems.Add(EqType.Bling, EquipmentFactory.CreateEquipment(2005));
+            this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>();
+            this.EquippedItems.Add(Slot.Head, EquipmentFactory.CreateEquipment(2000));
+            this.EquippedItems.Add(Slot.Weapon, EquipmentFactory.CreateEquipment(2002));
+            this.EquippedItems.Add(Slot.Torso, EquipmentFactory.CreateEquipment(2001));
+            this.EquippedItems.Add(Slot.Bling, EquipmentFactory.CreateEquipment(2005));
             this.Backpack = new List<Item>();
             Backpack.Add(ConsumableFactory.CreateConsumable(3000));
             Backpack.Add(ConsumableFactory.CreateConsumable(3002));
@@ -39,7 +39,7 @@ namespace Engine.Models
         }
         public string MessageUponAttack(int damage) //Returns string for GameMessage. Takes into account the weapon used.
         {
-            string weapon = EquippedItems[EqType.Weapon] == null ? "fists" : EquippedItems[EqType.Weapon].Name;
+            string weapon = EquippedItems[Slot.Weapon] == null ? "fists" : EquippedItems[Slot.Weapon].Name;
             return "You swing your " + weapon + " for " + damage + " damage.";
         }
         public int RollForAttack()  //Rolls damage. See Monster class.
@@ -75,7 +75,7 @@ namespace Engine.Models
                     break;
             }
         }
-        public void TakeOff(Equipment.EqType type)  //Removes equipment from slot and places it in the backpack.
+        public void TakeOff(Equipment.Slot type)  //Removes equipment from slot and places it in the backpack.
         {
             PutInBackpack(EquippedItems[type]);
             AdjustPlayerStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier*-1);    //Readjusts player stats.

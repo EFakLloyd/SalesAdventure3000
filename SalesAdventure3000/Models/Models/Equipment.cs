@@ -9,16 +9,16 @@ namespace Engine.Models
 {
     public class Equipment : Item
     {
-        public enum EqType  //A piece of equipment can only be worn on a specific slot. Used in AdventureBiew and Player classes.
+        public enum Slot  //A piece of equipment can only be worn on a specific slot. Used in AdventureBiew and Player classes.
         {
             Head,
             Torso,
             Weapon,
             Bling
         }
-        public EqType Type { get; set; }    
+        public Slot Type { get; set; }    
         public Equipment() { }
-        public Equipment(string name, string appearance, ConsoleColor fgColor, EqType type, Stat stat, int modifier, string useMessage, int id) : base(name, appearance, fgColor, stat, modifier, useMessage, id)
+        public Equipment(string name, string appearance, ConsoleColor fgColor, Slot type, Stat stat, int modifier, string useMessage, int id) : base(name, appearance, fgColor, stat, modifier, useMessage, id)
         {
             this.Type = type;
         }

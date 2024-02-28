@@ -29,7 +29,7 @@ namespace Engine.Models
 
             for (int i = 0; i < 20; i++)    
             {
-                int entityType =  rnd.Next(1,5);
+                int entityType = rnd.Next(1,5);
                 if (entityType == 1)
                     WorldEntities.Add(ConsumableFactory.CreateConsumable(rnd.Next(3000, 3004)));
                 if (entityType == 2)
@@ -38,7 +38,7 @@ namespace Engine.Models
                     WorldEntities.Add(MonsterFactory.CreateMonster(rnd.Next(1000, 1004)));
             }
         }
-        public void CreateWorld()   //Assigns Tile instances appropraite props based on the map string. Places the entities in the world at random.
+        public void CreateMap()   //Assigns Tile instances appropriate props based on the map string. Places the entities in the world at random.
         {
             string mapSketch = File.ReadAllText("Mapfiles/world1.txt");
             mapSketch = Regex.Replace(mapSketch, "[^X~.]", "");

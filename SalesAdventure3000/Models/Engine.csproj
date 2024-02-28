@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SavedGames\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Images\avatars.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
