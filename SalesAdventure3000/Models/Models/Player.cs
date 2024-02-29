@@ -21,10 +21,11 @@ namespace Engine.Models
         {
             this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>();
         }
-        public Player(string name, int[] coordinates) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, 0000, 1)
+        public Player(string name, int[] coordinates, int avatar) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, 0000, avatar)
         {
             this.MaxVitality = 25;
             this.Name = name;
+            this.AvatarId = avatar;
             this.Coordinates = coordinates;
             this.Armour = 0;
             this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>();

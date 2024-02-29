@@ -35,6 +35,7 @@ namespace SalesAdventure3000_UI.Views
                                         "\t U\n" +
                                         "\tS\n\n" +
                                         "".PadRight(42 * 2, '-') + "\n\n");
+
                     Console.ForegroundColor = ConsoleColor.Gray;
                     for (int i = 0; i < options.Count; i++)
                     {
@@ -63,8 +64,9 @@ namespace SalesAdventure3000_UI.Views
                     case 0:
                         Console.Write("\n\tEnter your name, brave adventurer: ");
                         string adventurerName = Console.ReadLine();
+                        int adventurerAvatar = chooseAvatar();
                         Console.WriteLine($"\n\tReady yourself, brave {adventurerName}!");
-                        currentSession.StartNewSession(adventurerName);           
+                        currentSession.StartNewSession(adventurerName, adventurerAvatar);           
                         menuLoop = false;
                         returnView = View.Adventure;
                         break;
@@ -82,6 +84,26 @@ namespace SalesAdventure3000_UI.Views
                 }
                 Thread.Sleep(1400);
                 Console.Clear();
+
+                int chooseAvatar()
+                {
+                    int index = 0;
+
+                    while (true) 
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"\n\n\tChoose your avatar:\n");
+
+                        foreach (string line in currentSession.Avatars[index])
+                            Console.WriteLine($"{line}".PadLeft(17 + line.Length / 2));
+                        
+                        string input = Console.ReadKey().Key.ToString();
+                        if (input == "Enter")
+                            return index;
+                        else
+                            index = index == 0 ? 2 : 0;
+                    }
+                }
             }
             return returnView;
         }

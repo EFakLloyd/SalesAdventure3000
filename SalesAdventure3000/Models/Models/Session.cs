@@ -23,9 +23,9 @@ namespace Engine.Models
             this.GameMessages = new List<string>();
             this.Avatars = LoadAvatars();
         }
-        public void StartNewSession(string name)
+        public void StartNewSession(string name, int avatar)
         {
-            CurrentPlayer = new Player(name, new int[] { 7, 22 });  //Standard player starting coordinates.
+            CurrentPlayer = new Player(name, new int[] { 7, 22 }, avatar);  //Standard player starting coordinates.
             CurrentWorld = new World();
             CurrentWorld.CreateMap();
             CurrentWorld.Map[7, 22].Occupant=CurrentPlayer;
