@@ -2,13 +2,7 @@
 using SalesAdventure3000_UI.Controllers;
 using SalesAdventure3000_UI.Views.DisplayElements;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using static SalesAdventure3000_UI.Views.AdventureView;
 using static SalesAdventure3000_UI.Views.ViewType;
 
@@ -18,9 +12,8 @@ namespace SalesAdventure3000_UI.Views
     {
         private static int backpackIndex = 0;
         private static int equipmentIndex = 0;
-        //private static List<Equipment?> equipment22 = new List<Equipment>();
 
-        public static View Display(Session currentSession)
+        public static View Display(Session currentSession)  //
         {
             int[] oldCoordinates = currentSession.CurrentPlayer.Coordinates;
             Actions currentAction = Actions.StayOnMap;
@@ -34,7 +27,19 @@ namespace SalesAdventure3000_UI.Views
 
             while (true)
             {
+                updateElements();
+                getInput();
+
+                if (currentAction == Actions.GoToMenu)     //The player opted to go back to the main menu
+                {
+                    Console.Clear();
+                    return View.Start;
+                }
+            }
+            void updateElements()
+            {
                 /*The block below checks the update bools and describes which elements should be dedrawn, as well as other instructions*/
+
                 //Handles updates to the map
                 if (updateWholeMap)     //This will probably only happen on first draw of the map
                     WorldDisplay.DrawWorld(currentSession.CurrentWorld.Map);
@@ -54,45 +59,48 @@ namespace SalesAdventure3000_UI.Views
                     BackpackWindow.DrawBackpack(currentAction, currentSession.CurrentPlayer.Backpack, backpackIndex);
 
                 updateStats = updateWholeMap = updateMessages = updateEquipment = updatebackpack = false;   //All windows are assumed to not require redraw
+            }
 
-                if (currentAction == Actions.StayOnMap)
+            void getInput()
+            {
+                //if-statements below are triggered based on what the user did last loop. Different controllers will be used. Input will determine which elements to update.
+
+                if (currentAction == Actions.StayOnMap) //The player entered a movement direction on the controller
                 {
                     oldCoordinates = currentSession.CurrentPlayer.Coordinates;
                     currentAction = MapControl.Control(currentSession);
-                    //these below should only update based on userinput from MapControl
                     updateEquipment = updatebackpack = updateMessages = true;
-                }             
-                else if (currentAction == Actions.OpenBackpack) 
+                }
+
+                else if (currentAction == Actions.OpenBackpack) //The player selected the backpack, or is interacting with it
                 {
-                    var input = PlayerInventoryControl.GetInput(backpackIndex, currentSession.CurrentPlayer.Backpack.Count);
-                    backpackIndex = input.selectedIndex;
-                    if (input.confirmedChoice == true)
+                    var input = PlayerInventoryControl.GetInput(backpackIndex, currentSession.CurrentPlayer.Backpack.Count); //Controller returns tuple of 3 values
+                    backpackIndex = input.selectedIndex;    //Sets the currently selected item in backpack
+
+                    if (input.confirmedChoice == true)  //Player decided to use an item
                     {
                         currentSession.UseItem(currentSession.CurrentPlayer.Backpack[backpackIndex]);
                         updateMessages = updateStats = updateEquipment = true;  //Input may trigger need to update these
                     }
-                    currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;
+                    currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;   //Player decided to leave the inventory menu
                     updatebackpack = true;  //Backpack will always need to be updated
                 }
-                else if (currentAction == Actions.OpenEquipment)
+
+                else if (currentAction == Actions.OpenEquipment)    //The player selected the equipment, or is interacting with it. See above.
                 {
-                    List<Equipment?> equipment = new List<Equipment> ();    //We need the dict as a indexable list, for access.
+                    List<Equipment?> equipment = new List<Equipment>();    //We need the dict as an indexable list, for access. It may change between each loop.
                     foreach (KeyValuePair<Equipment.Slot, Equipment?> item in currentSession.CurrentPlayer.EquippedItems)
                         equipment.Add(item.Value);
-                    var input = PlayerInventoryControl.GetInput(equipmentIndex,currentSession.CurrentPlayer.EquippedItems.Count);
+                    var input = PlayerInventoryControl.GetInput(equipmentIndex, currentSession.CurrentPlayer.EquippedItems.Count);
                     equipmentIndex = input.selectedIndex;
+
                     if (input.confirmedChoice == true)
                     {
                         currentSession.UseItem(equipment[equipmentIndex]);
-                        updateMessages = updateStats = updatebackpack = true;  //Input may trigger need to update these
+                        updateMessages = updateStats = updatebackpack = true;
                     }
                     currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;
                     updateEquipment = true;  //Equipment will always need to be updated
-                }
-                else if (currentAction == Actions.GoToMenu)
-                {                
-                    Console.Clear();
-                    return View.Exit;
                 }
             }
         }

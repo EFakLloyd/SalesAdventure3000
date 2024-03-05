@@ -2,13 +2,6 @@
 using SalesAdventure3000_UI.Controllers;
 using SalesAdventure3000_UI.Views.DisplayElements;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using static SalesAdventure3000_UI.Views.AdventureView;
 using static SalesAdventure3000_UI.Views.ViewType;
 
