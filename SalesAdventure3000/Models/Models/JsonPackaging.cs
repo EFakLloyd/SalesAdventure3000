@@ -33,6 +33,7 @@ namespace Engine.Models
 
             player.Name = (string)playerObject["Name"];
             player.Appearance = (string)playerObject["Appearance"];
+            player.AvatarId = (int)playerObject["AvatarId"];
             player.MaxVitality = (int)playerObject["MaxVitality"];
             player.Vitality = (int)playerObject["Vitality"];
             player.Coolness = (int)playerObject["Coolness"];
