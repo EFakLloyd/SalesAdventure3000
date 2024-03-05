@@ -17,6 +17,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
             Console.SetCursorPosition(0, 28);
             Console.ForegroundColor = currentAction == Actions.OpenBackpack ? ConsoleColor.Cyan : ConsoleColor.Gray;
             Console.WriteLine("╔═BACKPACK═[B]".PadRight(width * 2 - 1, '═') + "╗");
+
             for (int i = 0; i < backpack.Count; i++)
             {
                 string[] selection = i == backpackIndex ? new string[] { "[", "]" } : new string[] { " ", " " };
