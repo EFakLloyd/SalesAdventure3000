@@ -28,7 +28,7 @@ namespace Engine.Models
             {
                 if (Duration <= 0)
                 {
-                    player.AdjustPlayerStat(AffectedStat, Modifier * - 1); //"* - 1" inverts modifier.
+                    player.AdjustStat(AffectedStat, Modifier * - 1); //"* - 1" inverts modifier.
                     TimerIsOn = false;  //No more need to check item.
                 }
                 Duration--;

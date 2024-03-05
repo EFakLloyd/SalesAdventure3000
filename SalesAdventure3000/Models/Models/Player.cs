@@ -13,8 +13,8 @@ namespace Engine.Models
 {
     public class Player : Creature
     {
-        public int MaxVitality { get; set; }    //Upper limit of player Vit.
-        public int Armour { get; set; }         //Only player objects have armour.
+        //public int MaxVitality { get; set; }    //Upper limit of player Vit.
+        //public int Armour { get; set; }         //Only player objects have armour.
         public Dictionary<Equipment.Slot,Equipment?> EquippedItems { get; set; }  //Dict with a key for each of the equipment slots. Null = empty.
                                                                                     //Dict only takes unique keys, so we cannot wear more than one item per slot.
         public Player()
@@ -23,7 +23,6 @@ namespace Engine.Models
         }
         public Player(string name, int[] coordinates, int avatar) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, 0000, avatar)
         {
-            this.MaxVitality = 25;
             this.Name = name;
             this.AvatarId = avatar;
             this.Coordinates = coordinates;
@@ -53,7 +52,7 @@ namespace Engine.Models
             }
             return damage;
         }
-        public void AdjustPlayerStat(Item.Stat affectedStat, int modifier) //Adjusts one of the players stats by the supplied modifer.
+        public void AdjustStat(Item.Stat affectedStat, int modifier) //Adjusts one of the stats by the supplied modifer.
         {
             switch (affectedStat)
             {
@@ -79,19 +78,19 @@ namespace Engine.Models
         public void TakeOff(Equipment.Slot type)  //Removes equipment from slot and places it in the backpack.
         {
             PutInBackpack(EquippedItems[type]);
-            AdjustPlayerStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier*-1);    //Readjusts player stats.
+            AdjustStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier*-1);    //Readjusts player stats.
             EquippedItems[type] = null;
         }
         public void PutOn(Equipment equipment)  //Applies equipment to the appropriate equipment slot.
         {
             if (EquippedItems[equipment.Type] != null)  //Removes existing item from slot, if any.
                 TakeOff(equipment.Type);
-            AdjustPlayerStat(equipment.AffectedStat, equipment.Modifier);   //Apply bonus from equipment.
+            AdjustStat(equipment.AffectedStat, equipment.Modifier);   //Apply bonus from equipment.
             RemoveFromBackpack(equipment);  
         }
         public void UseConsumable(Consumable consumable)    //Raises relevant stat, turns on timer for consumables which have one.
         {
-            AdjustPlayerStat(consumable.AffectedStat, consumable.Modifier);
+            AdjustStat(consumable.AffectedStat, consumable.Modifier);
             if (consumable.Duration != null)
                 consumable.TimerIsOn = true;
         }
