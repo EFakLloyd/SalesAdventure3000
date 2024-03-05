@@ -10,7 +10,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal static class BackpackWindow
     {
-        public static void DrawBackpack(Actions currentAction, List<Item> backpack, int backpackIndex)
+        public static void Draw(Actions currentAction, List<Item> backpack, int backpackIndex)
         {
             int width = 42;
 

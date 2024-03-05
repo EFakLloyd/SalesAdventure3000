@@ -8,14 +8,6 @@ namespace Engine.Models
 {
     public class Item : Entity
     {
-        public enum Stat    //Iems may affect one of the players stats.
-        {
-            Strength,
-            Vitality,
-            MaxVitality,
-            Armour,
-            Coolness
-        }
         public Stat AffectedStat { get; set; }  //The stat to be altered.
         public int Modifier { get; set; }   //By how much?
         public string UseMessage { get; set; }

@@ -27,7 +27,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
             Console.ResetColor();
         }
 
-        public static void UpdateWorld(Tile[,] map, int[] oldYX, int[] newYX)
+        public static void DrawTiles(Tile[,] map, int[] oldYX, int[] newYX)
         {
             Console.SetCursorPosition(oldYX[1]*2, oldYX[0]+4);
             map[oldYX[0], oldYX[1]].DrawTile();

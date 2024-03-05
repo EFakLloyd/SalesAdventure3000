@@ -30,6 +30,5 @@ namespace Engine.Models
             }
             return Math.Max(damage - playerArmour, 0); //Adjust for player armour. Return no less than 0.
         }
-
     }
 }

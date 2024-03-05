@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static Engine.Models.Equipment;
-using static Engine.Models.Item;
+﻿using static Engine.Models.Equipment;
 
 namespace Engine.Models
 {
     public class Player : Creature
     {
-        //public int MaxVitality { get; set; }    //Upper limit of player Vit.
-        //public int Armour { get; set; }         //Only player objects have armour.
         public Dictionary<Equipment.Slot,Equipment?> EquippedItems { get; set; }  //Dict with a key for each of the equipment slots. Null = empty.
                                                                                     //Dict only takes unique keys, so we cannot wear more than one item per slot.
         public Player()
@@ -52,29 +41,6 @@ namespace Engine.Models
             }
             return damage;
         }
-        public void AdjustStat(Item.Stat affectedStat, int modifier) //Adjusts one of the stats by the supplied modifer.
-        {
-            switch (affectedStat)
-            {
-                case Stat.Strength:
-                    Strength += modifier;
-                    break;
-                case Stat.Vitality:
-                    Vitality = Math.Min(Vitality + modifier, MaxVitality); //Ensures that Vitality does not go above the maximum value.
-                    break;
-                case Stat.MaxVitality:
-                    MaxVitality += modifier;
-                    break;
-                case Stat.Armour:
-                    Armour += modifier;
-                    break;
-                case Stat.Coolness:
-                    Coolness += modifier;
-                    break;
-                default:
-                    break;
-            }
-        }
         public void TakeOff(Equipment.Slot type)  //Removes equipment from slot and places it in the backpack.
         {
             PutInBackpack(EquippedItems[type]);
@@ -101,6 +67,25 @@ namespace Engine.Models
         public void RemoveFromBackpack(Item item)
         {
             Backpack.Remove(item);
+        }
+        public Dictionary<Stat, string> GetStats()
+        {
+            return new Dictionary<Stat, string>
+            {
+                { Stat.Name,Name },
+                { Stat.Vitality,Vitality.ToString() },
+                { Stat.Strength,Strength.ToString() },
+                { Stat.MaxVitality,MaxVitality.ToString() },
+                { Stat.Coolness,Coolness.ToString() },
+                { Stat.Armour,Armour.ToString() }
+            };
+        }
+        public Item?[] GetEquipment()
+        {
+            List<Equipment?> equipment = new List<Equipment>();
+            foreach (KeyValuePair<Equipment.Slot, Equipment?> item in EquippedItems)
+                equipment.Add(item.Value);
+            return equipment.ToArray();
         }
     }
 }

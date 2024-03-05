@@ -53,5 +53,9 @@ namespace Engine.Models
                     break;
             }
         }
+        public bool IsDead()
+        {
+            return Vitality > 0 ? false : true;
+        }
     }
 }

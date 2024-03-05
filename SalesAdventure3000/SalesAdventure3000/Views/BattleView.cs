@@ -23,13 +23,13 @@ namespace SalesAdventure3000_UI.Views
             while (true)
             {
                 if (updateStats)
-                    StatsWindow.DrawPlayerStats(currentSession.CurrentPlayer);
-                AvatarDisplay.DrawAvatars(currentSession.Avatars, currentSession.CurrentPlayer.AvatarId, currentSession.CurrentPlayer.Armour, 5); //third param. should be monster.AvatarId
+                    StatsWindow.Draw(currentSession.CurrentPlayer.GetStats());
+                AvatarDisplay.Draw(currentSession.Avatars, currentSession.CurrentPlayer.AvatarId, currentSession.CurrentPlayer.Armour, 5); //third param. should be monster.AvatarId
                 if (updateMessages)
-                    MessageWindow.DrawGameMessages(currentSession.GameMessages);
-                BattleMenuWindow.DrawBattleMenu(currentAction, menuIndex);
+                    MessageWindow.Draw(currentSession.GameMessages);
+                BattleMenuWindow.Draw(currentAction, menuIndex);
                 if (updatebackpack)
-                    BackpackWindow.DrawBackpack(currentAction, currentSession.CurrentPlayer.Backpack, backpackIndex);
+                    BackpackWindow.Draw(currentAction, currentSession.CurrentPlayer.Backpack, backpackIndex);
 
                 updateStats = updateMessages = updatebackpack = false;
 

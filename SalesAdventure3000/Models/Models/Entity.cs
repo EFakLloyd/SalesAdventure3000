@@ -9,6 +9,15 @@ namespace Engine.Models
 {
     public abstract class Entity
     {
+        public enum Stat    //Used by items and creatures
+        {
+            Name,
+            Strength,
+            Vitality,
+            MaxVitality,
+            Armour,
+            Coolness
+        }
         public string Name { get; set; }
         public string Appearance { get; set; }  //The "texture" of the entity when drawn on the world map.
         public ConsoleColor FGColor { get; set; }   //Assiged color.

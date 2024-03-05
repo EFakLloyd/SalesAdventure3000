@@ -10,8 +10,8 @@ namespace SalesAdventure3000_UI.Views
 {
     public class AdventureView2
     {
-        private static int backpackIndex = 0;
-        private static int equipmentIndex = 0;
+        private static int selectedBackpackIndex = 0;
+        private static int selectedEquipmentIndex = 0;
 
         public static View Display(Session currentSession)  //
         {
@@ -44,19 +44,19 @@ namespace SalesAdventure3000_UI.Views
                 if (updateWholeMap)     //This will probably only happen on first draw of the map
                     WorldDisplay.DrawWorld(currentSession.CurrentWorld.Map);
                 else if (currentAction == Actions.StayOnMap)    //StayOnMap means that the player moved (or tried to move) on the map
-                    WorldDisplay.UpdateWorld(currentSession.CurrentWorld.Map, oldCoordinates, currentSession.CurrentPlayer.Coordinates); //Supplies coordinates to be redrawn.
+                    WorldDisplay.DrawTiles(currentSession.CurrentWorld.Map, oldCoordinates, currentSession.CurrentPlayer.Coordinates); //Supplies coordinates to be redrawn.
 
-                //Non interactable windows.
+                //Non interactable windows
                 if (updateStats)
-                    StatsWindow.DrawPlayerStats(currentSession.CurrentPlayer);
+                    StatsWindow.Draw(currentSession.CurrentPlayer.GetStats());
                 if (updateMessages)
-                    MessageWindow.DrawGameMessages(currentSession.GameMessages);
+                    MessageWindow.Draw(currentSession.GameMessages);
 
                 //Player containers need more info to be drawn correctly. They can be affected directly or indirectly, and both need to trigger a redraw
                 if (updateEquipment || currentAction == Actions.OpenEquipment)  //If currentAction is set the window is drawn differently.
-                    EquipmentWindow.DrawEquipment(currentAction, currentSession.CurrentPlayer.EquippedItems, equipmentIndex); //currentAction used as bool => is window active?
+                    EquipmentWindow.Draw(currentAction, currentSession.CurrentPlayer.EquippedItems, selectedEquipmentIndex); //currentAction used as bool => is window active?
                 if (updatebackpack || currentAction == Actions.OpenBackpack)
-                    BackpackWindow.DrawBackpack(currentAction, currentSession.CurrentPlayer.Backpack, backpackIndex);
+                    BackpackWindow.Draw(currentAction, currentSession.CurrentPlayer.Backpack, selectedBackpackIndex);
 
                 updateStats = updateWholeMap = updateMessages = updateEquipment = updatebackpack = false;   //All windows are assumed to not require redraw
             }
@@ -74,12 +74,12 @@ namespace SalesAdventure3000_UI.Views
 
                 else if (currentAction == Actions.OpenBackpack) //The player selected the backpack, or is interacting with it
                 {
-                    var input = PlayerInventoryControl.GetInput(backpackIndex, currentSession.CurrentPlayer.Backpack.Count); //Controller returns tuple of 3 values
-                    backpackIndex = input.selectedIndex;    //Sets the currently selected item in backpack
+                    var input = PlayerInventoryControl.GetInput(selectedBackpackIndex, currentSession.CurrentPlayer.Backpack.Count); //Controller returns tuple of 3 values
+                    selectedBackpackIndex = input.selectedIndex;    //Sets the currently selected item in backpack
 
                     if (input.confirmedChoice == true)  //Player decided to use an item
                     {
-                        currentSession.UseItem(currentSession.CurrentPlayer.Backpack[backpackIndex]);
+                        currentSession.UseItem(currentSession.CurrentPlayer.Backpack[selectedBackpackIndex]);
                         updateMessages = updateStats = updateEquipment = true;  //Input may trigger need to update these
                     }
                     currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;   //Player decided to leave the inventory menu
@@ -88,15 +88,12 @@ namespace SalesAdventure3000_UI.Views
 
                 else if (currentAction == Actions.OpenEquipment)    //The player selected the equipment, or is interacting with it. See above.
                 {
-                    List<Equipment?> equipment = new List<Equipment>();    //We need the dict as an indexable list, for access. It may change between each loop.
-                    foreach (KeyValuePair<Equipment.Slot, Equipment?> item in currentSession.CurrentPlayer.EquippedItems)
-                        equipment.Add(item.Value);
-                    var input = PlayerInventoryControl.GetInput(equipmentIndex, currentSession.CurrentPlayer.EquippedItems.Count);
-                    equipmentIndex = input.selectedIndex;
+                    var input = PlayerInventoryControl.GetInput(selectedEquipmentIndex, currentSession.CurrentPlayer.EquippedItems.Count);
+                    selectedEquipmentIndex = input.selectedIndex;
 
                     if (input.confirmedChoice == true)
                     {
-                        currentSession.UseItem(equipment[equipmentIndex]);
+                        currentSession.UseItem(currentSession.CurrentPlayer.GetEquipment()[selectedEquipmentIndex]);
                         updateMessages = updateStats = updatebackpack = true;
                     }
                     currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;
