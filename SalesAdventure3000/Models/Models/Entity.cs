@@ -18,15 +18,12 @@ namespace Engine.Models
             Armour,
             Coolness
         }
-        public string Name { get; set; }
-        public string Appearance { get; set; }  //The "texture" of the entity when drawn on the world map.
-        public ConsoleColor FGColor { get; set; }   //Assiged color.
-        public int[]? Coordinates { get; set; }
-        public int Id { get; set; }
-        public string TypeOf
-        {
-            get { return this.GetType().ToString(); }
-        }
+        protected string Name;
+        protected string Appearance;  //The "texture" of the entity when drawn on the world map.
+        protected ConsoleColor FGColor;  //Assiged color.
+        protected int[]? Coordinates;
+        protected int Id;
+
         public Entity()
         {
 
@@ -39,5 +36,13 @@ namespace Engine.Models
             this.Coordinates = new int[2];
             this.Id = id;
         }   
+        public string TypeOf()
+        {
+            return this.GetType().ToString();
+        }
+        public (ConsoleColor fgColor, string appearance) GetVisuals()
+        {
+            return (FGColor, Appearance);
+        }
     }
 }

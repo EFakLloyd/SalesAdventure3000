@@ -1,14 +1,15 @@
-﻿using static Engine.Models.Equipment;
+﻿using System.Drawing;
+using static Engine.Models.Equipment;
 
 namespace Engine.Models
 {
     public class Player : Creature
     {
-        public Dictionary<Equipment.Slot,Equipment?> EquippedItems { get; set; }  //Dict with a key for each of the equipment slots. Null = empty.
+        private Dictionary<Equipment.Slot, Equipment?> EquippedItems;  //Dict with a key for each of the equipment slots. Null = empty.
                                                                                     //Dict only takes unique keys, so we cannot wear more than one item per slot.
         public Player()
         {
-            this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>();
+
         }
         public Player(string name, int[] coordinates, int avatar) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, 0000, avatar)
         {
@@ -25,6 +26,20 @@ namespace Engine.Models
             Backpack.Add(ConsumableFactory.CreateConsumable(3000));
             Backpack.Add(ConsumableFactory.CreateConsumable(3002));
             Backpack.Add(ConsumableFactory.CreateConsumable(3003));
+        }
+        public Player(string name, string appearance, int[] coordinates, int avatarId, ConsoleColor fgColor, int strength, int vitality, int maxVitality, int coolness, Dictionary<Equipment.Slot, Equipment?> equipment, List<Item> backpack) 
+        {
+            this.Name = name;
+            this.Coordinates = coordinates; 
+            this.AvatarId = avatarId;
+            this.FGColor = fgColor;
+            this.Appearance = appearance;
+            this.Strength = strength;
+            this.Vitality = vitality;
+            this.MaxVitality = maxVitality;
+            this.Coolness = coolness;
+            this.EquippedItems = equipment;
+            this.Backpack = backpack;
         }
         public string MessageUponAttack(int damage) //Returns string for GameMessage. Takes into account the weapon used.
         {
