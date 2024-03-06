@@ -8,7 +8,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal class AvatarDisplay
     {
-        public static void DrawAvatars(List<string[]> avatars, int playerAvatarId, int playerArmour, int monsterAvatarId)
+        public static void Draw(List<string[]> avatars, int playerAvatarId, int playerArmour, int monsterAvatarId)
         {
             playerAvatarId = playerArmour >= 10 ? playerAvatarId + 1 : playerAvatarId;
             Console.SetCursorPosition(0, 4);

@@ -23,7 +23,7 @@ namespace Engine.Models
 
             File.WriteAllText("output.json", json);
         }
-        public static Player LoadPlayer() 
+        public static Player LoadPlayer()
         {
             string json = File.ReadAllText("output.json");
 
@@ -31,19 +31,21 @@ namespace Engine.Models
             Player player = new Player();
             JObject playerObject = JObject.Parse(jsonStrings[0]);
 
-            player.Name = (string)playerObject["Name"];
-            player.Appearance = (string)playerObject["Appearance"];
-            player.AvatarId = (int)playerObject["AvatarId"];
-            player.MaxVitality = (int)playerObject["MaxVitality"];
-            player.Vitality = (int)playerObject["Vitality"];
-            player.Coolness = (int)playerObject["Coolness"];
-            player.Strength = (int)playerObject["Strength"];
-            player.Armour = (int)playerObject["Armour"];
+            string name = (string)playerObject["Name"];
+            string appearance = (string)playerObject["Appearance"];
+            int avatarId = (int)playerObject["AvatarId"];
+            int maxVitality = (int)playerObject["MaxVitality"];
+            int vitality = (int)playerObject["Vitality"];
+            int coolness = (int)playerObject["Coolness"];
+            int strength = (int)playerObject["Strength"];
+            int armour = (int)playerObject["Armour"];
 
             JArray coordinatesArray = (JArray)playerObject["Coordinates"];  // Parse coordinates array
-            player.Coordinates = coordinatesArray.ToObject<int[]>();
+            int[] coordinates = coordinatesArray.ToObject<int[]>();
 
             JArray backpackArray = (JArray)playerObject["Backpack"];        //Deserialize Backpack items
+            List<Item> backpack = new List<Item>();
+
             foreach (JToken itemToken in backpackArray)
             {
                 JObject itemObject = (JObject)itemToken;
@@ -52,32 +54,35 @@ namespace Engine.Models
                 if (typeOf == "Engine.Models.Consumable")
                 {
                     Consumable consumable = ConsumableFactory.CreateConsumable((int)itemObject["Id"]);
-                    consumable.Duration = itemObject["Duration"]?.ToObject<int?>();     // Parse Duration, which can be null
-                    consumable.TimerIsOn = (bool)itemObject["TimerIsOn"];
-                    consumable.Uses = (int)itemObject["Uses"];
-                    player.Backpack.Add(consumable);
+                    int? duration = itemObject["Duration"]?.ToObject<int?>();     // Parse Duration, which can be null
+                    bool timerIsOn = (bool)itemObject["TimerIsOn"];
+                    int uses = (int)itemObject["Uses"];
+                    backpack.Add(consumable);
                 }
                 else if (typeOf == "Engine.Models.Equipment")
                 {
                     Equipment equipment = EquipmentFactory.CreateEquipment((int)itemObject["Id"]);
-                    player.Backpack.Add(equipment);
+                    backpack.Add(equipment);
                 }
             }
 
             JObject equippedItemsObject = (JObject)playerObject["EquippedItems"];            // Deserialize EquippedItems
+            Dictionary<Equipment.Slot, Equipment> equippedItems = new Dictionary<Equipment.Slot, Equipment>();
+
             foreach (KeyValuePair<string, JToken> kvp in equippedItemsObject)
             {
                 string itemName = kvp.Key;
                 JObject itemData = (JObject)kvp.Value;
                 if (itemData == null)
-                    player.EquippedItems.Add((Equipment.Slot)Enum.Parse(typeof(Equipment.Slot), itemName), null);
+                    equippedItems.Add((Equipment.Slot)Enum.Parse(typeof(Equipment.Slot), itemName), null);
                 else
                 {
                     Equipment equipment = (EquipmentFactory.CreateEquipment((int)itemData["Id"]));
-                    player.EquippedItems.Add(equipment.Type, equipment);
+                    equippedItems.Add(equipment.Type, equipment);
                 }
             }
-            return player;
+            
+            return new Player(name, appearance, coordinates, avatarId,ConsoleColor.Magenta, strength, vitality, maxVitality, coolness, armour, equippedItems, backpack, 0);
         }
         public static List<Entity> LoadEntities()
         {
@@ -92,25 +97,26 @@ namespace Engine.Models
                 JObject itemObject = (JObject)itemToken;
                 string typeOf = (string)itemObject["TypeOf"];
                 JArray readCoordinatesArray = (JArray)itemObject["Coordinates"];
-                int[] readCoordinates =readCoordinatesArray.ToObject<int[]>();
+                int[] readCoordinates = readCoordinatesArray.ToObject<int[]>();
 
                 if (typeOf == "Engine.Models.Monster")
                 {
                     Monster monster = MonsterFactory.CreateMonster((int)itemObject["Id"]);
-                    monster.Vitality = (int)itemObject["Vitality"];
-                    monster.Coordinates = readCoordinates;
+                    int adjustmentMod = (int)itemObject["Vitality"] - monster.Vitality;
+                    monster.AdjustStat(Entity.Stat.Vitality, adjustmentMod, Entity.Adjustment.Down);
+                    monster.SetCoordinates(readCoordinates);
                     entities.Add(monster);
                 }
                 else if (typeOf == "Engine.Models.Equipment")
                 {
                     Equipment equipment = EquipmentFactory.CreateEquipment((int)itemObject["Id"]);
-                    equipment.Coordinates = readCoordinates;
+                    equipment.SetCoordinates(readCoordinates);
                     entities.Add(equipment);
                 }
                 else if (typeOf == "Engine.Models.Consumable")
                 {
                     Consumable consumable = ConsumableFactory.CreateConsumable((int)itemObject["Id"]);
-                    consumable.Coordinates = readCoordinates;
+                    consumable.SetCoordinates(readCoordinates);
                     entities.Add(consumable);
                 }
             }

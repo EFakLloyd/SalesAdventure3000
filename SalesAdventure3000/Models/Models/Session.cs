@@ -28,17 +28,16 @@ namespace Engine.Models
             CurrentPlayer = new Player(name, new int[] { 7, 22 }, avatar);  //Standard player starting coordinates.
             CurrentWorld = new World();
             CurrentWorld.CreateMap();
-            CurrentWorld.Map[7, 22].Occupant=CurrentPlayer;
+            CurrentWorld.Map[7, 22].NewOccupant(CurrentPlayer);
             CurrentWorld.CreateEntities();
             CurrentWorld.PopulateWorld(CurrentWorld.WorldEntities);
         }
         public void LoadSession()
         {
-            CurrentPlayer = new Player();
             CurrentPlayer = JsonPackaging.LoadPlayer();
             CurrentWorld = new World();
             CurrentWorld.CreateMap();
-            CurrentWorld.Map[CurrentPlayer.Coordinates[0], CurrentPlayer.Coordinates[1]].Occupant = CurrentPlayer;
+            CurrentWorld.Map[CurrentPlayer.Coordinates[0], CurrentPlayer.Coordinates[1]].NewOccupant(CurrentPlayer);
             CurrentWorld.WorldEntities = JsonPackaging.LoadEntities();
             CurrentWorld.PopulateWorld(CurrentWorld.WorldEntities);
         }
@@ -48,7 +47,6 @@ namespace Engine.Models
         }
         public void MovePlayer()
         {
-
         }
         public void HandleCombat()
         {

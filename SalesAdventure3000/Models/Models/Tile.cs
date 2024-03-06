@@ -4,11 +4,11 @@ namespace Engine.Models
 {
     public class Tile
     {
-        public ConsoleColor FGColor { get; set; }
-        public ConsoleColor BGColor { get; set; }
-        public string Texture { get; set; } //Texture of the tile when drawn on the world map.
-        public bool Passable { get; set; }  //Can entities be on or enter the tile?
-        public Entity? Occupant { get; set; }   //Potential entity on the tile.
+        private ConsoleColor FGColor;
+        private ConsoleColor BGColor;
+        private string Texture; //Texture of the tile when drawn on the world map.
+        public bool Passable { get; private set; }  //Can entities be on or enter the tile?
+        public Entity? Occupant { get; private set; }   //Potential entity on the tile.
 
         public Tile(string type)    //Based what is read from the map string, assign the tile different properties.
         {
@@ -36,14 +36,22 @@ namespace Engine.Models
                 Texture = "^^";
             }
         }
-
+        public void NewOccupant(Entity entity)
+        {
+            Occupant = entity;
+        }
+        public void ClearOccupant()
+        {
+            Occupant = null;
+        }
         public void DrawTile()  //A tile writes itself to the screen.
         {
             Console.BackgroundColor = this.BGColor;
             if (Occupant != null)   //If there is an occupant entity we draw that instead.
             {
-                Console.ForegroundColor = Occupant.FGColor;
-                Console.Write(Occupant.Appearance.PadRight(2, ' '));
+                var occupantVisuals = Occupant.GetVisuals();
+                Console.ForegroundColor = occupantVisuals.fgColor;
+                Console.Write(occupantVisuals.appearance.PadRight(2, ' '));
             }
             else            //Writes the tile texture with appropiate colours.
             {

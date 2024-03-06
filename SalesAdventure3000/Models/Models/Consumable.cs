@@ -8,10 +8,9 @@ namespace Engine.Models
 {
     public class Consumable : Item
     {
-        public int? Duration { get; set; }  //Used for items that give a temporary boost. Ticks down via Coundown()
-        public bool TimerIsOn { get; set; } //Used for checking which items are on a countdown.
-        public int Uses { get; set; }   //Multiple use items. 
-        public Consumable() { }
+        private int? Duration;  //Used for items that give a temporary boost. Ticks down via Coundown()
+        public bool TimerIsOn { get; private set; } //Used for checking which items are on a countdown.
+        public int Uses { get; private set; }   //Multiple use items. 
         public Consumable(string name, string appearance, ConsoleColor fgColor, Stat stat, int modifier, int? duration, int uses, string useMessage, int id) : base(name, appearance, fgColor, stat, modifier, useMessage, id)
         {
             this.Duration = duration;
@@ -28,11 +27,17 @@ namespace Engine.Models
             {
                 if (Duration <= 0)
                 {
-                    player.AdjustStat(AffectedStat, Modifier * - 1); //"* - 1" inverts modifier.
+                    player.AdjustStat(AffectedStat, Modifier, Adjustment.Down); //"* - 1" inverts modifier.
                     TimerIsOn = false;  //No more need to check item.
                 }
                 Duration--;
             }
+        }
+        public void Activate()
+        {
+            if (Duration != null)
+                TimerIsOn = true;
+            Uses--;
         }
     }
 }
