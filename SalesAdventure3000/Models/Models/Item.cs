@@ -8,9 +8,9 @@ namespace Engine.Models
 {
     public class Item : Entity
     {
-        public Stat AffectedStat { get; set; }  //The stat to be altered.
-        public int Modifier { get; set; }   //By how much?
-        public string UseMessage { get; set; }
+        public Stat AffectedStat { get; private set; }  //The stat to be altered.
+        public int Modifier { get; private set; }   //By how much?
+        private string UseMessage;
         public Item() { }
         public Item(string name, string appearance, ConsoleColor fgColor, Stat stat, int modifier, string useMessage, int id) : base(name, appearance, fgColor, id)
         {

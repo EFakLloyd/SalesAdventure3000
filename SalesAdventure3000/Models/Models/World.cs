@@ -66,8 +66,8 @@ namespace Engine.Models
                     int y = rnd.Next(0, 15);
                     if (Map[y, x].Occupant == null && Map[y, x].Passable)   //Makes sure that the Tile is passable and also not already taken.
                     {
-                        entity.Coordinates = new int[] { y, x };
-                        Map[y, x].Occupant = entity;
+                        entity.SetCoordinates(new int[] { y, x });
+                        Map[y, x].NewOccupant(entity);
                         break;
                     }
                 }
