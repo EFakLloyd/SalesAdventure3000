@@ -8,7 +8,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal static class MessageWindow
     {
-        public static void DrawGameMessages(List<string> messages)
+        public static void Draw(List<string> messages)
         {
             int width = 42;
 

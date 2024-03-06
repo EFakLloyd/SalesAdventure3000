@@ -59,9 +59,9 @@ namespace SalesAdventure3000_UI.Controllers
                     currentSession.CurrentPlayer.PutInBackpack(item);
                     currentSession.GameMessages.Add(item.MessageUponPickUp());
                 }
-                currentSession.CurrentWorld.Map[y, x].Occupant = currentSession.CurrentPlayer;
-                currentSession.CurrentWorld.Map[oldY, oldX].Occupant = null;
-                currentSession.CurrentPlayer.Coordinates = new int[] {y,x};
+                currentSession.CurrentWorld.Map[y, x].NewOccupant(currentSession.CurrentPlayer);
+                currentSession.CurrentWorld.Map[oldY, oldX].ClearOccupant();
+                currentSession.CurrentPlayer.SetCoordinates( new int[] {y,x} );
             }
             return AdventureView.Actions.StayOnMap;
             

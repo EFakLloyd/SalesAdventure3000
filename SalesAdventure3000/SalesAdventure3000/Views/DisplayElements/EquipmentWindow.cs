@@ -10,7 +10,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal static class EquipmentWindow
     {
-        public static void DrawEquipment(Actions currentAction, Dictionary<Equipment.Slot, Equipment?> playerEquipment, int equipmentIndex)
+        public static void Draw(Actions currentAction, Dictionary<Equipment.Slot, Equipment?> playerEquipment, int equipmentIndex)
         {
             int width = 42;
             List<Equipment?> equipment = new List<Equipment>();

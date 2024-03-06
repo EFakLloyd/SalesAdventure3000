@@ -9,7 +9,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal static class BattleMenuWindow
     {
-        public static void DrawBattleMenu(Actions currentAction, int menuIndex)
+        public static void Draw(Actions currentAction, int menuIndex)
         {
             int width = 42;
             string[] battleOptions = new string[] { "Attack", "Reckless Attack", "Use Item", "Flee" };
