@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static Engine.Models.Equipment;
 using static Engine.Models.Item;
 
@@ -12,31 +13,36 @@ namespace Engine.Models
 {
     public class Player : Creature
     {
-        public int MaxVitality { get; set; }
-        public int[] Coordinate { get; set; }
-        public int Armour { get; set; }
-        public Dictionary<Equipment.EqType,Equipment?> EquippedItems { get; set; }
-        public Player(string name, int[] coordinate) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5)
+        //public int MaxVitality { get; set; }    //Upper limit of player Vit.
+        //public int Armour { get; set; }         //Only player objects have armour.
+        public Dictionary<Equipment.Slot,Equipment?> EquippedItems { get; set; }  //Dict with a key for each of the equipment slots. Null = empty.
+                                                                                    //Dict only takes unique keys, so we cannot wear more than one item per slot.
+        public Player()
         {
-            this.MaxVitality = 25;
-            this.Name = name;
-            this.Coordinate = coordinate;
-            this.Armour = 0;
-            this.EquippedItems = new Dictionary<Equipment.EqType, Equipment?>();
-            this.EquippedItems.Add(EqType.Head, null);
-            this.EquippedItems.Add(EqType.Weapon, null);
-            this.EquippedItems.Add(EqType.Torso, null);
-            this.EquippedItems.Add(EqType.Bling, null);
-            this.Backpack = new List<Item>();
-            Backpack.Add(ItemFactory.CreateItem(2006));
-
+            this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>();
         }
-        public string MessageUponAttack(int damage)
+        public Player(string name, int[] coordinates, int avatar) : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, 0000, avatar)
         {
-            string weapon = EquippedItems[EqType.Weapon] == null ? "fists" : EquippedItems[EqType.Weapon].Name;
+            this.Name = name;
+            this.AvatarId = avatar;
+            this.Coordinates = coordinates;
+            this.Armour = 0;
+            this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>();
+            this.EquippedItems.Add(Slot.Head, EquipmentFactory.CreateEquipment(2000));
+            this.EquippedItems.Add(Slot.Weapon, EquipmentFactory.CreateEquipment(2002));
+            this.EquippedItems.Add(Slot.Torso, EquipmentFactory.CreateEquipment(2001));
+            this.EquippedItems.Add(Slot.Bling, EquipmentFactory.CreateEquipment(2005));
+            this.Backpack = new List<Item>();
+            Backpack.Add(ConsumableFactory.CreateConsumable(3000));
+            Backpack.Add(ConsumableFactory.CreateConsumable(3002));
+            Backpack.Add(ConsumableFactory.CreateConsumable(3003));
+        }
+        public string MessageUponAttack(int damage) //Returns string for GameMessage. Takes into account the weapon used.
+        {
+            string weapon = EquippedItems[Slot.Weapon] == null ? "fists" : EquippedItems[Slot.Weapon].Name;
             return "You swing your " + weapon + " for " + damage + " damage.";
         }
-        public int RollForAttack(int playerArmour)
+        public int RollForAttack()  //Rolls damage. See Monster class.
         {
             int damage = 0;
             Random roll = new Random();
@@ -46,7 +52,7 @@ namespace Engine.Models
             }
             return damage;
         }
-        public void AdjustPlayerStat(Item.Stat affectedStat, int modifier) // Justerar en av spelarens stats
+        public void AdjustStat(Item.Stat affectedStat, int modifier) //Adjusts one of the stats by the supplied modifer.
         {
             switch (affectedStat)
             {
@@ -54,7 +60,7 @@ namespace Engine.Models
                     Strength += modifier;
                     break;
                 case Stat.Vitality:
-                    Vitality = Math.Min(Vitality + modifier, MaxVitality);
+                    Vitality = Math.Min(Vitality + modifier, MaxVitality); //Ensures that Vitality does not go above the maximum value.
                     break;
                 case Stat.MaxVitality:
                     MaxVitality += modifier;
@@ -69,24 +75,24 @@ namespace Engine.Models
                     break;
             }
         }
-        public void TakeOff(Equipment.EqType type)
+        public void TakeOff(Equipment.Slot type)  //Removes equipment from slot and places it in the backpack.
         {
             PutInBackpack(EquippedItems[type]);
-            AdjustPlayerStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier*-1);
+            AdjustStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier*-1);    //Readjusts player stats.
             EquippedItems[type] = null;
         }
-        public void PutOn(Equipment equipment)
+        public void PutOn(Equipment equipment)  //Applies equipment to the appropriate equipment slot.
         {
-            if (EquippedItems[equipment.Type] != null)
+            if (EquippedItems[equipment.Type] != null)  //Removes existing item from slot, if any.
                 TakeOff(equipment.Type);
-            AdjustPlayerStat(equipment.AffectedStat, equipment.Modifier);
-            RemoveFromBackpack(equipment);
+            AdjustStat(equipment.AffectedStat, equipment.Modifier);   //Apply bonus from equipment.
+            RemoveFromBackpack(equipment);  
         }
-        public void UseConsumable(Consumable consumable)
+        public void UseConsumable(Consumable consumable)    //Raises relevant stat, turns on timer for consumables which have one.
         {
-            AdjustPlayerStat(consumable.AffectedStat, consumable.Modifier);
+            AdjustStat(consumable.AffectedStat, consumable.Modifier);
             if (consumable.Duration != null)
-                consumable.Timer = true;
+                consumable.TimerIsOn = true;
         }
         public void PutInBackpack(Item item)
         {

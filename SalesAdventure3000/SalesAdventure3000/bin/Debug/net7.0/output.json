@@ -1,0 +1,452 @@
+{
+  "MaxVitality": 25,
+  "Armour": 0,
+  "EquippedItems": {
+    "Head": {
+      "Type": 0,
+      "AffectedStat": 3,
+      "Modifier": 5,
+      "UseMessage": "The helmet frames your face menacingly. It provides ",
+      "Name": "Horned Helmet",
+      "Appearance": "V",
+      "FGColor": 15,
+      "Coordinates": [
+        0,
+        0
+      ],
+      "Id": 2000,
+      "TypeOf": "Engine.Models.Equipment"
+    },
+    "Weapon": {
+      "Type": 2,
+      "AffectedStat": 0,
+      "Modifier": 10,
+      "UseMessage": "A monstrous axe! It grants you ",
+      "Name": "Great Axe",
+      "Appearance": "P",
+      "FGColor": 15,
+      "Coordinates": [
+        0,
+        0
+      ],
+      "Id": 2002,
+      "TypeOf": "Engine.Models.Equipment"
+    },
+    "Torso": {
+      "Type": 1,
+      "AffectedStat": 3,
+      "Modifier": 7,
+      "UseMessage": "The mail makes some noise when you move about. It provides ",
+      "Name": "Chain Mail",
+      "Appearance": "%",
+      "FGColor": 15,
+      "Coordinates": [
+        0,
+        0
+      ],
+      "Id": 2001,
+      "TypeOf": "Engine.Models.Equipment"
+    },
+    "Bling": {
+      "Type": 3,
+      "AffectedStat": 0,
+      "Modifier": 6,
+      "UseMessage": "The medallion boosts your martial provess. It gives you ",
+      "Name": "Power Medallion",
+      "Appearance": "Q",
+      "FGColor": 15,
+      "Coordinates": [
+        0,
+        0
+      ],
+      "Id": 2005,
+      "TypeOf": "Engine.Models.Equipment"
+    }
+  },
+  "Strength": 15,
+  "Vitality": 15,
+  "Coolness": 5,
+  "Backpack": [
+    {
+      "Duration": null,
+      "TimerIsOn": false,
+      "Uses": 3,
+      "AffectedStat": 1,
+      "Modifier": 3,
+      "UseMessage": "You munch down on the bread. It gives you ",
+      "Name": "Bread",
+      "Appearance": "B",
+      "FGColor": 14,
+      "Coordinates": [
+        0,
+        0
+      ],
+      "Id": 3000,
+      "TypeOf": "Engine.Models.Consumable"
+    },
+    {
+      "Duration": 10,
+      "TimerIsOn": false,
+      "Uses": 1,
+      "AffectedStat": 4,
+      "Modifier": 15,
+      "UseMessage": "Such style! The potion temporarily grants you ",
+      "Name": "Potion of Cool",
+      "Appearance": "C",
+      "FGColor": 14,
+      "Coordinates": [
+        0,
+        0
+      ],
+      "Id": 3002,
+      "TypeOf": "Engine.Models.Consumable"
+    },
+    {
+      "Duration": 10,
+      "TimerIsOn": false,
+      "Uses": 1,
+      "AffectedStat": 0,
+      "Modifier": 10,
+      "UseMessage": "You get angry! The potion temporarily grants you ",
+      "Name": "Rage Shroom",
+      "Appearance": "R",
+      "FGColor": 14,
+      "Coordinates": [
+        0,
+        0
+      ],
+      "Id": 3003,
+      "TypeOf": "Engine.Models.Consumable"
+    }
+  ],
+  "Name": "GÖRAN",
+  "Appearance": "@",
+  "FGColor": 5,
+  "Coordinates": [
+    7,
+    22
+  ],
+  "Id": 0,
+  "TypeOf": "Engine.Models.Player"
+}----[
+  {
+    "Duration": 10,
+    "TimerIsOn": false,
+    "Uses": 1,
+    "AffectedStat": 0,
+    "Modifier": 10,
+    "UseMessage": "You get angry! The potion temporarily grants you ",
+    "Name": "Rage Shroom",
+    "Appearance": "R",
+    "FGColor": 14,
+    "Coordinates": [
+      3,
+      3
+    ],
+    "Id": 3003,
+    "TypeOf": "Engine.Models.Consumable"
+  },
+  {
+    "AttackMessage": "The snake slithers up your leg and bites your chin for ",
+    "Strength": 5,
+    "Vitality": 5,
+    "Coolness": 15,
+    "Backpack": null,
+    "Name": "Snake",
+    "Appearance": "Sn",
+    "FGColor": 11,
+    "Coordinates": [
+      7,
+      21
+    ],
+    "Id": 1000,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "Type": 0,
+    "AffectedStat": 3,
+    "Modifier": 5,
+    "UseMessage": "The helmet frames your face menacingly. It provides ",
+    "Name": "Horned Helmet",
+    "Appearance": "V",
+    "FGColor": 15,
+    "Coordinates": [
+      14,
+      18
+    ],
+    "Id": 2000,
+    "TypeOf": "Engine.Models.Equipment"
+  },
+  {
+    "Type": 3,
+    "AffectedStat": 4,
+    "Modifier": 12,
+    "UseMessage": "Superstylish glasses! They give you ",
+    "Name": "Sunglasses",
+    "Appearance": "8",
+    "FGColor": 15,
+    "Coordinates": [
+      9,
+      12
+    ],
+    "Id": 2004,
+    "TypeOf": "Engine.Models.Equipment"
+  },
+  {
+    "AttackMessage": "The snake slithers up your leg and bites your chin for ",
+    "Strength": 5,
+    "Vitality": 5,
+    "Coolness": 15,
+    "Backpack": null,
+    "Name": "Snake",
+    "Appearance": "Sn",
+    "FGColor": 11,
+    "Coordinates": [
+      4,
+      36
+    ],
+    "Id": 1000,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "AttackMessage": "Tintin makes you feel insufficent with his Linux skills. You take ",
+    "Strength": 30,
+    "Vitality": 20,
+    "Coolness": 99,
+    "Backpack": null,
+    "Name": "Tintin-beast",
+    "Appearance": "Tt",
+    "FGColor": 1,
+    "Coordinates": [
+      9,
+      10
+    ],
+    "Id": 1002,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "AttackMessage": "The dragon breathed fire at you for ",
+    "Strength": 35,
+    "Vitality": 35,
+    "Coolness": 20,
+    "Backpack": null,
+    "Name": "Dragon",
+    "Appearance": "Dn",
+    "FGColor": 4,
+    "Coordinates": [
+      9,
+      7
+    ],
+    "Id": 1003,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "AttackMessage": "Tintin makes you feel insufficent with his Linux skills. You take ",
+    "Strength": 30,
+    "Vitality": 20,
+    "Coolness": 99,
+    "Backpack": null,
+    "Name": "Tintin-beast",
+    "Appearance": "Tt",
+    "FGColor": 1,
+    "Coordinates": [
+      12,
+      11
+    ],
+    "Id": 1002,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "Duration": null,
+    "TimerIsOn": false,
+    "Uses": 1,
+    "AffectedStat": 1,
+    "Modifier": 10,
+    "UseMessage": "The health potion restores you for ",
+    "Name": "Health Potion",
+    "Appearance": "H",
+    "FGColor": 14,
+    "Coordinates": [
+      9,
+      13
+    ],
+    "Id": 3001,
+    "TypeOf": "Engine.Models.Consumable"
+  },
+  {
+    "AttackMessage": "Recklessly slashing its scimitar, the orc deals you ",
+    "Strength": 10,
+    "Vitality": 10,
+    "Coolness": 5,
+    "Backpack": null,
+    "Name": "Orc",
+    "Appearance": "Oc",
+    "FGColor": 0,
+    "Coordinates": [
+      3,
+      26
+    ],
+    "Id": 1001,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "Duration": null,
+    "TimerIsOn": false,
+    "Uses": 1,
+    "AffectedStat": 1,
+    "Modifier": 10,
+    "UseMessage": "The health potion restores you for ",
+    "Name": "Health Potion",
+    "Appearance": "H",
+    "FGColor": 14,
+    "Coordinates": [
+      6,
+      12
+    ],
+    "Id": 3001,
+    "TypeOf": "Engine.Models.Consumable"
+  },
+  {
+    "Duration": null,
+    "TimerIsOn": false,
+    "Uses": 1,
+    "AffectedStat": 1,
+    "Modifier": 10,
+    "UseMessage": "The health potion restores you for ",
+    "Name": "Health Potion",
+    "Appearance": "H",
+    "FGColor": 14,
+    "Coordinates": [
+      9,
+      35
+    ],
+    "Id": 3001,
+    "TypeOf": "Engine.Models.Consumable"
+  },
+  {
+    "AttackMessage": "The dragon breathed fire at you for ",
+    "Strength": 35,
+    "Vitality": 35,
+    "Coolness": 20,
+    "Backpack": null,
+    "Name": "Dragon",
+    "Appearance": "Dn",
+    "FGColor": 4,
+    "Coordinates": [
+      8,
+      15
+    ],
+    "Id": 1003,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "Type": 0,
+    "AffectedStat": 3,
+    "Modifier": 5,
+    "UseMessage": "The helmet frames your face menacingly. It provides ",
+    "Name": "Horned Helmet",
+    "Appearance": "V",
+    "FGColor": 15,
+    "Coordinates": [
+      4,
+      10
+    ],
+    "Id": 2000,
+    "TypeOf": "Engine.Models.Equipment"
+  },
+  {
+    "Type": 3,
+    "AffectedStat": 4,
+    "Modifier": 12,
+    "UseMessage": "Superstylish glasses! They give you ",
+    "Name": "Sunglasses",
+    "Appearance": "8",
+    "FGColor": 15,
+    "Coordinates": [
+      14,
+      39
+    ],
+    "Id": 2004,
+    "TypeOf": "Engine.Models.Equipment"
+  },
+  {
+    "AttackMessage": "The dragon breathed fire at you for ",
+    "Strength": 35,
+    "Vitality": 35,
+    "Coolness": 20,
+    "Backpack": null,
+    "Name": "Dragon",
+    "Appearance": "Dn",
+    "FGColor": 4,
+    "Coordinates": [
+      3,
+      40
+    ],
+    "Id": 1003,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "AttackMessage": "The snake slithers up your leg and bites your chin for ",
+    "Strength": 5,
+    "Vitality": 5,
+    "Coolness": 15,
+    "Backpack": null,
+    "Name": "Snake",
+    "Appearance": "Sn",
+    "FGColor": 11,
+    "Coordinates": [
+      7,
+      10
+    ],
+    "Id": 1000,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "AttackMessage": "Tintin makes you feel insufficent with his Linux skills. You take ",
+    "Strength": 30,
+    "Vitality": 20,
+    "Coolness": 99,
+    "Backpack": null,
+    "Name": "Tintin-beast",
+    "Appearance": "Tt",
+    "FGColor": 1,
+    "Coordinates": [
+      9,
+      40
+    ],
+    "Id": 1002,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "AttackMessage": "The snake slithers up your leg and bites your chin for ",
+    "Strength": 5,
+    "Vitality": 5,
+    "Coolness": 15,
+    "Backpack": null,
+    "Name": "Snake",
+    "Appearance": "Sn",
+    "FGColor": 11,
+    "Coordinates": [
+      8,
+      2
+    ],
+    "Id": 1000,
+    "TypeOf": "Engine.Models.Monster"
+  },
+  {
+    "AttackMessage": "Recklessly slashing its scimitar, the orc deals you ",
+    "Strength": 10,
+    "Vitality": 10,
+    "Coolness": 5,
+    "Backpack": null,
+    "Name": "Orc",
+    "Appearance": "Oc",
+    "FGColor": 0,
+    "Coordinates": [
+      9,
+      4
+    ],
+    "Id": 1001,
+    "TypeOf": "Engine.Models.Monster"
+  }
+]

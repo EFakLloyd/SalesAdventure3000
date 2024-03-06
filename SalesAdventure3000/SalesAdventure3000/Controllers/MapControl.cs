@@ -16,8 +16,8 @@ namespace SalesAdventure3000_UI.Controllers
             //public static (int[] coordinates, AdventureView.Actions Action) Control(Session currentSession)
         {
 
-            int y = currentSession.CurrentPlayer.Coordinate[0];
-            int x = currentSession.CurrentPlayer.Coordinate[1];
+            int y = currentSession.CurrentPlayer.Coordinates[0];
+            int x = currentSession.CurrentPlayer.Coordinates[1];
             int oldX=x;
             int oldY= y;
             ConsoleKeyInfo input = Console.ReadKey();
@@ -54,17 +54,23 @@ namespace SalesAdventure3000_UI.Controllers
             
             if (Ispassable(y, x))
             {
+                if (currentSession.CurrentWorld.Map[y, x].Occupant is Item item)
+                {
+                    currentSession.CurrentPlayer.PutInBackpack(item);
+                    currentSession.GameMessages.Add(item.MessageUponPickUp());
+                }
                 currentSession.CurrentWorld.Map[y, x].Occupant = currentSession.CurrentPlayer;
                 currentSession.CurrentWorld.Map[oldY, oldX].Occupant = null;
-                currentSession.CurrentPlayer.Coordinate = new int[] {y,x};
+                currentSession.CurrentPlayer.Coordinates = new int[] {y,x};
             }
             return AdventureView.Actions.StayOnMap;
             
 
             bool Ispassable(int y, int x)
             {
-                return currentSession.CurrentWorld.Map[y, x].Passable && y>=0 && y<=14 && x>=0 && x<42;
-
+                if (y <= 14 && x >= 0 && x < 42)
+                    return currentSession.CurrentWorld.Map[y, x].Passable;
+                return false;
             }
 
         }

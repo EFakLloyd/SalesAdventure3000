@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using System.Xml;
 using Engine.Models;
 using SalesAdventure3000_UI.Controllers;
@@ -13,25 +15,25 @@ namespace SalesAdventure3000
     {
         static void Main(string[] args)
         {
-            //int width = 42;
-            //int height = 15;
-            View currentScreen = View.Start;
+            Console.CursorVisible = false;
+
+            View currentView = View.Start;
             
             Session currentSession = new Session();
 
             while (true)
             {
-                if (currentScreen == View.Start)
-                    currentScreen = MenuView.Display(currentSession);
-                if (currentScreen == View.Adventure)                
-                    currentScreen = AdventureView.Display(currentSession);
+                if (currentView == View.Start)
+                    currentView = MenuView.Display(currentSession);
+                BattleView.Display(currentSession);
+                AdventureView2.Display(currentSession);
+
+
+
+                if (currentView == View.Adventure)                
+                    currentView = AdventureView.Display(currentSession);
             }
             //Sluta här typ
-           
-
-            while (true) { 
-            MapControl.Control(currentSession);
-            }
 
             //static void DrawPlayerStats(int width, Session currentSession)
             //{

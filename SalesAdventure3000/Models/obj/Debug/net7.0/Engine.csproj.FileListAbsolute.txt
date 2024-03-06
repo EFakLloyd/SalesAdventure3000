@@ -21,3 +21,8 @@ C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\M
 C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\refint\Engine.dll
 C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.pdb
 C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\ref\Engine.dll
+C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\obj\Debug\net7.0\Engine.csproj.AssemblyReference.cache
+C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\bin\Debug\net7.0\Images\avatars.txt
+C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\bin\Debug\net7.0\Mapfiles\world1.txt
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\bin\Debug\net7.0\Images\avatars.txt
+C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\Models\bin\Debug\net7.0\Mapfiles\world1.txt
