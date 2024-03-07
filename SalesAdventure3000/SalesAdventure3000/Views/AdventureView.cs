@@ -1,14 +1,8 @@
-﻿using Engine.Models;
+﻿using Engine;
+using Engine.Models;
 using SalesAdventure3000_UI.Controllers;
+using SalesAdventure3000_UI.Views.DisplayElements;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using static SalesAdventure3000_UI.Views.AdventureView;
 using static SalesAdventure3000_UI.Views.ViewType;
 
 namespace SalesAdventure3000_UI.Views
@@ -23,159 +17,98 @@ namespace SalesAdventure3000_UI.Views
             GoToMenu,
             ContinueFight
         }
-        private static int backpackIndex = 0;
-        private static int equipmentIndex = 0;
-        private static List<Equipment?> equipment = new List<Equipment>();
 
-        //public static Actions Control(Session currentSession)
-        //{
-        //    Actions currentAction = Actions.StayOnMap;
+        private static int selectedBackpackIndex = 0;
+        private static int selectedEquipmentIndex = 0;
 
-        //    while (true)
-        //    {
-        //        if (currentAction == Actions.StayOnMap)
-        //        {
-        //            currentAction = (Actions)Display(currentSession);
-        //        }
-        //        if (currentAction == Actions.OpenEquipment)
-        //            currentAction = (Actions)Display(currentSession);
-        //        if (currentAction == Actions.OpenBackpack)
-        //            currentAction = (Actions)Display(currentSession);
-        //        if (currentAction == Actions.GoToMenu)
-        //        {
-        //            return currentAction;
-        //        }
-        //        return currentAction;
-        //    }
-        //}
-        //public static View Display(Session currentSession)
-        //{
-        //    int width = 42;
-        //    int height = 15;
-        //    Actions currentAction = Actions.StayOnMap;
+        public static View Display(Session currentSession)  //
+        {
+            Position oldCoordinates = currentSession.CurrentPlayer.Coordinates;
+            Actions currentAction = Actions.StayOnMap;
 
-        //    while (true)
-        //    {
-        //        DrawPlayerStats();
-        //        DrawWorld();
-        //        DrawInfoWindow();
-        //        DrawEquipment();
-        //        DrawBackpack();
+            //These bools are used to keep track on which view elements should be redrawn. On view entry all is drawn, therefore set to true
 
-        //        if (currentAction == Actions.StayOnMap)
-        //        {
-        //            currentAction = MapControl.Control(currentSession);
-        //        }
-        //        else if (currentAction == Actions.OpenBackpack)
-        //        {
-        //            var input = PlayerInventoryControl.GetInput(backpackIndex, currentSession.CurrentPlayer.Backpack.Count);
-        //            backpackIndex = input.selectedIndex;
-        //            if (input.confirmedChoice == true)
-        //                currentSession.UseItem(currentSession.CurrentPlayer.Backpack[backpackIndex]);
-        //            currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;
-        //        }
-        //        else if (currentAction == Actions.OpenEquipment)
-        //        {
-        //            var input = PlayerInventoryControl.GetInput(equipmentIndex, currentSession.CurrentPlayer.EquippedItems.Count);
-        //            equipmentIndex = input.selectedIndex;
-        //            if (input.confirmedChoice == true)
-        //                currentSession.UseItem(equipment[equipmentIndex]);
-        //            currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;
-        //        }
-        //        else if (currentAction == Actions.GoToMenu)
-        //        {
-        //            return View.Exit;
-        //        }
-        //        Console.Clear();
-        //    }
+            bool updateStats = true;
+            bool updateWholeMap = true;
+            bool updateMessages = true;
+            bool updateEquipment = true;
+            bool updatebackpack = true;
 
-        //    void DrawPlayerStats()
-        //    {
-        //        Console.Write($"╔═{currentSession.CurrentPlayer.Name}".PadRight(width * 2 - 1, '═') + "╗\n" +
-        //            $"║ Strength: {currentSession.CurrentPlayer.Strength}".PadRight(width - 1, ' ') + $"Vitality: {currentSession.CurrentPlayer.Vitality}".PadRight(width, ' ') + "║\n" +
-        //            $"║ Coolness: {currentSession.CurrentPlayer.Coolness}".PadRight(width - 1, ' ') + $"Armour: {currentSession.CurrentPlayer.Armour}".PadRight(width, ' ') + "║\n" +
-        //            "╚".PadRight(width * 2 - 1, '═') + "╝\n");
-        //    }
-        //    void DrawInfoWindow()
-        //    {
-        //        Console.WriteLine("╔═MESSAGES".PadRight(width * 2 - 1, '═') + "╗");
+            while (true)
+            {
+                updateElements();
+                getInput();
+                if (currentAction == Actions.GoToMenu)     //The player opted to go back to the main menu
+                {
+                    Console.Clear();
+                    return View.Start;
+                }
+            }
 
-        //        for (int i = 3; i > 0; i--)
-        //        {
-        //            if (i <= currentSession.GameMessages.Count())
-        //            {
-        //                Console.Write($"║ ");
-        //                Console.ForegroundColor = i == 1 ? ConsoleColor.Cyan : ConsoleColor.Gray;
-        //                Console.Write($"{currentSession.GameMessages[currentSession.GameMessages.Count() - i]}".PadRight(width * 2 - 3, ' '));
-        //                Console.ResetColor();
-        //                Console.Write("║\n");
-        //            }
-        //            else
-        //                Console.Write($"║".PadRight(width * 2 - 1) + "║\n");
-        //        }
-        //        Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
-        //    }
-        //    void DrawEquipment()
-        //    {
-        //        List<string> slots = new List<string>();
-        //        foreach (KeyValuePair<Equipment.Slot, Equipment?> post in currentSession.CurrentPlayer.EquippedItems)
-        //        {
-        //            if (post.Value == null)
-        //                slots.Add(post.Key + ":");
-        //            else
-        //                slots.Add(post.Key + $": {post.Value.GetName()} +{post.Value.Modifier} {post.Value.AffectedStat}");
-        //            equipment.Add(post.Value);
-        //        }
+            void updateElements()
+            {
+                /*The block below checks the update bools and describes which elements should be redrawn, as well as other instructions*/
 
-        //        Console.ForegroundColor = currentAction == Actions.OpenEquipment ? ConsoleColor.Cyan : ConsoleColor.Gray;
-        //        Console.WriteLine("╔═EQUIPMENT═[E]".PadRight(width * 2 - 1, '═') + "╗");
-        //        for (int i = 0; i < slots.Count; i++)
-        //        {
-        //            string[] selection = i == equipmentIndex ? new string[] { "[", "]" } : new string[] { " ", " " };
-        //            if (i % 2 == 0)
-        //                Console.Write($"║ {selection[0]}{slots[i]}{selection[1]}".PadRight(width - 1, ' '));
-        //            else
-        //                Console.Write($"{selection[0]}{slots[i]}{selection[1]}".PadRight(width, ' ') + "║\n");
-        //            if (i % 2 == 0 && i == slots.Count - 1)
-        //                Console.Write("".PadRight(width, ' ') + "║\n");
-        //        }
-        //        Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
-        //        Console.ResetColor();
-        //    }
-        //    void DrawBackpack()
-        //    {
-        //        Console.ForegroundColor = currentAction == Actions.OpenBackpack ? ConsoleColor.Cyan : ConsoleColor.Gray;
-        //        Console.WriteLine("╔═BACKPACK═[B]".PadRight(width * 2 - 1, '═') + "╗");
-        //        for (int i = 0; i < currentSession.CurrentPlayer.Backpack.Count; i++)
-        //        {
-        //            string[] selection = i == backpackIndex ? new string[] { "[", "]" } : new string[] { " ", " " };
-        //            if (i % 2 == 0)
-        //                Console.Write($"║ {selection[0]}{currentSession.CurrentPlayer.Backpack[i].GetName()}{selection[1]}".PadRight(width - 1, ' '));
-        //            else
-        //                Console.Write($"{selection[0]}{currentSession.CurrentPlayer.Backpack[i].GetName()}{selection[1]}".PadRight(width, ' ') + "║\n");
-        //            if (i % 2 == 0 && i == currentSession.CurrentPlayer.Backpack.Count - 1)
-        //                Console.Write("".PadRight(width, ' ') + "║\n");
-        //        }
-        //        Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
-        //        Console.ResetColor();
-        //    }
-        //    void DrawWorld()
-        //    {
-        //        for (int y = 0; y < height; y++)
-        //        {
-        //            for (int x = 0; x < width; x++)
-        //            {
-        //                currentSession.CurrentWorld.Map[y, x].DrawTile();
-        //            }
-        //            DrawEdge();
-        //        }
-        //        void DrawEdge()
-        //        {
-        //            Console.ForegroundColor = Console.BackgroundColor = ConsoleColor.Black;
-        //            Console.WriteLine(".");
-        //        }
-        //        Console.ResetColor();
-        //    }
-        //}
+                //Handles updates to the map
+                if (updateWholeMap)     //This will probably only happen on first draw of the map
+                    WorldDisplay.DrawWorld(currentSession.CurrentWorld.Map);
+                else if (currentAction == Actions.StayOnMap)    //StayOnMap means that the player moved (or tried to move) on the map
+                    WorldDisplay.DrawTiles(currentSession.CurrentWorld.Map, oldCoordinates, currentSession.CurrentPlayer.Coordinates); //Supplies coordinates to be redrawn.
+
+                //Non interactable windows
+                if (updateStats)
+                    StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
+                if (updateMessages)
+                    MessageWindow.Draw(currentSession.GameMessages);
+
+                //Player containers need more info to be drawn correctly. They can be affected directly or indirectly, and both need to trigger a redraw
+                if (updateEquipment || currentAction == Actions.OpenEquipment)  //If currentAction is set the window is drawn differently.
+                    EquipmentWindow.Draw(currentAction, currentSession.CurrentPlayer.EquippedItems, selectedEquipmentIndex); //currentAction used as bool => is window active?
+                if (updatebackpack || currentAction == Actions.OpenBackpack)
+                    BackpackWindow.Draw(currentAction, currentSession.CurrentPlayer.Backpack, selectedBackpackIndex);
+
+                updateStats = updateWholeMap = updateMessages = updateEquipment = updatebackpack = false;   //All windows are assumed to not require redraw
+            }
+
+            void getInput()
+            {
+                //if-statements below are triggered based on what the user did last loop. Different controllers will be used. Input will determine which elements to update.
+
+                if (currentAction == Actions.StayOnMap) //The player entered a movement direction on the controller
+                {
+                    oldCoordinates = currentSession.CurrentPlayer.Coordinates;
+                    currentAction = MapControl.GetInput(currentSession);
+                    updateEquipment = updatebackpack = updateMessages = true;
+                }
+
+                else if (currentAction == Actions.OpenBackpack) //The player selected the backpack, or is interacting with it
+                {
+                    var input = InGameMenuControl.GetInput(selectedBackpackIndex, currentSession.CurrentPlayer.Backpack.Count); //Controller returns tuple of 3 values
+                    selectedBackpackIndex = input.selectedIndex;    //Sets the currently selected item in backpack
+
+                    if (input.confirmedChoice == true)  //Player decided to use an item
+                    {
+                        currentSession.UseItem(currentSession.CurrentPlayer.Backpack[selectedBackpackIndex]);
+                        updateMessages = updateStats = updateEquipment = true;  //Input may trigger need to update these
+                    }
+                    currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;   //Player decided to leave the inventory menu
+                    updatebackpack = true;  //Backpack will always need to be updated
+                }
+
+                else if (currentAction == Actions.OpenEquipment)    //The player selected the equipment, or is interacting with it. See above.
+                {
+                    var input = InGameMenuControl.GetInput(selectedEquipmentIndex, currentSession.CurrentPlayer.EquippedItems.Count);
+                    selectedEquipmentIndex = input.selectedIndex;
+
+                    if (input.confirmedChoice == true)
+                    {
+                        currentSession.UseItem(currentSession.CurrentPlayer.GetEquippedItems()[selectedEquipmentIndex]);
+                        updateMessages = updateStats = updatebackpack = true;
+                    }
+                    currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;
+                    updateEquipment = true;  //Equipment will always need to be updated
+                }
+            }
+        }
     }
 }

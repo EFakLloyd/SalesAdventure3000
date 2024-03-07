@@ -7,13 +7,10 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
     {
         public static void DrawWorld(Tile[,] map)
         {
-            int height = 15;
-            int width = 42;
-
             Console.SetCursorPosition(0, 4);
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < GameDimensions.Height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < GameDimensions.Width; x++)
                 {
                     map[y, x].DrawTile();
                 }
@@ -26,13 +23,12 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
             }
             Console.ResetColor();
         }
-
-        public static void DrawTiles(Tile[,] map, int[] oldYX, int[] newYX)
+        public static void DrawTiles(Tile[,] map, Position oldYX, Position newYX)
         {
-            Console.SetCursorPosition(oldYX[1]*2, oldYX[0]+4);
-            map[oldYX[0], oldYX[1]].DrawTile();
-            Console.SetCursorPosition(newYX[1]*2, newYX[0]+4);
-            map[newYX[0], newYX[1]].DrawTile();
+            Console.SetCursorPosition(oldYX.X * 2, oldYX.Y + 4);
+            map[oldYX.Y, oldYX.X].DrawTile();
+            Console.SetCursorPosition(newYX.X * 2, newYX.Y + 4);
+            map[newYX.Y, newYX.X].DrawTile();
             Console.ResetColor();
         }
     }

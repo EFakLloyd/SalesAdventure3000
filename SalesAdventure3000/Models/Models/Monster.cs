@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Engine.Models
+﻿namespace Engine.Models
 {
     public class Monster : Creature
     {
         protected string AttackMessage;
-        public Monster(string name, string appearance, ConsoleColor fgColor, int strength, int vitality, int armour, int coolness, string attackMessage, int avatarId, int id) :base(name, appearance, fgColor, strength, vitality, coolness, avatarId, armour, id) 
+        public Monster(string name, string appearance, ConsoleColor fgColor, int strength, int vitality, int armour, int coolness, string attackMessage, int avatarId, int id) : base(name, appearance, fgColor, strength, vitality, coolness, avatarId, armour, id)
         {
             this.AttackMessage = attackMessage;
         }
@@ -19,6 +13,14 @@ namespace Engine.Models
                 return "The " + Name + " misses you, barely.";
             else
                 return AttackMessage + damage + " damage.";
+        }
+        public void SetVitality(int vitality)
+        {
+            Vitality = vitality;
+        }
+        public new (ConsoleColor fgColor, string appearance, int avatarId) GetVisuals()
+        {
+            return (FGColor, Appearance, AvatarId);
         }
     }
 }

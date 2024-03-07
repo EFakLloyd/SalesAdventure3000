@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Engine.Models
+﻿namespace Engine.Models
 {
     public class Consumable : Item
     {
@@ -19,25 +13,32 @@ namespace Engine.Models
         }
         public override string GetName()    //Returns name, formatting for multiple uses.
         {
-            return Name + (Uses > 1 ? " x" + Uses : "");    
+            return Name + (Uses > 1 ? " x" + Uses : "");
         }
         public void Countdown(Player player)    //Is called to reduce duration, based on TimerIsOn. Upon duration end the boost to the player is withdrawn.
         {
-            if (Duration != null)   //Safeguards that only items with an actual Duration is handled.
+            if (Duration <= 0)
             {
-                if (Duration <= 0)
-                {
-                    player.AdjustStat(AffectedStat, Modifier, Adjustment.Down); //"* - 1" inverts modifier.
-                    TimerIsOn = false;  //No more need to check item.
-                }
-                Duration--;
+                player.AdjustStat(AffectedStat, Modifier, Adjustment.Down); //inverts modifier.
+                TimerIsOn = false;  //No more need to check item.
             }
+            Duration--;
         }
         public void Activate()
         {
             if (Duration != null)
                 TimerIsOn = true;
             Uses--;
+        }
+        public (int? duration, bool timerIsOn, int uses) GetStatsOnSave()
+        {
+            return (Duration, TimerIsOn, Uses);
+        }
+        public void SetStatsOnLoad(int? duration, bool timerIsOn, int uses)
+        {
+            Duration = duration;
+            TimerIsOn = timerIsOn;
+            Uses = uses;
         }
     }
 }

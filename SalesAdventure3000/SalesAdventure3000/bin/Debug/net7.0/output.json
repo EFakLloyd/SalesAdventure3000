@@ -1,307 +1,163 @@
 {
-  "EquippedItems": {
-    "Head": {
-      "Type": 0,
-      "AffectedStat": 4,
-      "Modifier": 5,
-      "Name": "Horned Helmet",
-      "Coordinates": [
-        0,
-        0
-      ]
-    },
-    "Weapon": {
-      "Type": 2,
-      "AffectedStat": 1,
-      "Modifier": 10,
-      "Name": "Great Axe",
-      "Coordinates": [
-        0,
-        0
-      ]
-    },
-    "Torso": {
-      "Type": 1,
-      "AffectedStat": 4,
-      "Modifier": 7,
-      "Name": "Chain Mail",
-      "Coordinates": [
-        0,
-        0
-      ]
-    },
-    "Bling": {
-      "Type": 3,
-      "AffectedStat": 1,
-      "Modifier": 6,
-      "Name": "Power Medallion",
-      "Coordinates": [
-        0,
-        0
-      ]
-    }
+  "PlayerStats": {
+    "Name": "sdfsdf",
+    "Vitality": "15",
+    "Strength": "15",
+    "MaxVitality": "15",
+    "Coolness": "5",
+    "Armour": "0",
+    "AvatarId": "0"
   },
-  "Vitality": 15,
-  "AvatarId": 0,
+  "PlayerCoordinates": {
+    "X": 11,
+    "Y": 9
+  },
+  "EquippedItems": [
+    2000,
+    2002,
+    2001,
+    2005
+  ],
   "Backpack": [
     {
-      "TimerIsOn": false,
-      "Uses": 3,
-      "AffectedStat": 2,
-      "Modifier": 3,
-      "Name": "Bread",
-      "Coordinates": [
-        0,
-        0
-      ]
+      "Id": "3000",
+      "Duration": "",
+      "TimerIsOn": "False",
+      "Uses": "3"
     },
     {
-      "TimerIsOn": false,
-      "Uses": 1,
-      "AffectedStat": 5,
-      "Modifier": 15,
-      "Name": "Potion of Cool",
-      "Coordinates": [
-        0,
-        0
-      ]
+      "Id": "3002",
+      "Duration": "10",
+      "TimerIsOn": "False",
+      "Uses": "1"
     },
     {
-      "TimerIsOn": false,
-      "Uses": 1,
-      "AffectedStat": 1,
-      "Modifier": 10,
-      "Name": "Rage Shroom",
-      "Coordinates": [
-        0,
-        0
-      ]
+      "Id": "3003",
+      "Duration": "10",
+      "TimerIsOn": "False",
+      "Uses": "1"
+    },
+    {
+      "Id": "2004"
+    },
+    {
+      "Id": "3001",
+      "Duration": "",
+      "TimerIsOn": "False",
+      "Uses": "1"
+    },
+    {
+      "Id": "3003",
+      "Duration": "10",
+      "TimerIsOn": "False",
+      "Uses": "1"
     }
   ],
-  "Armour": 0,
-  "Name": "jl",
-  "Coordinates": [
-    7,
-    22
+  "Entities": [
+    {
+      "Id": "1002",
+      "Y": "9",
+      "X": "26"
+    },
+    {
+      "Id": "1000",
+      "Y": "10",
+      "X": "14"
+    },
+    {
+      "Id": "1002",
+      "Y": "7",
+      "X": "25"
+    },
+    {
+      "Id": "1000",
+      "Y": "5",
+      "X": "7"
+    },
+    {
+      "Id": "2003",
+      "Y": "13",
+      "X": "34"
+    },
+    {
+      "Id": "1003",
+      "Y": "7",
+      "X": "32"
+    },
+    {
+      "Id": "3000",
+      "Y": "13",
+      "X": "17"
+    },
+    {
+      "Id": "1001",
+      "Y": "10",
+      "X": "3"
+    },
+    {
+      "Id": "1002",
+      "Y": "6",
+      "X": "18"
+    },
+    {
+      "Id": "1002",
+      "Y": "6",
+      "X": "14"
+    },
+    {
+      "Id": "3001",
+      "Y": "8",
+      "X": "29"
+    },
+    {
+      "Id": "3003",
+      "Y": "9",
+      "X": "11"
+    },
+    {
+      "Id": "2000",
+      "Y": "9",
+      "X": "12"
+    },
+    {
+      "Id": "1000",
+      "Y": "8",
+      "X": "1"
+    },
+    {
+      "Id": "1003",
+      "Y": "7",
+      "X": "12"
+    },
+    {
+      "Id": "1002",
+      "Y": "9",
+      "X": "30"
+    },
+    {
+      "Id": "3003",
+      "Y": "3",
+      "X": "6"
+    },
+    {
+      "Id": "2003",
+      "Y": "12",
+      "X": "10"
+    },
+    {
+      "Id": "2004",
+      "Y": "5",
+      "X": "24"
+    },
+    {
+      "Id": "2003",
+      "Y": "3",
+      "X": "15"
+    }
+  ],
+  "Messages": [
+    "You picked up: Sunglasses",
+    "You picked up: Health Potion",
+    "You picked up: Rage Shroom"
   ]
-}----[
-  {
-    "Vitality": 20,
-    "AvatarId": 7,
-    "Backpack": [],
-    "Armour": 4,
-    "Name": "Tintin-beast",
-    "Coordinates": [
-      10,
-      40
-    ]
-  },
-  {
-    "Vitality": 5,
-    "AvatarId": 6,
-    "Backpack": [],
-    "Armour": 0,
-    "Name": "Snake",
-    "Coordinates": [
-      5,
-      37
-    ]
-  },
-  {
-    "Vitality": 10,
-    "AvatarId": 5,
-    "Backpack": [],
-    "Armour": 2,
-    "Name": "Orc",
-    "Coordinates": [
-      3,
-      31
-    ]
-  },
-  {
-    "Vitality": 5,
-    "AvatarId": 6,
-    "Backpack": [],
-    "Armour": 0,
-    "Name": "Snake",
-    "Coordinates": [
-      13,
-      13
-    ]
-  },
-  {
-    "Vitality": 20,
-    "AvatarId": 7,
-    "Backpack": [],
-    "Armour": 4,
-    "Name": "Tintin-beast",
-    "Coordinates": [
-      2,
-      40
-    ]
-  },
-  {
-    "Vitality": 10,
-    "AvatarId": 5,
-    "Backpack": [],
-    "Armour": 2,
-    "Name": "Orc",
-    "Coordinates": [
-      3,
-      17
-    ]
-  },
-  {
-    "Vitality": 5,
-    "AvatarId": 6,
-    "Backpack": [],
-    "Armour": 0,
-    "Name": "Snake",
-    "Coordinates": [
-      13,
-      9
-    ]
-  },
-  {
-    "Vitality": 20,
-    "AvatarId": 7,
-    "Backpack": [],
-    "Armour": 4,
-    "Name": "Tintin-beast",
-    "Coordinates": [
-      13,
-      16
-    ]
-  },
-  {
-    "TimerIsOn": false,
-    "Uses": 3,
-    "AffectedStat": 2,
-    "Modifier": 3,
-    "Name": "Bread",
-    "Coordinates": [
-      10,
-      9
-    ]
-  },
-  {
-    "Vitality": 5,
-    "AvatarId": 6,
-    "Backpack": [],
-    "Armour": 0,
-    "Name": "Snake",
-    "Coordinates": [
-      9,
-      36
-    ]
-  },
-  {
-    "Vitality": 5,
-    "AvatarId": 6,
-    "Backpack": [],
-    "Armour": 0,
-    "Name": "Snake",
-    "Coordinates": [
-      9,
-      32
-    ]
-  },
-  {
-    "TimerIsOn": false,
-    "Uses": 3,
-    "AffectedStat": 2,
-    "Modifier": 3,
-    "Name": "Bread",
-    "Coordinates": [
-      10,
-      41
-    ]
-  },
-  {
-    "Vitality": 20,
-    "AvatarId": 7,
-    "Backpack": [],
-    "Armour": 4,
-    "Name": "Tintin-beast",
-    "Coordinates": [
-      3,
-      4
-    ]
-  },
-  {
-    "TimerIsOn": false,
-    "Uses": 1,
-    "AffectedStat": 2,
-    "Modifier": 10,
-    "Name": "Health Potion",
-    "Coordinates": [
-      5,
-      27
-    ]
-  },
-  {
-    "TimerIsOn": false,
-    "Uses": 1,
-    "AffectedStat": 2,
-    "Modifier": 10,
-    "Name": "Health Potion",
-    "Coordinates": [
-      7,
-      27
-    ]
-  },
-  {
-    "Type": 2,
-    "AffectedStat": 4,
-    "Modifier": 5,
-    "Name": "Short Sword",
-    "Coordinates": [
-      6,
-      25
-    ]
-  },
-  {
-    "Vitality": 20,
-    "AvatarId": 7,
-    "Backpack": [],
-    "Armour": 4,
-    "Name": "Tintin-beast",
-    "Coordinates": [
-      11,
-      11
-    ]
-  },
-  {
-    "Vitality": 5,
-    "AvatarId": 6,
-    "Backpack": [],
-    "Armour": 0,
-    "Name": "Snake",
-    "Coordinates": [
-      12,
-      33
-    ]
-  },
-  {
-    "Vitality": 20,
-    "AvatarId": 7,
-    "Backpack": [],
-    "Armour": 4,
-    "Name": "Tintin-beast",
-    "Coordinates": [
-      10,
-      13
-    ]
-  },
-  {
-    "Vitality": 5,
-    "AvatarId": 6,
-    "Backpack": [],
-    "Armour": 0,
-    "Name": "Snake",
-    "Coordinates": [
-      11,
-      5
-    ]
-  }
-]
+}
