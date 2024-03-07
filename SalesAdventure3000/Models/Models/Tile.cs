@@ -1,6 +1,4 @@
-﻿using Engine.Models;
-
-namespace Engine.Models
+﻿namespace Engine.Models
 {
     public class Tile
     {

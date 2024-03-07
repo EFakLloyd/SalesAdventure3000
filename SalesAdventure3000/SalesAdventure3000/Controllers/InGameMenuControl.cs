@@ -1,13 +1,8 @@
-﻿using SalesAdventure3000_UI.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace SalesAdventure3000_UI.Controllers
 {
-    public class PlayerInventoryControl
+    public class InGameMenuControl
     {
         public static (int selectedIndex, bool confirmedChoice, bool stayInLoop) GetInput(int index, int upperLimit)
         {

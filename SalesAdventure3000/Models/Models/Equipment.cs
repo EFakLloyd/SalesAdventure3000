@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Engine.Models.Item;
-
-namespace Engine.Models
+﻿namespace Engine.Models
 {
     public class Equipment : Item
     {
@@ -16,7 +9,7 @@ namespace Engine.Models
             Weapon,
             Bling
         }
-        public Slot Type { get; set; }    
+        public Slot Type { get; set; }
         public Equipment() { }
         public Equipment(string name, string appearance, ConsoleColor fgColor, Slot type, Stat stat, int modifier, string useMessage, int id) : base(name, appearance, fgColor, stat, modifier, useMessage, id)
         {

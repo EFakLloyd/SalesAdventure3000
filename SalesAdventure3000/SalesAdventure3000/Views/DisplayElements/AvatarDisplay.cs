@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SalesAdventure3000_UI.Views.DisplayElements
 {
@@ -11,14 +8,15 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
         public static void Draw(List<string[]> avatars, int playerAvatarId, int playerArmour, int monsterAvatarId)
         {
             playerAvatarId = playerArmour >= 10 ? playerAvatarId + 1 : playerAvatarId;
+            int padWidth = (GameDimensions.Width * 2 - (avatars[playerAvatarId][6].Length + avatars[monsterAvatarId][6].Length + 10)) / 2;
             Console.SetCursorPosition(0, 4);
             Console.WriteLine("\n\n");
             for (int i = 0; i < 10; i++)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write(avatars[playerAvatarId][i].PadLeft(37) + "".PadRight(10));
+                Console.Write("".PadRight(padWidth) + avatars[playerAvatarId][i] + "".PadRight(10));
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(avatars[monsterAvatarId][i].PadRight(37 / 2) + "\n");
+                Console.Write(avatars[monsterAvatarId][i].PadRight(padWidth) + "\n");
             }
             Console.WriteLine("\n\n\n");
             Console.ResetColor();

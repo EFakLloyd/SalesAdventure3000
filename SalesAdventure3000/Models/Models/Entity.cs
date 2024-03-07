@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Engine.Models
+﻿namespace Engine.Models
 {
     public abstract class Entity
     {
@@ -16,7 +9,8 @@ namespace Engine.Models
             Vitality,
             MaxVitality,
             Armour,
-            Coolness
+            Coolness,
+            AvatarId
         }
         public enum Adjustment
         {
@@ -24,11 +18,11 @@ namespace Engine.Models
             Down
         }
 
-        public string Name { get; }
+        public string Name { get; protected set; }
         protected string Appearance;  //The "texture" of the entity when drawn on the world map.
         protected ConsoleColor FGColor;  //Assiged color.
-        private int id;
-        public int[]? Coordinates { get; private set; }
+        public int Id { get; protected set; }
+        public Position Coordinates { get; protected set; }
 
         public Entity() { }
         public Entity(string name, string appearance, ConsoleColor fGColor, int id)
@@ -36,18 +30,17 @@ namespace Engine.Models
             this.Name = name;
             this.Appearance = appearance;
             this.FGColor = fGColor;
-            this.Coordinates = new int[2];
-            this.id = id;
+            this.Id = id;
         }
         public string TypeOf()
         {
             return this.GetType().ToString();
         }
-        public (ConsoleColor fgColor, string appearance) GetVisuals()
+        public virtual (ConsoleColor fgColor, string appearance) GetVisuals()
         {
             return (FGColor, Appearance);
         }
-        public void SetCoordinates(int[] coordinates)
+        public void SetCoordinates(Position coordinates)
         {
             Coordinates = coordinates;
         }

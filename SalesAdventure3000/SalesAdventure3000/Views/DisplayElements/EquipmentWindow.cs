@@ -1,9 +1,6 @@
 ﻿using Engine.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static SalesAdventure3000_UI.Views.AdventureView;
 
 namespace SalesAdventure3000_UI.Views.DisplayElements
@@ -12,9 +9,9 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
     {
         public static void Draw(Actions currentAction, Dictionary<Equipment.Slot, Equipment?> playerEquipment, int equipmentIndex)
         {
-            int width = 42;
             List<Equipment?> equipment = new List<Equipment>();
             List<string> slots = new List<string>();
+
             foreach (KeyValuePair<Equipment.Slot, Equipment?> post in playerEquipment)
             {
                 if (post.Value == null)
@@ -26,18 +23,18 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 
             Console.SetCursorPosition(0, 24);
             Console.ForegroundColor = currentAction == Actions.OpenEquipment ? ConsoleColor.Cyan : ConsoleColor.Gray;
-            Console.WriteLine("╔═EQUIPMENT═[E]".PadRight(width * 2 - 1, '═') + "╗");
+            Console.WriteLine("╔═EQUIPMENT═[E]".PadRight(GameDimensions.Width * 2 - 1, '═') + "╗");
             for (int i = 0; i < slots.Count; i++)
             {
                 string[] selection = i == equipmentIndex ? new string[] { "[", "]" } : new string[] { " ", " " };
                 if (i % 2 == 0)
-                    Console.Write($"║ {selection[0]}{slots[i]}{selection[1]}".PadRight(width - 1, ' '));
+                    Console.Write($"║ {selection[0]}{slots[i]}{selection[1]}".PadRight(GameDimensions.Width - 1, ' '));
                 else
-                    Console.Write($"{selection[0]}{slots[i]}{selection[1]}".PadRight(width, ' ') + "║\n");
+                    Console.Write($"{selection[0]}{slots[i]}{selection[1]}".PadRight(GameDimensions.Width, ' ') + "║\n");
                 if (i % 2 == 0 && i == slots.Count - 1)
-                    Console.Write("".PadRight(width, ' ') + "║\n");
+                    Console.Write("".PadRight(GameDimensions.Width, ' ') + "║\n");
             }
-            Console.WriteLine("╚".PadRight(width * 2 - 1, '═') + "╝");
+            Console.WriteLine("╚".PadRight(GameDimensions.Width * 2 - 1, '═') + "╝");
             Console.ResetColor();
         }
     }

@@ -1,4 +1,4 @@
-﻿using Engine.Models;
+﻿using Engine;
 using SalesAdventure3000_UI.Controllers;
 using SalesAdventure3000_UI.Views.DisplayElements;
 using System;
@@ -23,7 +23,7 @@ namespace SalesAdventure3000_UI.Views
             while (true)
             {
                 if (updateStats)
-                    StatsWindow.Draw(currentSession.CurrentPlayer.GetStats());
+                    StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
                 AvatarDisplay.Draw(currentSession.Avatars, currentSession.CurrentPlayer.AvatarId, currentSession.CurrentPlayer.Armour, 5); //third param. should be monster.AvatarId
                 if (updateMessages)
                     MessageWindow.Draw(currentSession.GameMessages);
@@ -40,7 +40,7 @@ namespace SalesAdventure3000_UI.Views
                 }
                 else if (currentAction == Actions.ContinueFight)
                 {
-                    var input = PlayerInventoryControl.GetInput(menuIndex, 4);
+                    var input = InGameMenuControl.GetInput(menuIndex, 4);
                     menuIndex = input.selectedIndex;
                     if (input.confirmedChoice == true)
                     {
@@ -64,9 +64,9 @@ namespace SalesAdventure3000_UI.Views
                         }
                     }
                 }
-                else if (currentAction == Actions.OpenBackpack) 
+                else if (currentAction == Actions.OpenBackpack)
                 {
-                    var input = PlayerInventoryControl.GetInput(backpackIndex, currentSession.CurrentPlayer.Backpack.Count);
+                    var input = InGameMenuControl.GetInput(backpackIndex, currentSession.CurrentPlayer.Backpack.Count);
                     backpackIndex = input.selectedIndex;
                     if (input.confirmedChoice == true)
                     {

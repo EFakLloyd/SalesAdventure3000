@@ -1,45 +1,36 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static Engine.Models.Item;
+﻿using Engine.Models;
 
-namespace Engine.Models
+namespace Engine
 {
     public class Session    //Session class handles world and player creation, interaction between the player and the world based on input, saving and loading the game.
-    {                       
+    {
+        private Position gameDimensions;
         public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
         public List<string> GameMessages { get; set; }  //Holds strings that are displayed in the info box.
         public List<string[]> Avatars { get; set; }
-        public Session()
+        public Session(int height, int width)
         {
             this.GameMessages = new List<string>();
             this.Avatars = LoadAvatars();
+            this.gameDimensions = new Position(height, width);
         }
         public void StartNewSession(string name, int avatar)
         {
-            CurrentPlayer = new Player(name, new int[] { 7, 22 }, avatar);  //Standard player starting coordinates.
-            CurrentWorld = new World();
-            CurrentWorld.CreateMap();
+            CurrentPlayer = new Player(name, new Position(7, 22), avatar);  //Standard player starting coordinates.
+            CurrentWorld = new World(gameDimensions);
             CurrentWorld.Map[7, 22].NewOccupant(CurrentPlayer);
-            CurrentWorld.CreateEntities();
-            CurrentWorld.PopulateWorld(CurrentWorld.WorldEntities);
+            CurrentWorld.InsertNewEntities(gameDimensions);
         }
         public void LoadSession()
         {
-            CurrentPlayer = JsonPackaging.LoadPlayer();
-            CurrentWorld = new World();
-            CurrentWorld.CreateMap();
-            CurrentWorld.Map[CurrentPlayer.Coordinates[0], CurrentPlayer.Coordinates[1]].NewOccupant(CurrentPlayer);
-            CurrentWorld.WorldEntities = JsonPackaging.LoadEntities();
-            CurrentWorld.PopulateWorld(CurrentWorld.WorldEntities);
+            var loadedObjects = JsonPackaging.LoadJson();
+
+            CurrentPlayer = loadedObjects.player;
+            CurrentWorld = new World(gameDimensions);
+            CurrentWorld.Map[CurrentPlayer.Coordinates.Y, CurrentPlayer.Coordinates.X].NewOccupant(CurrentPlayer);
+            CurrentWorld.InsertLoadedEntities(loadedObjects.entities);
+            GameMessages = loadedObjects.messages;
         }
         public void SaveSession()
         {

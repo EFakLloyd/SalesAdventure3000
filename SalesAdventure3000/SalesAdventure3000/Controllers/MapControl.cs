@@ -1,34 +1,29 @@
-﻿using Engine.Models;
+﻿using Engine;
+using Engine.Models;
 using SalesAdventure3000_UI.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace SalesAdventure3000_UI.Controllers
 {
     public class MapControl
     {
-        public static AdventureView.Actions Control(Session currentSession)
-            //public static (int[] coordinates, AdventureView.Actions Action) Control(Session currentSession)
+        public static AdventureView.Actions GetInput(Session currentSession)
+        //public static (int[] coordinates, AdventureView.Actions Action) Control(Session currentSession)
         {
 
-            int y = currentSession.CurrentPlayer.Coordinates[0];
-            int x = currentSession.CurrentPlayer.Coordinates[1];
-            int oldX=x;
-            int oldY= y;
+            int y = currentSession.CurrentPlayer.Coordinates.Y;
+            int x = currentSession.CurrentPlayer.Coordinates.X;
+            int oldX = x;
+            int oldY = y;
             ConsoleKeyInfo input = Console.ReadKey();
             switch (input.Key)
             {
                 case ConsoleKey.LeftArrow:
-                    x --;
+                    x--;
                     break;
 
                 case ConsoleKey.RightArrow:
-                    x ++;
+                    x++;
                     break;
 
                 case ConsoleKey.DownArrow:
@@ -40,7 +35,7 @@ namespace SalesAdventure3000_UI.Controllers
                     break;
                 case ConsoleKey.B:
                     return AdventureView.Actions.OpenBackpack;
-                    
+
                 case ConsoleKey.E:
                     return AdventureView.Actions.OpenEquipment;
 
@@ -49,9 +44,9 @@ namespace SalesAdventure3000_UI.Controllers
 
                 default:
                     return AdventureView.Actions.StayOnMap;
-                                       
+
             }
-            
+
             if (Ispassable(y, x))
             {
                 if (currentSession.CurrentWorld.Map[y, x].Occupant is Item item)
@@ -61,10 +56,10 @@ namespace SalesAdventure3000_UI.Controllers
                 }
                 currentSession.CurrentWorld.Map[y, x].NewOccupant(currentSession.CurrentPlayer);
                 currentSession.CurrentWorld.Map[oldY, oldX].ClearOccupant();
-                currentSession.CurrentPlayer.SetCoordinates( new int[] {y,x} );
+                currentSession.CurrentPlayer.SetCoordinates(new Position(y, x));
             }
             return AdventureView.Actions.StayOnMap;
-            
+
 
             bool Ispassable(int y, int x)
             {
@@ -74,7 +69,7 @@ namespace SalesAdventure3000_UI.Controllers
             }
 
         }
-            }
+    }
 
-        }
-    
+}
+
