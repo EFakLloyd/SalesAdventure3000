@@ -24,6 +24,19 @@ namespace Engine.Models
 
             SetCoordinates(coordinates);
         }
+        public (string message, bool opponentIsDead) RecklessAttack(Creature opponent)
+        {
+            int damage = 0;
+            Random roll = new Random();
+            for (int i = 0; i < Strength * 1.5; i++)
+            {
+                damage = roll.Next(1, 4) == 1 ? damage++ : damage; //Every point in strength gives a 1/3 chance to do 1 damage
+            }
+            damage = Math.Max(damage - opponent.Armour, 0); //Adjust for armour
+            if (damage > 0)
+                opponent.AdjustStat(Stat.Vitality, damage, Adjustment.Down);
+            return (MessageUponAttack(damage), opponent.IsDead());
+        }
         protected override string MessageUponAttack(int damage) //Returns string for GameMessage. Takes into account the weapon used.
         {
             string weapon = EquippedItems[Slot.Weapon] == null ? "fists" : EquippedItems[Slot.Weapon].Name;

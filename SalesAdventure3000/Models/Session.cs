@@ -1,19 +1,29 @@
 ﻿using Engine.Models;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Engine
 {
     public class Session    //Session class handles world and player creation, interaction between the player and the world based on input, saving and loading the game.
     {
+        public enum CombatAction
+        {
+            Attack,
+            RecklessAttack,
+            UseItem,
+            Flee
+        }
         private Position gameDimensions;
         public World CurrentWorld { get; set; }
         public Player CurrentPlayer { get; set; }
         public List<string> GameMessages { get; set; }  //Holds strings that are displayed in the info box.
         public List<string[]> Avatars { get; set; }
+        public Monster CurrentMonster { get; private set; }
         public Session(int height, int width)
         {
             this.GameMessages = new List<string>();
             this.Avatars = LoadAvatars();
             this.gameDimensions = new Position(height, width);
+            CurrentMonster = MonsterFactory.CreateMonster(1000);
         }
         public void StartNewSession(string name, int avatar)
         {
@@ -39,9 +49,50 @@ namespace Engine
         public void MovePlayer()
         {
         }
-        public void HandleCombat()
+        public (bool playerIsAlive, bool monsterIsDead) HandleCombat(CombatAction action)
         {
+            bool playerIsAlive = true;
+            bool monsterIsDead = false;
+            (string message, bool opponentIsDead) playerAttack;
+            (string message, bool opponentIsDead) monsterAttack;
 
+            switch (action)
+            {
+                case CombatAction.Attack:
+                    playerAttack = CurrentPlayer.Attack(CurrentMonster);
+                    GameMessages.Add(playerAttack.message);
+                    monsterIsDead = playerAttack.opponentIsDead;
+                    break;
+                case CombatAction.RecklessAttack:
+                    var playerRecklessAttack = CurrentPlayer.Attack(CurrentMonster);
+                    GameMessages.Add(playerRecklessAttack.message);
+                    monsterIsDead = playerRecklessAttack.opponentIsDead;
+                    if (!monsterIsDead)
+                    {
+                        var monsterExtraAttack = CurrentMonster.Attack(CurrentPlayer);
+                        GameMessages.Add(monsterExtraAttack.message);
+                    }
+                    break;
+                case CombatAction.UseItem:
+                    break;
+                case CombatAction.Flee:
+                    break;
+            }
+            if (monsterIsDead)
+            {
+                GameMessages.Add(CurrentMonster.MessageUponDefeat());
+                CurrentWorld.WorldEntities.Remove(CurrentMonster);
+                CurrentMonster = null;
+                return (playerIsAlive, monsterIsDead);
+            }
+            monsterAttack = CurrentMonster.Attack(CurrentPlayer);
+            GameMessages.Add(monsterAttack.message);
+            playerIsAlive = !monsterAttack.opponentIsDead;
+            if (!playerIsAlive)
+            {
+                CurrentPlayer = null;
+            }
+            return (playerIsAlive, monsterIsDead);
         }
         public void PickupItem(Item item)
         {

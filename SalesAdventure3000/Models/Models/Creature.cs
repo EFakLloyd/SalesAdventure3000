@@ -46,7 +46,7 @@
                     break;
             }
         }
-        public (string message, bool isDead) Attack(Creature opponent)
+        public (string message, bool opponentIsDead) Attack(Creature opponent)
         {
             int damage = 0;
             Random roll = new Random();
@@ -63,7 +63,7 @@
         {
             return "";
         }
-        protected bool IsDead()
+        public bool IsDead()
         {
             return Vitality > 0 ? false : true;
         }

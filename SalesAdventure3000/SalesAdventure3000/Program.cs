@@ -20,7 +20,6 @@ namespace SalesAdventure3000
             {
                 if (currentView == View.Start)
                     currentView = MenuView.Display(currentSession);
-
                 BattleView.Display(currentSession); //display BattleView, testing purposes.
 
                 if (currentView == View.Adventure)
