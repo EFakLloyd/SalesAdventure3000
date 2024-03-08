@@ -5,7 +5,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal class AvatarDisplay
     {
-        public static void Draw(List<string[]> avatars, int playerAvatarId, int playerArmour, int monsterAvatarId)
+        public static void Draw(List<string[]> avatars, int playerAvatarId, int playerArmour, int monsterAvatarId, ConsoleColor MonsterColour)
         {
             playerAvatarId = playerArmour >= 10 ? playerAvatarId + 1 : playerAvatarId;
             int padWidth = (GameDimensions.Width * 2 - (avatars[playerAvatarId][6].Length + avatars[monsterAvatarId][6].Length + 10)) / 2;
@@ -15,7 +15,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("".PadRight(padWidth) + avatars[playerAvatarId][i] + "".PadRight(10));
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = MonsterColour;
                 Console.Write(avatars[monsterAvatarId][i].PadRight(padWidth) + "\n");
             }
             Console.WriteLine("\n\n\n");

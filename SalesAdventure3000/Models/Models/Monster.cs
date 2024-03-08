@@ -14,6 +14,10 @@
             else
                 return AttackMessage + damage + " damage.";
         }
+        public string MessageUponDefeat()
+        {
+            return "You've defeated the " + Name + "!";
+        }
         public void SetVitality(int vitality)
         {
             Vitality = vitality;
