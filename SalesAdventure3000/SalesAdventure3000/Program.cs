@@ -1,6 +1,7 @@
-﻿using System;
-using Engine.Models;
+﻿using Engine;
+using SalesAdventure3000_UI;
 using SalesAdventure3000_UI.Views;
+using System;
 using static SalesAdventure3000_UI.Views.ViewType;
 
 namespace SalesAdventure3000
@@ -12,18 +13,17 @@ namespace SalesAdventure3000
             Console.CursorVisible = false;
 
             View currentView = View.Start;
-            
-            Session currentSession = new Session();
+
+            Session currentSession = new Session(GameDimensions.Height, GameDimensions.Width);
 
             while (true)
             {
                 if (currentView == View.Start)
                     currentView = MenuView.Display(currentSession);
-
                 BattleView.Display(currentSession); //display BattleView, testing purposes.
 
-                if (currentView == View.Adventure)                
-                    currentView = AdventureView2.Display(currentSession);
+                if (currentView == View.Adventure)
+                    currentView = AdventureView.Display(currentSession);
 
                 if (currentView == View.Battle)
                     currentView = BattleView.Display(currentSession);

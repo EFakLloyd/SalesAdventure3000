@@ -1,14 +1,13 @@
-﻿using System.Drawing;
-using static Engine.Models.Equipment;
+﻿using static Engine.Models.Equipment;
 
 namespace Engine.Models
 {
     public class Player : Creature
     {
         public Dictionary<Equipment.Slot, Equipment?> EquippedItems { get; private set; } //Dict with a key for each of the equipment slots. Null = empty.
-                                                                                    //Dict only takes unique keys, so we cannot wear more than one item per slot.
+                                                                                          //Dict only takes unique keys, so we cannot wear more than one item per slot.
         public Player() { }
-        public Player(string name, int[] coordinates, int avatarId) 
+        public Player(string name, Position coordinates, int avatarId)
             : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, avatarId, 0, 0)
         {
             this.MaxVitality = Vitality;
@@ -25,13 +24,18 @@ namespace Engine.Models
 
             SetCoordinates(coordinates);
         }
-        public Player(string name, string appearance, int[] coordinates, int avatarId, ConsoleColor fgColor, int strength, int vitality, int maxVitality, int coolness, int armour, Dictionary<Equipment.Slot, Equipment?> equipment, List<Item> backpack, int id)
-            : base(name, appearance, fgColor, strength, vitality, coolness, avatarId, armour, backpack, id)
+        public (string message, bool opponentIsDead) RecklessAttack(Creature opponent)
         {
-            this.MaxVitality = maxVitality;
-            this.EquippedItems = equipment;
-
-            SetCoordinates(coordinates);
+            int damage = 0;
+            Random roll = new Random();
+            for (int i = 0; i < Strength * 1.5; i++)
+            {
+                damage = roll.Next(1, 4) == 1 ? damage++ : damage; //Every point in strength gives a 1/3 chance to do 1 damage
+            }
+            damage = Math.Max(damage - opponent.Armour, 0); //Adjust for armour
+            if (damage > 0)
+                opponent.AdjustStat(Stat.Vitality, damage, Adjustment.Down);
+            return (MessageUponAttack(damage), opponent.IsDead());
         }
         protected override string MessageUponAttack(int damage) //Returns string for GameMessage. Takes into account the weapon used.
         {
@@ -51,13 +55,13 @@ namespace Engine.Models
             if (EquippedItems[equipment.Type] != null)  //Removes existing item from slot, if any.
                 TakeOff(equipment.Type);
             AdjustStat(equipment.AffectedStat, equipment.Modifier, Adjustment.Up);   //Apply bonus from equipment.
-            RemoveFromBackpack(equipment);  
+            RemoveFromBackpack(equipment);
         }
         public void UseConsumable(Consumable consumable)    //Raises relevant stat, turns on timer for consumables which have one.
         {
             AdjustStat(consumable.AffectedStat, consumable.Modifier, Adjustment.Up);
             consumable.Activate();
-            RemoveFromBackpack(consumable);
+            //RemoveFromBackpack(consumable);
         }
         public void PutInBackpack(Item item)
         {
@@ -67,24 +71,41 @@ namespace Engine.Models
         {
             Backpack.Remove(item);
         }
-        public Dictionary<Stat, string> GetStats()
+        public Dictionary<Stat, string> GetData()
         {
-            return new Dictionary<Stat, string>
+            Dictionary<Stat, string> playerStats = new Dictionary<Stat, string>
             {
                 { Stat.Name,Name },
                 { Stat.Vitality,Vitality.ToString() },
                 { Stat.Strength,Strength.ToString() },
                 { Stat.MaxVitality,MaxVitality.ToString() },
                 { Stat.Coolness,Coolness.ToString() },
-                { Stat.Armour,Armour.ToString() }
+                { Stat.Armour,Armour.ToString() },
+                { Stat.AvatarId,AvatarId.ToString() }
             };
+            return playerStats;
         }
-        public Item?[] GetEquipment()
+        public Item?[] GetEquippedItems()
         {
             List<Equipment?> equipment = new List<Equipment>();
             foreach (KeyValuePair<Equipment.Slot, Equipment?> item in EquippedItems)
                 equipment.Add(item.Value);
             return equipment.ToArray();
+        }
+        public void SetLoadedValues(string name, int avatarId, int maxVitality, int vitality, int strength, int coolness, int armour, Position coordinates, Dictionary<Equipment.Slot, Equipment?> equippedItems, List<Item> backpack)
+        {
+            Name = name;
+            Appearance = "@";
+            FGColor = ConsoleColor.DarkMagenta;
+            AvatarId = avatarId;
+            MaxVitality = maxVitality;
+            Vitality = vitality;
+            Strength = strength;
+            Coolness = coolness;
+            Armour = armour;
+            Coordinates = coordinates;
+            EquippedItems = equippedItems;
+            Backpack = backpack;
         }
     }
 }
