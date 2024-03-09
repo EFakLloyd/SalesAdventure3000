@@ -53,46 +53,56 @@ namespace Engine
         {
             bool playerIsAlive = true;
             bool monsterIsDead = false;
-            (string message, bool opponentIsDead) playerAttack;
-            (string message, bool opponentIsDead) monsterAttack;
+            (string message, bool opponentIsDead) playerRoll;
+            (string message, bool opponentIsDead) monsterRoll;
 
             switch (action)
             {
                 case CombatAction.Attack:
-                    playerAttack = CurrentPlayer.Attack(CurrentMonster);
-                    GameMessages.Add(playerAttack.message);
-                    monsterIsDead = playerAttack.opponentIsDead;
+                    playerAttack();
+                    if (!monsterIsDead)
+                        monsterAttack();
                     break;
                 case CombatAction.RecklessAttack:
-                    var playerRecklessAttack = CurrentPlayer.Attack(CurrentMonster);
-                    GameMessages.Add(playerRecklessAttack.message);
-                    monsterIsDead = playerRecklessAttack.opponentIsDead;
+                    playerRecklessAttack();
                     if (!monsterIsDead)
-                    {
-                        var monsterExtraAttack = CurrentMonster.Attack(CurrentPlayer);
-                        GameMessages.Add(monsterExtraAttack.message);
-                    }
+                        monsterAttack();
                     break;
                 case CombatAction.UseItem:
+                    monsterAttack();
                     break;
                 case CombatAction.Flee:
+                    monsterAttack();
                     break;
             }
+            if (!playerIsAlive)
+                CurrentPlayer = null;
             if (monsterIsDead)
             {
                 GameMessages.Add(CurrentMonster.MessageUponDefeat());
-                CurrentWorld.WorldEntities.Remove(CurrentMonster);
                 CurrentMonster = null;
-                return (playerIsAlive, monsterIsDead);
             }
-            monsterAttack = CurrentMonster.Attack(CurrentPlayer);
-            GameMessages.Add(monsterAttack.message);
-            playerIsAlive = !monsterAttack.opponentIsDead;
-            if (!playerIsAlive)
-            {
-                CurrentPlayer = null;
-            }
+
             return (playerIsAlive, monsterIsDead);
+
+            void playerAttack()
+            {
+                playerRoll = CurrentPlayer.Attack(CurrentMonster);
+                GameMessages.Add(playerRoll.message);
+                monsterIsDead = playerRoll.opponentIsDead;
+            }
+            void playerRecklessAttack()
+            {
+                var playerRecklessRoll = CurrentPlayer.RecklessAttack(CurrentMonster);
+                GameMessages.Add(playerRecklessRoll.message);
+                monsterIsDead = playerRecklessRoll.opponentIsDead;
+            }
+            void monsterAttack()
+            {
+                monsterRoll = CurrentMonster.Attack(CurrentPlayer);
+                GameMessages.Add(monsterRoll.message);
+                playerIsAlive = !monsterRoll.opponentIsDead;
+            }
         }
         public void PickupItem(Item item)
         {
