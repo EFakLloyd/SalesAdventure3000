@@ -52,7 +52,9 @@
             Random roll = new Random();
             for (int i = 0; i < Strength; i++)
             {
-                damage = roll.Next(1, 4) == 1 ? damage++ : damage; //Every point in strength gives a 1/3 chance to do 1 damage
+                if (roll.Next(1, 4) == 1)
+                    damage++;
+                //damage = roll.Next(0, 4) == 1 ? damage++ : damage; //Every point in strength gives a 1/3 chance to do 1 damage
             }
             damage = Math.Max(damage - opponent.Armour, 0); //Adjust for armour
             if (damage > 0)

@@ -26,8 +26,10 @@ namespace SalesAdventure3000_UI.Views
             {
                 if (updateStats)
                     StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
-                AvatarDisplay.Draw(currentSession.Avatars, currentSession.CurrentPlayer.AvatarId, currentSession.CurrentPlayer.Armour, 
-                    currentSession.CurrentMonster.GetVisuals().avatarId, currentSession.CurrentMonster.GetVisuals().fgColor);
+                if (currentSession.CurrentMonster != null)
+                    AvatarDisplay.Draw(
+                        currentSession.Avatars, currentSession.CurrentPlayer.AvatarId, currentSession.CurrentPlayer.Armour, 
+                        currentSession.CurrentMonster.GetVisuals().avatarId, currentSession.CurrentMonster.GetVisuals().fgColor);
                 if (updateMessages)
                     MessageWindow.Draw(currentSession.GameMessages);
                 BattleMenuWindow.Draw(currentAction, menuIndex);
@@ -71,7 +73,7 @@ namespace SalesAdventure3000_UI.Views
                         Thread.Sleep(1000);
                         if (!combatResult.playerIsAlive)
                         {
-                            DeathWIndow.Draw();
+                            DeathWindow.Draw();
                             return View.Start;
                         }
                         if (combatResult.monsterIsDead)
