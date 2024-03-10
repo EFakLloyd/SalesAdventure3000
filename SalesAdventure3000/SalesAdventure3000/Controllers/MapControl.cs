@@ -7,14 +7,13 @@ namespace SalesAdventure3000_UI.Controllers
 {
     public class MapControl
     {
-        public static AdventureView.Actions GetInput(Session currentSession)
-        //public static (int[] coordinates, AdventureView.Actions Action) Control(Session currentSession)
+        public static (int x, int y,AdventureView.Actions currentAction) GetInput(Session currentSession)
+       
         {
 
             int y = currentSession.CurrentPlayer.Coordinates.Y;
             int x = currentSession.CurrentPlayer.Coordinates.X;
-            int oldX = x;
-            int oldY = y;
+            
             ConsoleKeyInfo input = Console.ReadKey();
             switch (input.Key)
             {
@@ -34,39 +33,22 @@ namespace SalesAdventure3000_UI.Controllers
                     y--;
                     break;
                 case ConsoleKey.B:
-                    return AdventureView.Actions.OpenBackpack;
+                    return(x,y, AdventureView.Actions.OpenBackpack);
+                    
 
                 case ConsoleKey.E:
-                    return AdventureView.Actions.OpenEquipment;
+                    return (x, y, AdventureView.Actions.OpenEquipment);
 
                 case ConsoleKey.Escape:
-                    return AdventureView.Actions.GoToMenu;
+                    return (x, y, AdventureView.Actions.GoToMenu);
 
                 default:
-                    return AdventureView.Actions.StayOnMap;
+                    return (x, y, AdventureView.Actions.StayOnMap);
 
             }
+            return (x, y, AdventureView.Actions.StayOnMap);
 
-            if (Ispassable(y, x))
-            {
-                if (currentSession.CurrentWorld.Map[y, x].Occupant is Item item)
-                {
-                    currentSession.CurrentPlayer.PutInBackpack(item);
-                    currentSession.GameMessages.Add(item.MessageUponPickUp());
-                }
-                currentSession.CurrentWorld.Map[y, x].NewOccupant(currentSession.CurrentPlayer);
-                currentSession.CurrentWorld.Map[oldY, oldX].ClearOccupant();
-                currentSession.CurrentPlayer.SetCoordinates(new Position(y, x));
-            }
-            return AdventureView.Actions.StayOnMap;
-
-
-            bool Ispassable(int y, int x)
-            {
-                if (y <= 14 && x >= 0 && x < 42)
-                    return currentSession.CurrentWorld.Map[y, x].Passable;
-                return false;
-            }
+           
 
         }
     }
