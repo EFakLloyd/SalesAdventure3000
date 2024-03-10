@@ -66,5 +66,9 @@ namespace Engine.Models
             foreach (Entity entity in WorldEntities)
                 Map[entity.Coordinates.Y, entity.Coordinates.X].NewOccupant(entity);
         }
+        public void RemoveEntity(Entity entity)
+        {
+            WorldEntities.Remove(entity);
+        }
     }
 }

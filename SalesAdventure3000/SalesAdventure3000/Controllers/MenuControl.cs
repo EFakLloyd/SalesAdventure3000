@@ -6,6 +6,7 @@ namespace SalesAdventure3000_UI.Controllers
     {
         public static (int val, bool enter) GetInput(int selectedCommand, int upperLimit)
         {
+            Console.SetCursorPosition(GameDimensions.Width * 2-1, 0);
             bool confirmedChoice = false;
             string input = Console.ReadKey().Key.ToString();
             switch (input)

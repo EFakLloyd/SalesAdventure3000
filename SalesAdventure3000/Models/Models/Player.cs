@@ -20,7 +20,7 @@ namespace Engine.Models
             };
             Backpack.Add(ConsumableFactory.CreateConsumable(3000));
             Backpack.Add(ConsumableFactory.CreateConsumable(3002));
-            Backpack.Add(ConsumableFactory.CreateConsumable(3003));
+            Backpack.Add(EquipmentFactory.CreateEquipment(2003));
 
             SetCoordinates(coordinates);
         }
@@ -30,9 +30,8 @@ namespace Engine.Models
             Random roll = new Random();
             for (int i = 0; i < Strength * 1.5; i++)
             {
-                if (roll.Next(1, 4) == 1)
+                if (roll.Next(1, 4) == 1)   //Every point in strength gives a 1/3 chance to do 1 damage
                     damage++;
-                //damage = roll.Next(1, 4) == 1 ? damage++ : damage; //Every point in strength gives a 1/3 chance to do 1 damage
             }
             damage = Math.Max(damage - opponent.Armour, 0); //Adjust for armour
             if (damage > 0)
@@ -63,7 +62,7 @@ namespace Engine.Models
         {
             AdjustStat(consumable.AffectedStat, consumable.Modifier, Adjustment.Up);
             consumable.Activate();
-            //RemoveFromBackpack(consumable);
+            RemoveFromBackpack(consumable);
         }
         public void PutInBackpack(Item item)
         {

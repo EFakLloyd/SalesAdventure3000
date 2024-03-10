@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FCg1t51hlJ1JSfPo2/cAmvjTK4BIi3a89W6HqQij0w5ih3lz9Ir0RrJzLb7Ly+QUijYGDoyknEA1vLjID/6KAA==",
+  "dgSpecHash": "ADeD+GCYpbkckW3bE+z4z2gRfXBuqpxnRUj6XavN61OZ23reZ+D47zX/YWRKfzYJjVoFTFBq03CFiW5xjBzMmg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000_UI.csproj",
+  "projectFilePath": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000_UI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\helge\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\Jens\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

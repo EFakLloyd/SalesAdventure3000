@@ -1,4 +1,6 @@
 ﻿using Engine.Models;
+using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Engine
@@ -23,7 +25,7 @@ namespace Engine
             this.GameMessages = new List<string>();
             this.Avatars = LoadAvatars();
             this.gameDimensions = new Position(height, width);
-            CurrentMonster = MonsterFactory.CreateMonster(1000);
+            CurrentMonster = MonsterFactory.CreateMonster(1001);
         }
         public void StartNewSession(string name, int avatar)
         {
@@ -80,6 +82,8 @@ namespace Engine
             if (monsterIsDead)
             {
                 GameMessages.Add(CurrentMonster.MessageUponDefeat());
+                CurrentWorld.Map[CurrentMonster.Coordinates.Y, CurrentMonster.Coordinates.X].ClearOccupant();
+                CurrentWorld.RemoveEntity(CurrentMonster);
                 CurrentMonster = null;
             }
 
@@ -108,9 +112,14 @@ namespace Engine
         {
 
         }
-        public void UseItem(Item item)
+        public void UseItem(Item item, [CallerMemberName] string caller = "")
         {
-
+            if (caller == "openEquipment")
+                CurrentPlayer.TakeOff(((Equipment)item).Type);
+            else if (item is Equipment)
+                CurrentPlayer.PutOn((Equipment)item);
+            else if (item is Consumable)
+                CurrentPlayer.UseConsumable((Consumable)item);
         }
         private List<string[]> LoadAvatars()
         {
