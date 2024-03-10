@@ -12,7 +12,7 @@ namespace Engine
                     Monster snake = new Monster("Snake", "Sn", ConsoleColor.Cyan, 5, 5, 0, 15, "The snake slithers up your leg and bites your chin for ", 6, 1000);
                     return snake;
                 case 1001:
-                    Monster orc = new Monster("Orc", "Oc", ConsoleColor.Black, 10, 10, 2, 5, "Recklessly slashing its scimitar, the orc deals you ", 5, 1001);
+                    Monster orc = new Monster("Orc", "Oc", ConsoleColor.Blue, 10, 10, 2, 5, "Recklessly slashing its scimitar, the orc deals you ", 5, 1001);
                     return orc;
                 case 1002:
                     Monster tintin = new Monster("Tintin-beast", "Tt", ConsoleColor.DarkBlue, 30, 20, 4, 99, "Tintin makes you feel insufficent with his Linux skills. You take ", 7, 1002);

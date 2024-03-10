@@ -6,6 +6,7 @@ namespace SalesAdventure3000_UI.Controllers
     {
         public static (int selectedIndex, bool confirmedChoice, bool stayInLoop) GetInput(int index, int upperLimit)
         {
+            Console.SetCursorPosition(GameDimensions.Width * 2-1, 0);
             bool confirmedChoice = false;
             bool stayInLoop = true;
             string input = Console.ReadKey().Key.ToString();

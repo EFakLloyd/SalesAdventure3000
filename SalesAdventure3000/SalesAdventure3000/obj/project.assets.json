@@ -73,24 +73,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\helge\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Jens\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000_UI.csproj",
+      "projectUniqueName": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000_UI.csproj",
       "projectName": "SalesAdventure3000_UI",
-      "projectPath": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000_UI.csproj",
-      "packagesPath": "C:\\Users\\helge\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\obj\\",
+      "projectPath": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000_UI.csproj",
+      "packagesPath": "C:\\Users\\Jens\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\helge\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Jens\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -98,15 +93,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Engine.csproj": {
-              "projectPath": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Engine.csproj"
+            "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Engine.csproj": {
+              "projectPath": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Engine.csproj"
             }
           }
         }
@@ -115,11 +109,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -141,7 +130,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

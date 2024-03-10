@@ -13,15 +13,21 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
             Console.ForegroundColor = currentAction == Actions.OpenBackpack ? ConsoleColor.Cyan : ConsoleColor.Gray;
             Console.WriteLine("╔═BACKPACK═[B]".PadRight(GameDimensions.Width * 2 - 1, '═') + "╗");
 
-            for (int i = 0; i < backpack.Count; i++)
+            for (int i = 0; i < 8; i++)
             {
-                string[] selection = i == backpackIndex ? new string[] { "[", "]" } : new string[] { " ", " " };
-                if (i % 2 == 0)
-                    Console.Write($"║ {selection[0]}{backpack[i].GetName()}{selection[1]}".PadRight(GameDimensions.Width - 1, ' '));
+                if (i < backpack.Count)
+                {
+                    string[] selection = i == backpackIndex ? new string[] { "[", "]" } : new string[] { " ", " " };
+                    if (i % 2 == 0)
+                        Console.Write($"║ {selection[0]}{backpack[i].GetName()}{selection[1]}".PadRight(GameDimensions.Width - 1, ' '));
+                    else
+                        Console.Write($"{selection[0]}{backpack[i].GetName()}{selection[1]}".PadRight(GameDimensions.Width, ' ') + "║\n");
+                    if (i % 2 == 0 && i == backpack.Count - 1)
+                        Console.Write("".PadRight(GameDimensions.Width, ' ') + "║\n");
+                }
                 else
-                    Console.Write($"{selection[0]}{backpack[i].GetName()}{selection[1]}".PadRight(GameDimensions.Width, ' ') + "║\n");
-                if (i % 2 == 0 && i == backpack.Count - 1)
-                    Console.Write("".PadRight(GameDimensions.Width, ' ') + "║\n");
+                    if (i % 2 == 0)
+                        Console.Write($"║".PadRight(GameDimensions.Width * 2 - 1) + "║\n");
             }
             Console.WriteLine("╚".PadRight(GameDimensions.Width * 2 - 1, '═') + "╝");
             Console.ResetColor();

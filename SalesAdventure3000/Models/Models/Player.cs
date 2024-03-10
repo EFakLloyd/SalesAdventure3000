@@ -13,14 +13,21 @@ namespace Engine.Models
             this.MaxVitality = Vitality;
             this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>
             {
-                { Slot.Head, EquipmentFactory.CreateEquipment(2000) },
-                { Slot.Weapon, EquipmentFactory.CreateEquipment(2002) },
-                { Slot.Torso, EquipmentFactory.CreateEquipment(2001) },
-                { Slot.Bling, EquipmentFactory.CreateEquipment(2005) }
+                { Slot.Head, null },
+                { Slot.Weapon, null },
+                { Slot.Torso, null },
+                { Slot.Bling, null }
             };
+            //this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>
+            //{
+            //    { Slot.Head, EquipmentFactory.CreateEquipment(2000) },
+            //    { Slot.Weapon, EquipmentFactory.CreateEquipment(2002) },
+            //    { Slot.Torso, EquipmentFactory.CreateEquipment(2001) },
+            //    { Slot.Bling, EquipmentFactory.CreateEquipment(2005) }
+            //};
             Backpack.Add(ConsumableFactory.CreateConsumable(3000));
             Backpack.Add(ConsumableFactory.CreateConsumable(3002));
-            Backpack.Add(ConsumableFactory.CreateConsumable(3003));
+            Backpack.Add(EquipmentFactory.CreateEquipment(2003));
 
             SetCoordinates(coordinates);
         }
@@ -30,9 +37,8 @@ namespace Engine.Models
             Random roll = new Random();
             for (int i = 0; i < Strength * 1.5; i++)
             {
-                if (roll.Next(1, 4) == 1)
+                if (roll.Next(1, 4) == 1)   //Every point in strength gives a 1/3 chance to do 1 damage
                     damage++;
-                //damage = roll.Next(1, 4) == 1 ? damage++ : damage; //Every point in strength gives a 1/3 chance to do 1 damage
             }
             damage = Math.Max(damage - opponent.Armour, 0); //Adjust for armour
             if (damage > 0)
@@ -56,6 +62,7 @@ namespace Engine.Models
         {
             if (EquippedItems[equipment.Type] != null)  //Removes existing item from slot, if any.
                 TakeOff(equipment.Type);
+            EquippedItems[equipment.Type] = equipment;
             AdjustStat(equipment.AffectedStat, equipment.Modifier, Adjustment.Up);   //Apply bonus from equipment.
             RemoveFromBackpack(equipment);
         }
@@ -63,7 +70,8 @@ namespace Engine.Models
         {
             AdjustStat(consumable.AffectedStat, consumable.Modifier, Adjustment.Up);
             consumable.Activate();
-            //RemoveFromBackpack(consumable);
+            if (consumable.Uses == 0)
+                RemoveFromBackpack(consumable);
         }
         public void PutInBackpack(Item item)
         {

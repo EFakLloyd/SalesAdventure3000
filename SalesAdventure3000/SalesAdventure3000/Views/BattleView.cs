@@ -3,7 +3,7 @@ using Engine.Models;
 using SalesAdventure3000_UI.Controllers;
 using SalesAdventure3000_UI.Views.DisplayElements;
 using System;
-using System.Threading;
+using System.Collections.Generic;
 using static SalesAdventure3000_UI.Views.AdventureView;
 using static SalesAdventure3000_UI.Views.ViewType;
 
@@ -11,89 +11,110 @@ namespace SalesAdventure3000_UI.Views
 {
     public class BattleView
     {
-        private static int menuIndex = 0;
-        private static int backpackIndex = 0;
-
         public static View Display(Session currentSession)
         {
             Actions currentAction = Actions.ContinueFight;
+            int menuIndex = 0;
+            int backpackIndex = 0;
+            (bool playerIsAlive, bool monsterIsDead) combatResult = (true, false);
+            List<Item> consumablesInBackpack = new List<Item>();
+            foreach (Item item in currentSession.CurrentPlayer.Backpack)
+            {
+                if (item is Consumable)
+                    consumablesInBackpack.Add(item);
+            }
 
-            bool updateStats = true;
-            bool updateMessages = true;
-            bool updatebackpack = true;
+            StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
+            AvatarDisplay.Draw(currentSession.Avatars, currentSession.CurrentPlayer.AvatarId, currentSession.CurrentPlayer.Armour,
+                        currentSession.CurrentMonster.GetVisuals().avatarId, currentSession.CurrentMonster.GetVisuals().fgColor);
+            MessageWindow.Draw(currentSession.GameMessages);
+            BattleMenuWindow.Draw(currentAction, menuIndex);
+            BackpackWindow.Draw(currentAction, consumablesInBackpack, backpackIndex);
 
             while (true)
             {
-                if (updateStats)
-                    StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
-                if (currentSession.CurrentMonster != null)
-                    AvatarDisplay.Draw(
-                        currentSession.Avatars, currentSession.CurrentPlayer.AvatarId, currentSession.CurrentPlayer.Armour, 
-                        currentSession.CurrentMonster.GetVisuals().avatarId, currentSession.CurrentMonster.GetVisuals().fgColor);
-                if (updateMessages)
-                    MessageWindow.Draw(currentSession.GameMessages);
-                BattleMenuWindow.Draw(currentAction, menuIndex);
-                if (updatebackpack)
-                    BackpackWindow.Draw(currentAction, currentSession.CurrentPlayer.Backpack, backpackIndex);
-
-                updateStats = updateMessages = updatebackpack = false;
-
-                if (currentAction == Actions.StayOnMap)
+                if (!combatResult.playerIsAlive)
+                {
+                    DeathWindow.Draw();
+                    return View.Start;
+                }
+                if (currentAction == Actions.StayOnMap || combatResult.monsterIsDead)
                 {
                     Console.Clear();
                     return View.Adventure;
                 }
-                else if (currentAction == Actions.ContinueFight)
-                {
-                    var input = InGameMenuControl.GetInput(menuIndex, 4);
-                    menuIndex = input.selectedIndex;
-                    (bool playerIsAlive, bool monsterIsDead) combatResult = (true, false);
+                selectBattleMenuAction();
 
-                    if (input.confirmedChoice == true)
+                void selectBattleMenuAction()
+                {
+                    while (true)
                     {
-                        switch (input.selectedIndex)
+                        BattleMenuWindow.Draw(currentAction, menuIndex);
+                        var input = InGameMenuControl.GetInput(menuIndex, 4);
+                        menuIndex = input.selectedIndex;
+
+                        if (input.confirmedChoice == true)
                         {
-                            case 0:
-                                combatResult = currentSession.HandleCombat(Session.CombatAction.Attack);
-                                updateStats = updateMessages = true;
+                            switch (input.selectedIndex)
+                            {
+                                case 0:
+                                    combatResult = currentSession.HandleCombat(Session.CombatAction.Attack);
+                                    break;
+                                case 1:
+                                    combatResult = currentSession.HandleCombat(Session.CombatAction.RecklessAttack);
+                                    break;
+                                case 2:
+                                    currentAction = Actions.OpenBackpack;
+                                    if (playerSelectsItemFromBackpack())
+                                        combatResult = currentSession.HandleCombat(Session.CombatAction.UseItem);
+                                    break;
+                                case 3:
+                                    combatResult = currentSession.HandleCombat(Session.CombatAction.Flee);
+                                    currentAction = Actions.StayOnMap;
+                                    break;
+                            }
+                            if (!combatResult.playerIsAlive || combatResult.monsterIsDead || currentAction == Actions.StayOnMap)
                                 break;
-                            case 1:
-                                combatResult = currentSession.HandleCombat(Session.CombatAction.RecklessAttack);
-                                break;
-                            case 2:
-                                currentAction = Actions.OpenBackpack;
-                                combatResult = currentSession.HandleCombat(Session.CombatAction.UseItem);
-                                updateStats = updateMessages = updatebackpack = true;
-                                break;
-                            case 3:
-                                combatResult = currentSession.HandleCombat(Session.CombatAction.Flee);
-                                currentAction = Actions.StayOnMap;
-                                break;
+
+                            StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
+                            MessageWindow.Draw(currentSession.GameMessages);
+                            BattleMenuWindow.Draw(currentAction, menuIndex);
+                            BackpackWindow.Draw(currentAction, consumablesInBackpack, backpackIndex);
                         }
-                        Thread.Sleep(1000);
-                        if (!combatResult.playerIsAlive)
-                        {
-                            DeathWindow.Draw();
-                            return View.Start;
-                        }
-                        if (combatResult.monsterIsDead)
-                            currentAction = Actions.StayOnMap;
                     }
                 }
-                else if (currentAction == Actions.OpenBackpack)
+
+                bool playerSelectsItemFromBackpack()
                 {
-                    var input = InGameMenuControl.GetInput(backpackIndex, currentSession.CurrentPlayer.Backpack.Count);
-                    backpackIndex = input.selectedIndex;
-                    if (input.confirmedChoice == true)
+                    BattleMenuWindow.Draw(currentAction, menuIndex);
+
+                    while (currentAction == Actions.OpenBackpack)
                     {
-                        if (currentSession.CurrentPlayer.Backpack[backpackIndex] is Equipment)
-                            currentSession.GameMessages.Add("Cannot use equipment during battle");
-                        else
-                            currentSession.UseItem(currentSession.CurrentPlayer.Backpack[backpackIndex]);
-                            updateMessages = updateStats = true;
+                        BackpackWindow.Draw(currentAction, consumablesInBackpack, backpackIndex);
+
+                        var input = InGameMenuControl.GetInput(backpackIndex, consumablesInBackpack.Count);
+
+                        backpackIndex = input.selectedIndex;
+                        if (input.confirmedChoice == true)
+                        {
+                            currentSession.UseItem(consumablesInBackpack[backpackIndex]);
+                            backpackIndex = backpackIndex == consumablesInBackpack.Count - 1 ? backpackIndex -1 : backpackIndex;
+                            consumablesInBackpack.Clear();
+                            foreach (Item item in currentSession.CurrentPlayer.Backpack)
+                            {
+                                if (item is Consumable)
+                                    consumablesInBackpack.Add(item);
+                            }
+                            currentAction = Actions.ContinueFight;
+                            return true;
+                        }
+                        if (!input.stayInLoop)
+                        {
+                            currentAction = Actions.ContinueFight;
+                            return false;
+                        }
                     }
-                    currentAction = input.stayInLoop ? currentAction : Actions.ContinueFight;
-                    updatebackpack = true;
+                    return false;
                 }
             }
         }

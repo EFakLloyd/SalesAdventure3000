@@ -1,4 +1,6 @@
 ﻿using Engine.Models;
+using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Engine
@@ -23,7 +25,7 @@ namespace Engine
             this.GameMessages = new List<string>();
             this.Avatars = LoadAvatars();
             this.gameDimensions = new Position(height, width);
-            CurrentMonster = MonsterFactory.CreateMonster(1000);
+            CurrentMonster = MonsterFactory.CreateMonster(1001);
         }
         public void StartNewSession(string name, int avatar)
         {
@@ -46,11 +48,19 @@ namespace Engine
         {
             JsonPackaging.CreateJson(this);
         }
-        public bool MovePlayer(int x, int y)
+        public bool AnyMonsterAt(int x, int y)
+        {
+            if (CurrentWorld.Map[y, x].Occupant is Monster monster)
+            {
+                CurrentMonster = monster;
+                return true;
+            }
+            return false;
+        }
+        public void MovePlayer(int x, int y)
         {
             int oldX = CurrentPlayer.Coordinates.X;
             int oldY = CurrentPlayer.Coordinates.Y;
-
 
             if (Ispassable(y, x))
             {
@@ -59,25 +69,16 @@ namespace Engine
                     CurrentPlayer.PutInBackpack(item);
                     GameMessages.Add(item.MessageUponPickUp());
                 }
-                if (CurrentWorld.Map[y, x].Occupant is Monster monster)
-                {
-                    CurrentMonster = monster;
-                    return true;
-                }
-                CurrentWorld.Map[y, x].NewOccupant(CurrentPlayer);
                 CurrentWorld.Map[oldY, oldX].ClearOccupant();
+                CurrentWorld.Map[y, x].NewOccupant(CurrentPlayer);
                 CurrentPlayer.SetCoordinates(new Position(y, x));
             }
-
-
-
             bool Ispassable(int y, int x)
             {
                 if (y <= 14 && x >= 0 && x < 42)
                     return CurrentWorld.Map[y, x].Passable;
                 return false;
             }
-            return false;
         }
         public (bool playerIsAlive, bool monsterIsDead) HandleCombat(CombatAction action)
         {
@@ -110,6 +111,8 @@ namespace Engine
             if (monsterIsDead)
             {
                 GameMessages.Add(CurrentMonster.MessageUponDefeat());
+                CurrentWorld.Map[CurrentMonster.Coordinates.Y, CurrentMonster.Coordinates.X].ClearOccupant();
+                CurrentWorld.RemoveEntity(CurrentMonster);
                 CurrentMonster = null;
             }
 
@@ -134,13 +137,27 @@ namespace Engine
                 playerIsAlive = !monsterRoll.opponentIsDead;
             }
         }
-        public void PickupItem(Item item)
+        public void UseItem(Item item, [CallerMemberName] string caller = "")
         {
-
+            if (caller == "removeEquipment")
+                CurrentPlayer.TakeOff(((Equipment)item).Type);
+            else
+                if (item is Equipment)
+                    CurrentPlayer.PutOn((Equipment)item);
+                if (item is Consumable)
+                    CurrentPlayer.UseConsumable((Consumable)item);
+                GameMessages.Add(item.MessageUponUse());
         }
-        public void UseItem(Item item)
+        public void CheckTimersAndResolve()
         {
-
+            foreach (Entity entity in CurrentWorld.WorldEntities)
+            {
+                if (entity is Consumable)
+                {
+                    if (((Consumable)entity).TimerIsOn)
+                        ((Consumable)entity).Countdown(CurrentPlayer);
+                }
+            }
         }
         private List<string[]> LoadAvatars()
         {

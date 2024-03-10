@@ -10,7 +10,7 @@ namespace SalesAdventure3000_UI.Controllers
         public static (int x, int y,AdventureView.Actions currentAction) GetInput(Session currentSession)
        
         {
-
+            Console.SetCursorPosition(GameDimensions.Width * 2-1, 0);
             int y = currentSession.CurrentPlayer.Coordinates.Y;
             int x = currentSession.CurrentPlayer.Coordinates.X;
             
