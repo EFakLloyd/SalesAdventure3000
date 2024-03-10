@@ -70,7 +70,8 @@ namespace Engine.Models
         {
             AdjustStat(consumable.AffectedStat, consumable.Modifier, Adjustment.Up);
             consumable.Activate();
-            RemoveFromBackpack(consumable);
+            if (consumable.Uses == 0)
+                RemoveFromBackpack(consumable);
         }
         public void PutInBackpack(Item item)
         {

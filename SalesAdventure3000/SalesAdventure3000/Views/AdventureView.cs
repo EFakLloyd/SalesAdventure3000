@@ -45,7 +45,7 @@ namespace SalesAdventure3000_UI.Views
                     Console.Clear();
                     return View.Start;
                 }
-                if (goToFight)
+                if (currentAction == Actions.ContinueFight)
                 {
                     Console.Clear();
                     return View.Battle;
@@ -58,16 +58,18 @@ namespace SalesAdventure3000_UI.Views
                 EquipmentWindow.Draw(currentAction, currentSession.CurrentPlayer.EquippedItems, selectedEquipmentIndex);
                 BackpackWindow.Draw(currentAction, currentSession.CurrentPlayer.Backpack, selectedBackpackIndex);
                 WorldDisplay.DrawTiles(currentSession.CurrentWorld.Map, oldCoordinates, currentSession.CurrentPlayer.Coordinates);
+                StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
 
+                currentSession.CheckTimersAndResolve();
 
-                oldCoordinates = currentSession.CurrentPlayer.Coordinates;
                 var input = MapControl.GetInput(currentSession);
                 currentAction = input.currentAction;
                 oldCoordinates = currentSession.CurrentPlayer.Coordinates;
 
-                return currentSession.MovePlayer(input.x, input.y);
-                }
-                //CurrentSession.MovePlayer
+                if (currentSession.AnyMonsterAt(input.x, input.y))
+                    currentAction = Actions.ContinueFight;
+                else
+                    currentSession.MovePlayer(input.x, input.y);
             }
             void openBackpack()
             {
@@ -85,6 +87,7 @@ namespace SalesAdventure3000_UI.Views
                         currentSession.UseItem(currentSession.CurrentPlayer.Backpack[selectedBackpackIndex]);
                         selectedBackpackIndex = selectedBackpackIndex == currentSession.CurrentPlayer.Backpack.Count ? selectedBackpackIndex - 1 : selectedBackpackIndex;
                         EquipmentWindow.Draw(currentAction, currentSession.CurrentPlayer.EquippedItems, selectedEquipmentIndex);
+                        MessageWindow.Draw(currentSession.GameMessages);
                         StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
                     }
                     if (!input.stayInLoop)
@@ -92,7 +95,6 @@ namespace SalesAdventure3000_UI.Views
                         currentAction = Actions.StayOnMap;
                         break;
                     }
-                    //currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;   //Player decided to leave the inventory menu
                 }
             }
             void openEquipment()
@@ -110,6 +112,7 @@ namespace SalesAdventure3000_UI.Views
                     {
                         currentSession.UseItem(currentSession.CurrentPlayer.GetEquippedItems()[selectedEquipmentIndex], "removeEquipment");
                         BackpackWindow.Draw(currentAction, currentSession.CurrentPlayer.Backpack, selectedBackpackIndex);
+                        MessageWindow.Draw(currentSession.GameMessages);
                         StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
                     }
                     if (!input.stayInLoop)
@@ -118,7 +121,6 @@ namespace SalesAdventure3000_UI.Views
                         break;
                     }
                 }
-                return false;
             }
         }
     }
