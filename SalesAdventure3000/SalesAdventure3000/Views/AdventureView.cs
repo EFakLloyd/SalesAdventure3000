@@ -45,6 +45,11 @@ namespace SalesAdventure3000_UI.Views
                     Console.Clear();
                     return View.Start;
                 }
+                if (goToFight)
+                {
+                    Console.Clear();
+                    return View.Battle;
+                }
             }
 
             void mapNavigation()
@@ -54,9 +59,14 @@ namespace SalesAdventure3000_UI.Views
                 BackpackWindow.Draw(currentAction, currentSession.CurrentPlayer.Backpack, selectedBackpackIndex);
                 WorldDisplay.DrawTiles(currentSession.CurrentWorld.Map, oldCoordinates, currentSession.CurrentPlayer.Coordinates);
 
-                oldCoordinates = currentSession.CurrentPlayer.Coordinates;
-                currentAction = MapControl.GetInput(currentSession);
 
+                oldCoordinates = currentSession.CurrentPlayer.Coordinates;
+                var input = MapControl.GetInput(currentSession);
+                currentAction = input.currentAction;
+                oldCoordinates = currentSession.CurrentPlayer.Coordinates;
+
+                return currentSession.MovePlayer(input.x, input.y);
+                }
                 //CurrentSession.MovePlayer
             }
             void openBackpack()
@@ -108,6 +118,7 @@ namespace SalesAdventure3000_UI.Views
                         break;
                     }
                 }
+                return false;
             }
         }
     }
