@@ -46,8 +46,38 @@ namespace Engine
         {
             JsonPackaging.CreateJson(this);
         }
-        public void MovePlayer()
+        public bool MovePlayer(int x, int y)
         {
+            int oldX = CurrentPlayer.Coordinates.X;
+            int oldY = CurrentPlayer.Coordinates.Y;
+
+
+            if (Ispassable(y, x))
+            {
+                if (CurrentWorld.Map[y, x].Occupant is Item item)
+                {
+                    CurrentPlayer.PutInBackpack(item);
+                    GameMessages.Add(item.MessageUponPickUp());
+                }
+                if (CurrentWorld.Map[y, x].Occupant is Monster monster)
+                {
+                    CurrentMonster = monster;
+                    return true;
+                }
+                CurrentWorld.Map[y, x].NewOccupant(CurrentPlayer);
+                CurrentWorld.Map[oldY, oldX].ClearOccupant();
+                CurrentPlayer.SetCoordinates(new Position(y, x));
+            }
+
+
+
+            bool Ispassable(int y, int x)
+            {
+                if (y <= 14 && x >= 0 && x < 42)
+                    return CurrentWorld.Map[y, x].Passable;
+                return false;
+            }
+            return false;
         }
         public (bool playerIsAlive, bool monsterIsDead) HandleCombat(CombatAction action)
         {

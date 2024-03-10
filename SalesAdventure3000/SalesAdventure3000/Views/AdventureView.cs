@@ -37,11 +37,16 @@ namespace SalesAdventure3000_UI.Views
             while (true)
             {
                 updateElements();
-                getInput();
+                bool goToFight = getInput();
                 if (currentAction == Actions.GoToMenu)     //The player opted to go back to the main menu
                 {
                     Console.Clear();
                     return View.Start;
+                }
+                if (goToFight)
+                {
+                    Console.Clear();
+                    return View.Battle;
                 }
             }
 
@@ -70,17 +75,18 @@ namespace SalesAdventure3000_UI.Views
                 updateStats = updateWholeMap = updateMessages = updateEquipment = updatebackpack = false;   //All windows are assumed to not require redraw
             }
 
-            void getInput()
+            bool getInput()
             {
                 //if-statements below are triggered based on what the user did last loop. Different controllers will be used. Input will determine which elements to update.
 
                 if (currentAction == Actions.StayOnMap) //The player entered a movement direction on the controller
                 {
                     oldCoordinates = currentSession.CurrentPlayer.Coordinates;
-                    currentAction = MapControl.GetInput(currentSession);
+                    var input = MapControl.GetInput(currentSession);
+                    currentAction = input.currentAction;
 
-                    //CurrentSession.MovePlayer
                     updateEquipment = updatebackpack = updateMessages = true;
+                    return currentSession.MovePlayer(input.x, input.y);
                 }
 
                 else if (currentAction == Actions.OpenBackpack) //The player selected the backpack, or is interacting with it
@@ -110,6 +116,7 @@ namespace SalesAdventure3000_UI.Views
                     currentAction = input.stayInLoop ? currentAction : Actions.StayOnMap;
                     updateEquipment = true;  //Equipment will always need to be updated
                 }
+                return false;
             }
         }
     }
