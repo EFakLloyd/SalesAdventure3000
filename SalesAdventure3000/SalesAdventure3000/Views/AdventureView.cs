@@ -78,6 +78,8 @@ namespace SalesAdventure3000_UI.Views
                 {
                     oldCoordinates = currentSession.CurrentPlayer.Coordinates;
                     currentAction = MapControl.GetInput(currentSession);
+
+                    //CurrentSession.MovePlayer
                     updateEquipment = updatebackpack = updateMessages = true;
                 }
 
