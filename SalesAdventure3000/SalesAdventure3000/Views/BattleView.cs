@@ -98,6 +98,7 @@ namespace SalesAdventure3000_UI.Views
                         if (input.confirmedChoice == true)
                         {
                             currentSession.UseItem(consumablesInBackpack[backpackIndex]);
+                            backpackIndex = backpackIndex == consumablesInBackpack.Count - 1 ? backpackIndex -1 : backpackIndex;
                             consumablesInBackpack.Clear();
                             foreach (Item item in currentSession.CurrentPlayer.Backpack)
                             {

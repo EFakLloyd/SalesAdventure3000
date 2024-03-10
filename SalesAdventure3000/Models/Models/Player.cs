@@ -13,11 +13,18 @@ namespace Engine.Models
             this.MaxVitality = Vitality;
             this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>
             {
-                { Slot.Head, EquipmentFactory.CreateEquipment(2000) },
-                { Slot.Weapon, EquipmentFactory.CreateEquipment(2002) },
-                { Slot.Torso, EquipmentFactory.CreateEquipment(2001) },
-                { Slot.Bling, EquipmentFactory.CreateEquipment(2005) }
+                { Slot.Head, null },
+                { Slot.Weapon, null },
+                { Slot.Torso, null },
+                { Slot.Bling, null }
             };
+            //this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>
+            //{
+            //    { Slot.Head, EquipmentFactory.CreateEquipment(2000) },
+            //    { Slot.Weapon, EquipmentFactory.CreateEquipment(2002) },
+            //    { Slot.Torso, EquipmentFactory.CreateEquipment(2001) },
+            //    { Slot.Bling, EquipmentFactory.CreateEquipment(2005) }
+            //};
             Backpack.Add(ConsumableFactory.CreateConsumable(3000));
             Backpack.Add(ConsumableFactory.CreateConsumable(3002));
             Backpack.Add(EquipmentFactory.CreateEquipment(2003));
@@ -55,6 +62,7 @@ namespace Engine.Models
         {
             if (EquippedItems[equipment.Type] != null)  //Removes existing item from slot, if any.
                 TakeOff(equipment.Type);
+            EquippedItems[equipment.Type] = equipment;
             AdjustStat(equipment.AffectedStat, equipment.Modifier, Adjustment.Up);   //Apply bonus from equipment.
             RemoveFromBackpack(equipment);
         }

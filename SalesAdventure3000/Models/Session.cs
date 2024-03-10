@@ -114,7 +114,7 @@ namespace Engine
         }
         public void UseItem(Item item, [CallerMemberName] string caller = "")
         {
-            if (caller == "openEquipment")
+            if (caller == "removeEquipment")
                 CurrentPlayer.TakeOff(((Equipment)item).Type);
             else if (item is Equipment)
                 CurrentPlayer.PutOn((Equipment)item);

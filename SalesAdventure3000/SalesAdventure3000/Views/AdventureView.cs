@@ -21,7 +21,7 @@ namespace SalesAdventure3000_UI.Views
         private static int selectedBackpackIndex = 0;
         private static int selectedEquipmentIndex = 0;
 
-        public static View Display(Session currentSession)  //
+        public static View Display(Session currentSession)
         {
             Position oldCoordinates = currentSession.CurrentPlayer.Coordinates;
             Actions currentAction = Actions.StayOnMap;
@@ -73,6 +73,7 @@ namespace SalesAdventure3000_UI.Views
                     if (input.confirmedChoice == true)  //Player decided to use an item
                     {
                         currentSession.UseItem(currentSession.CurrentPlayer.Backpack[selectedBackpackIndex]);
+                        selectedBackpackIndex = selectedBackpackIndex == currentSession.CurrentPlayer.Backpack.Count ? selectedBackpackIndex - 1 : selectedBackpackIndex;
                         EquipmentWindow.Draw(currentAction, currentSession.CurrentPlayer.EquippedItems, selectedEquipmentIndex);
                         StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
                     }
@@ -97,7 +98,7 @@ namespace SalesAdventure3000_UI.Views
 
                     if (input.confirmedChoice == true)
                     {
-                        currentSession.UseItem(currentSession.CurrentPlayer.GetEquippedItems()[selectedEquipmentIndex]);
+                        currentSession.UseItem(currentSession.CurrentPlayer.GetEquippedItems()[selectedEquipmentIndex], "removeEquipment");
                         BackpackWindow.Draw(currentAction, currentSession.CurrentPlayer.Backpack, selectedBackpackIndex);
                         StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
                     }
