@@ -7,7 +7,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal static class EquipmentWindow
     {
-        public static void Draw(Actions currentAction, Dictionary<Equipment.Slot, Equipment?> playerEquipment, int equipmentIndex)
+        public static void Draw(ViewEnums.Actions currentAction, Dictionary<Equipment.Slot, Equipment?> playerEquipment, int equipmentIndex)
         {
             List<Equipment?> equipment = new List<Equipment>();
             List<string> slots = new List<string>();
@@ -22,7 +22,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
             }
 
             Console.SetCursorPosition(0, 24);
-            Console.ForegroundColor = currentAction == Actions.OpenEquipment ? ConsoleColor.Cyan : ConsoleColor.Gray;
+            Console.ForegroundColor = currentAction == ViewEnums.Actions.OpenEquipment ? ConsoleColor.Cyan : ConsoleColor.Gray;
             Console.WriteLine("╔═EQUIPMENT═[E]".PadRight(GameDimensions.Width * 2 - 1, '═') + "╗");
             for (int i = 0; i < slots.Count; i++)
             {

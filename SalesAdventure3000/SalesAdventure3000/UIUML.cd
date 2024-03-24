@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SalesAdventure3000_UI.Controllers.InGameMenuControl" Collapsed="true">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\InGameMenuControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Controllers.MapControl" Collapsed="true">
+    <Position X="12.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\MapControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Controllers.MenuControl" Collapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\MenuControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.DisplayElements.AvatarDisplay" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DisplayElements\AvatarDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.DisplayElements.BackpackWindow" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DisplayElements\BackpackWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.DisplayElements.BattleMenuWindow" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DisplayElements\BattleMenuWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.DisplayElements.DeathWindow" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DisplayElements\DeathWIndow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.DisplayElements.EquipmentWindow" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DisplayElements\EquipmentWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.DisplayElements.MessageWindow" Collapsed="true">
+    <Position X="9" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DisplayElements\MessageWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.DisplayElements.StatsWindow">
+    <Position X="12.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DisplayElements\StatsWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.DisplayElements.WorldDisplay" Collapsed="true">
+    <Position X="7.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\DisplayElements\WorldDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.AdventureView" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="SalesAdventure3000_UI.Views.AdventureView.Actions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Views\AdventureView.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AdventureView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.BattleView" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\BattleView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.MenuView" Collapsed="true">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MenuView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.Views.ViewType" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="SalesAdventure3000_UI.Views.ViewType.View" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Views\ViewType.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ViewType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000_UI.GameDimensions" Collapsed="true">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameDimensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SalesAdventure3000.Program" Collapsed="true">
+    <Position X="10.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

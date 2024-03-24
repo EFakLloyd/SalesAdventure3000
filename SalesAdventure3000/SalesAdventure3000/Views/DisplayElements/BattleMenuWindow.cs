@@ -5,12 +5,12 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal static class BattleMenuWindow
     {
-        public static void Draw(Actions currentAction, int menuIndex)
+        public static void Draw(ViewEnums.Actions currentAction, int menuIndex)
         {
             string[] battleOptions = new string[] { "Attack", "Reckless Attack", "Use Item", "Flee" };
 
             Console.SetCursorPosition(0, 24);
-            Console.ForegroundColor = currentAction == Actions.ContinueFight ? ConsoleColor.Cyan : ConsoleColor.Gray;
+            Console.ForegroundColor = currentAction == ViewEnums.Actions.ContinueFight ? ConsoleColor.Cyan : ConsoleColor.Gray;
             Console.WriteLine("╔".PadRight(GameDimensions.Width * 2 - 1, '═') + "╗");
             for (int i = 0; i < battleOptions.Length; i++)
             {

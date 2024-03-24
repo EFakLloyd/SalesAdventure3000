@@ -46,13 +46,13 @@
                     break;
             }
         }
-        public (string message, bool opponentIsDead) Attack(Creature opponent)
+        public (string message, bool opponentIsDead) Attack(Creature opponent)  //Standard attack.
         {
             int damage = 0;
             Random roll = new Random();
             for (int i = 0; i < Strength; i++)
             {
-                if (roll.Next(1, 4) == 1)   //Every point in strength gives a 1/3 chance to do 1 damage
+                if (roll.Next(1, 4) == 1)   //Every point in strength gives a 1/3 chance to do 1 damage.
                     damage++;
             }
             damage = Math.Max(damage - opponent.Armour, 0); //Adjust for armour
@@ -60,13 +60,7 @@
                 opponent.AdjustStat(Stat.Vitality, damage, Adjustment.Down);
             return (MessageUponAttack(damage), opponent.IsDead());
         }
-        protected virtual string MessageUponAttack(int damage) //Returns string for GameMessage. Takes into account the weapon used.
-        {
-            return "";
-        }
-        public bool IsDead()
-        {
-            return Vitality > 0 ? false : true;
-        }
+        protected abstract string MessageUponAttack(int damage); //Returns string for GameMessage.
+        public bool IsDead() => Vitality > 0 ? false : true;     
     }
 }

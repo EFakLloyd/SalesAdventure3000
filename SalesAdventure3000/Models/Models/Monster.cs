@@ -14,17 +14,8 @@
             else
                 return AttackMessage + damage + " damage.";
         }
-        public string MessageUponDefeat()
-        {
-            return "You've defeated the " + Name + "!";
-        }
-        public void SetVitality(int vitality)
-        {
-            Vitality = vitality;
-        }
-        public new (ConsoleColor fgColor, string appearance, int avatarId) GetVisuals()
-        {
-            return (FGColor, Appearance, AvatarId);
-        }
+        public string MessageUponDefeat() => "You've defeated the " + Name + "!";
+        public void SetVitality(int vitality) => Vitality = vitality;
+        public new (ConsoleColor fgColor, string appearance, int avatarId) GetVisuals() => (FGColor, Appearance, AvatarId); //Monsters also have an avatar (compared to entity).
     }
 }

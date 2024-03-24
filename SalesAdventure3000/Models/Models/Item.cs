@@ -3,7 +3,7 @@
     public class Item : Entity
     {
         public Stat AffectedStat { get; private set; }  //The stat to be altered.
-        public int Modifier { get; private set; }   //By how much?
+        public int Modifier { get; private set; }       //By how much?
 
         private string UseMessage;
         public Item() { }
@@ -13,17 +13,8 @@
             this.Modifier = modifier;
             this.UseMessage = useMessage;
         }
-        public string MessageUponUse()  //String that goes in GameMessages.
-        {
-            return UseMessage + Modifier + " " + AffectedStat + ".";
-        }
-        public string MessageUponPickUp() //String that goes in GameMessages.
-        {
-            return "You picked up: " + Name;
-        }
-        public virtual string GetName()
-        {
-            return Name;
-        }
+        public string MessageUponUse() => UseMessage + Modifier + " " + AffectedStat + "."; //String that goes in GameMessages.
+        public string MessageUponPickUp() => "You picked up: " + Name;                      //String that goes in GameMessages.
+        public virtual string GetName() => Name;
     }
 }

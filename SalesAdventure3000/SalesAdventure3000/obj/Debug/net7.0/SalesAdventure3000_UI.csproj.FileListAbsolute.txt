@@ -10,7 +10,6 @@ C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdvent
 C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdventure3000_UI.AssemblyInfoInputs.cache
 C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdventure3000_UI.AssemblyInfo.cs
 C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdventure3000_UI.csproj.CoreCompileInputs.cache
-C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdventure3000_UI.csproj.CopyComplete
 C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdventure3000_UI.dll
 C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\refint\SalesAdventure3000_UI.dll
 C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdventure3000_UI.pdb
@@ -41,3 +40,5 @@ C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\S
 C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdventure3000_UI.sourcelink.json
 C:\Users\helge\OneDrive\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdv.003605F4.Up2Date
+C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdventure3000_UI.sourcelink.json
+C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\obj\Debug\net7.0\SalesAdv.003605F4.Up2Date

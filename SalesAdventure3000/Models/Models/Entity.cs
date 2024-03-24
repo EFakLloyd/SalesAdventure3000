@@ -12,15 +12,15 @@
             Coolness,
             AvatarId
         }
-        public enum Adjustment
+        public enum Adjustment      //Designates bonus or malus modifiers.
         {
             Up,
             Down
         }
 
         public string Name { get; protected set; }
-        protected string Appearance;  //The "texture" of the entity when drawn on the world map.
-        protected ConsoleColor FGColor;  //Assiged color.
+        protected string Appearance;                    //The "texture" of the entity when drawn on the world map.
+        protected ConsoleColor FGColor;                 //Assiged color.
         public int Id { get; protected set; }
         public Position Coordinates { get; protected set; }
 
@@ -32,17 +32,7 @@
             this.FGColor = fGColor;
             this.Id = id;
         }
-        public string TypeOf()
-        {
-            return this.GetType().ToString();
-        }
-        public virtual (ConsoleColor fgColor, string appearance) GetVisuals()
-        {
-            return (FGColor, Appearance);
-        }
-        public void SetCoordinates(Position coordinates)
-        {
-            Coordinates = coordinates;
-        }
+        public virtual (ConsoleColor fgColor, string appearance) GetVisuals() => (FGColor, Appearance);     //Returns needed information to draw the entity on map.
+        public void SetCoordinates(Position coordinates) => Coordinates = coordinates;
     }
 }

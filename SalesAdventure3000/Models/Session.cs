@@ -1,7 +1,9 @@
 ﻿using Engine.Models;
 using System.ComponentModel.Design;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using static Engine.Models.Entity;
 
 namespace Engine
 {
@@ -59,8 +61,7 @@ namespace Engine
         }
         public void MovePlayer(int x, int y)
         {
-            int oldX = CurrentPlayer.Coordinates.X;
-            int oldY = CurrentPlayer.Coordinates.Y;
+            CurrentPlayer.SetOldCoordinates(CurrentPlayer.Coordinates);
 
             if (Ispassable(y, x))
             {
@@ -69,7 +70,7 @@ namespace Engine
                     CurrentPlayer.PutInBackpack(item);
                     GameMessages.Add(item.MessageUponPickUp());
                 }
-                CurrentWorld.Map[oldY, oldX].ClearOccupant();
+                CurrentWorld.Map[CurrentPlayer.Coordinates.Y, CurrentPlayer.Coordinates.X].ClearOccupant();
                 CurrentWorld.Map[y, x].NewOccupant(CurrentPlayer);
                 CurrentPlayer.SetCoordinates(new Position(y, x));
             }
@@ -91,8 +92,6 @@ namespace Engine
             {
                 case CombatAction.Attack:
                     playerAttack();
-                    if (!monsterIsDead)
-                        monsterAttack();
                     break;
                 case CombatAction.RecklessAttack:
                     playerRecklessAttack();
@@ -100,12 +99,12 @@ namespace Engine
                         monsterAttack();
                     break;
                 case CombatAction.UseItem:
-                    monsterAttack();
                     break;
                 case CombatAction.Flee:
-                    monsterAttack();
                     break;
             }
+            if (!monsterIsDead)
+                monsterAttack();
             if (!playerIsAlive)
                 CurrentPlayer = null;
             if (monsterIsDead)
@@ -141,21 +140,25 @@ namespace Engine
         {
             if (caller == "removeEquipment")
                 CurrentPlayer.TakeOff(((Equipment)item).Type);
-            else
-                if (item is Equipment)
-                    CurrentPlayer.PutOn((Equipment)item);
-                if (item is Consumable)
-                    CurrentPlayer.UseConsumable((Consumable)item);
-                GameMessages.Add(item.MessageUponUse());
+            if (caller == "BattleDisplay" && item is Equipment)
+            {
+                GameMessages.Add("Cannot use equipment during battle");
+                return;
+            }
+            if (item is Consumable)
+                CurrentPlayer.UseConsumable((Consumable)item);
+            if (item is Equipment)
+                CurrentPlayer.PutOn((Equipment)item);
+            GameMessages.Add(item.MessageUponUse());
         }
         public void CheckTimersAndResolve()
         {
             foreach (Entity entity in CurrentWorld.WorldEntities)
             {
-                if (entity is Consumable)
+                if (entity is Consumable consumable && consumable.TimerIsOn)
                 {
-                    if (((Consumable)entity).TimerIsOn)
-                        ((Consumable)entity).Countdown(CurrentPlayer);
+                    if (!consumable.Countdown())
+                        CurrentPlayer.AdjustStat(consumable.AffectedStat, consumable.Modifier, Adjustment.Down);
                 }
             }
         }

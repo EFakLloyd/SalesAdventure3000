@@ -3,7 +3,7 @@ using SalesAdventure3000_UI.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using static SalesAdventure3000_UI.Views.ViewType;
+using static SalesAdventure3000_UI.Views.ViewEnums;
 
 namespace SalesAdventure3000_UI.Views
 {
@@ -14,14 +14,13 @@ namespace SalesAdventure3000_UI.Views
         public static View Display(Session currentSession)
         {
             View returnView = View.Start;
+            bool menuLoop = true;
             List<string> options = new List<string>(new string[] { "New game", "Load game", "Exit" });
             if (currentSession.CurrentPlayer != null)
             {
                 options.Insert(0, "Continue");
                 options.Insert(1, "Save Game");
             }
-
-            bool menuLoop = true;
 
             while (menuLoop)
             {
