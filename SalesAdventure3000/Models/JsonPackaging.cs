@@ -11,10 +11,10 @@ namespace Engine
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
-                Formatting = Formatting.Indented
+                Formatting = Formatting.Indented                            //For readability.
             };
 
-            List<int> equippedItemsList = new();
+            List<int> equippedItemsList = new();                    //
             List<Dictionary<string, string>> backpackList = new();
             List<Dictionary<string, string>> entityList = new();
 
@@ -97,7 +97,7 @@ namespace Engine
             List<string> loadedMessages = json["Messages"].ToObject<List<string>>();
             List<int> equippedItemsJson = json["EquippedItems"].ToObject<List<int>>();
             List<Dictionary<string, string>> backpackJson = json["Backpack"].ToObject<List<Dictionary<string, string>>>();
-            List<Dictionary<string, string>> entitiesJson = json["Entities"].ToObject<List<Dictionary<string, string>>>();  //This part is funky right now, since we never remove posts from WorldEntities
+            List<Dictionary<string, string>> entitiesJson = json["Entities"].ToObject<List<Dictionary<string, string>>>();
 
             Dictionary<Equipment.Slot, Equipment?> loadedEquipment = new() { { Equipment.Slot.Head, null }, { Equipment.Slot.Weapon, null }, { Equipment.Slot.Torso, null }, { Equipment.Slot.Bling, null } };
             List<Item> loadedbackpack = new();

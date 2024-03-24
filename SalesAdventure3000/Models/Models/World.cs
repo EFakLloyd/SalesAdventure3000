@@ -60,15 +60,12 @@ namespace Engine.Models
                 }
             }
         }
-        public void InsertLoadedEntities(List<Entity> loadedEntities)
+        public void InsertLoadedEntities(List<Entity> loadedEntities)       //Takes loaded entities and doles out to map at their respective coordinates.
         {
             WorldEntities = loadedEntities;
             foreach (Entity entity in WorldEntities)
                 Map[entity.Coordinates.Y, entity.Coordinates.X].NewOccupant(entity);
         }
-        public void RemoveEntity(Entity entity)
-        {
-            WorldEntities.Remove(entity);
-        }
+        public void RemoveEntity(Entity entity) => WorldEntities.Remove(entity);
     }
 }

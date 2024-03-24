@@ -9,3 +9,5 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SalesAdventure3000_UI
 build_property.ProjectDir = C:\Users\Jens\Documents\GitHub\SalesAdventure3000\SalesAdventure3000\SalesAdventure3000\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

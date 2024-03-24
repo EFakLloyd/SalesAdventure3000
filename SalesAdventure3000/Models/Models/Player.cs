@@ -4,6 +4,7 @@ namespace Engine.Models
 {
     public class Player : Creature
     {
+        public Position OldCoordinates { get; private set; }
         public Dictionary<Equipment.Slot, Equipment?> EquippedItems { get; private set; } //Dict with a key for each of the equipment slots. Null = empty.
                                                                                           //Dict only takes unique keys, so we cannot wear more than one item per slot.
         public Player() { }
@@ -18,18 +19,9 @@ namespace Engine.Models
                 { Slot.Torso, null },
                 { Slot.Bling, null }
             };
-            //this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>
-            //{
-            //    { Slot.Head, EquipmentFactory.CreateEquipment(2000) },
-            //    { Slot.Weapon, EquipmentFactory.CreateEquipment(2002) },
-            //    { Slot.Torso, EquipmentFactory.CreateEquipment(2001) },
-            //    { Slot.Bling, EquipmentFactory.CreateEquipment(2005) }
-            //};
             Backpack.Add(ConsumableFactory.CreateConsumable(3000));
-            Backpack.Add(ConsumableFactory.CreateConsumable(3002));
-            Backpack.Add(EquipmentFactory.CreateEquipment(2003));
-
             SetCoordinates(coordinates);
+            SetOldCoordinates(Coordinates);
         }
         public (string message, bool opponentIsDead) RecklessAttack(Creature opponent)
         {
@@ -73,14 +65,6 @@ namespace Engine.Models
             if (consumable.Uses == 0)
                 RemoveFromBackpack(consumable);
         }
-        public void PutInBackpack(Item item)
-        {
-            Backpack.Add(item);
-        }
-        private void RemoveFromBackpack(Item item)
-        {
-            Backpack.Remove(item);
-        }
         public Dictionary<Stat, string> GetData()
         {
             Dictionary<Stat, string> playerStats = new Dictionary<Stat, string>
@@ -117,5 +101,8 @@ namespace Engine.Models
             EquippedItems = equippedItems;
             Backpack = backpack;
         }
+        public void SetOldCoordinates(Position position) => OldCoordinates = position;  //Used for redrawing tiles on map.
+        public void PutInBackpack(Item item) => Backpack.Add(item);
+        private void RemoveFromBackpack(Item item) => Backpack.Remove(item);
     }
 }

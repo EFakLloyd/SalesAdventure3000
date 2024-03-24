@@ -2,7 +2,7 @@
 using SalesAdventure3000_UI;
 using SalesAdventure3000_UI.Views;
 using System;
-using static SalesAdventure3000_UI.Views.ViewType;
+using static SalesAdventure3000_UI.Views.ViewEnums;
 
 namespace SalesAdventure3000
 {
@@ -23,10 +23,10 @@ namespace SalesAdventure3000
                 //currentView = BattleView.Display(currentSession); //display BattleView, testing purposes.
 
                 if (currentView == View.Adventure)
-                    currentView = AdventureView.Display(currentSession);
+                    currentView = AdventureView.AdventureDisplay(currentSession);
 
                 if (currentView == View.Battle)
-                    currentView = BattleView.Display(currentSession);
+                    currentView = BattleView.BattleDisplay(currentSession);
 
                 if (currentView == View.Exit)
                     break;

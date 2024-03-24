@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Engine.ConsumableFactory">
+    <Position X="15.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Factories\ConsumableFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.EquipmentFactory">
+    <Position X="17.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\EquipmentFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.MonsterFactory">
+    <Position X="19.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\MonsterFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.JsonPackaging">
+    <Position X="17.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JsonPackaging.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Session">
+    <Position X="19.25" Y="5.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Engine.Session.CombatAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Session.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAEAAQAAAAAIAAAAAAAAWAAAAEAAAQgACQAgEgAAIA=</HashCode>
+      <FileName>Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.Consumable">
+    <Position X="8" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAACAgBQAAAUAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Models\Consumable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.Creature">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAAAgAAAAABAAAAAgAEAAAAIJAEAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\Creature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.Entity">
+    <Position X="9.5" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Engine.Models.Entity.Stat" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Entity.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Engine.Models.Entity.Adjustment" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Entity.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACBAAAAAIAAAAAAACAAAQAIAAQAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.Equipment">
+    <Position X="5.75" Y="8.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Engine.Models.Equipment.Slot" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Equipment.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.Item">
+    <Position X="7" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAJAAAAAAgAAAAAAIABAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Models\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.Monster">
+    <Position X="10.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAABAAAAAAAABAAAAAAgAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Monster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.Player">
+    <Position X="12.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkCAAAAAEAAAAAAAAAAAAAgAABEAEEAAAAABAAAAAAA=</HashCode>
+      <FileName>Models\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.Position">
+    <Position X="11.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Models\Position.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.Tile">
+    <Position X="15.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAABAAAAAAAAAARAQAAAAIACAAAACA=</HashCode>
+      <FileName>Models\Tile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine.Models.World">
+    <Position X="17.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEABAABAAAAAABAAAAEAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\World.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

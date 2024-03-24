@@ -7,10 +7,10 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal static class BackpackWindow
     {
-        public static void Draw(Actions currentAction, List<Item> backpack, int backpackIndex)
+        public static void Draw(ViewEnums.Actions currentAction, List<Item> backpack, int backpackIndex)
         {
             Console.SetCursorPosition(0, 28);
-            Console.ForegroundColor = currentAction == Actions.OpenBackpack ? ConsoleColor.Cyan : ConsoleColor.Gray;
+            Console.ForegroundColor = currentAction == ViewEnums.Actions.OpenBackpack ? ConsoleColor.Cyan : ConsoleColor.Gray;
             Console.WriteLine("╔═BACKPACK═[B]".PadRight(GameDimensions.Width * 2 - 1, '═') + "╗");
 
             for (int i = 0; i < 8; i++)

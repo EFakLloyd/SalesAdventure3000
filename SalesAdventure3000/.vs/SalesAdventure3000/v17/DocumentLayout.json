@@ -1,41 +1,101 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\",
+  "WorkspaceRootPath": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\displayelements\\deathwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\displayelements\\deathwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\viewenums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\viewenums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|c:\\users\\helge\\onedrive\\documents\\github\\salesadventure3000\\salesadventure3000\\salesadventure3000\\views\\adventureview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\adventureview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\menuview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\menuview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\battleview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|c:\\users\\jens\\documents\\github\\salesadventure3000\\salesadventure3000\\salesadventure3000\\views\\battleview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\battleview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|c:\\users\\helge\\onedrive\\documents\\github\\salesadventure3000\\salesadventure3000\\models\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\adventureview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\adventureview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\models\\models\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\displayelements\\battlemenuwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\displayelements\\battlemenuwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\models\\models\\creature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\creature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\displayelements\\backpackwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\displayelements\\backpackwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\displayelements\\avatardisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\displayelements\\avatardisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\displayelements\\avatardisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\models\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|c:\\users\\jens\\documents\\github\\salesadventure3000\\salesadventure3000\\salesadventure3000\\controllers\\mapcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\controllers\\mapcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\models\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\models\\jsonpackaging.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\jsonpackaging.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|c:\\users\\jens\\documents\\github\\salesadventure3000\\salesadventure3000\\models\\models\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|c:\\users\\jens\\documents\\github\\salesadventure3000\\salesadventure3000\\models\\models\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\tile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|c:\\users\\jens\\documents\\github\\salesadventure3000\\salesadventure3000\\models\\models\\consumable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\consumable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\models\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|c:\\users\\jens\\documents\\github\\salesadventure3000\\salesadventure3000\\models\\models\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\models\\models\\creature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\creature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\models\\models\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|c:\\users\\jens\\documents\\github\\salesadventure3000\\salesadventure3000\\models\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\models\\factories\\monsterfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7E1370D-969F-4D96-AB82-841C44E55CF5}|Models\\Engine.csproj|solutionrelative:models\\factories\\monsterfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\displayelements\\equipmentwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\displayelements\\equipmentwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\displayelements\\updater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\displayelements\\updater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\displayelements\\worlddisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\displayelements\\worlddisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\views\\displayelements\\deathwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\views\\displayelements\\deathwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\salesadventure3000\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6437EB77-F3E8-4720-B7E7-C77F7A43CE97}|SalesAdventure3000\\SalesAdventure3000_UI.csproj|solutionrelative:salesadventure3000\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -46,15 +106,93 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 18,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "World.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\World.cs",
+              "RelativeDocumentMoniker": "Models\\Models\\World.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\World.cs",
+              "RelativeToolTip": "Models\\Models\\World.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAcwD4AAACZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T18:57:00.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Tile.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Tile.cs",
+              "RelativeDocumentMoniker": "Models\\Models\\Tile.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Tile.cs",
+              "RelativeToolTip": "Models\\Models\\Tile.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAowBAAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T18:56:10.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Item.cs",
+              "RelativeDocumentMoniker": "Models\\Models\\Item.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Item.cs",
+              "RelativeToolTip": "Models\\Models\\Item.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T18:50:02.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Entity.cs",
+              "RelativeDocumentMoniker": "Models\\Models\\Entity.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Entity.cs",
+              "RelativeToolTip": "Models\\Models\\Entity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T18:47:07.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MapControl.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Controllers\\MapControl.cs",
+              "RelativeDocumentMoniker": "SalesAdventure3000\\Controllers\\MapControl.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Controllers\\MapControl.cs",
+              "RelativeToolTip": "SalesAdventure3000\\Controllers\\MapControl.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T18:35:30.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Consumable.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Consumable.cs",
+              "RelativeDocumentMoniker": "Models\\Models\\Consumable.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Consumable.cs",
+              "RelativeToolTip": "Models\\Models\\Consumable.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAACDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-24T18:19:33.903Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -81,105 +219,221 @@
               "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EquipmentWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\EquipmentWindow.cs",
+              "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\DisplayElements\\EquipmentWindow.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\EquipmentWindow.cs",
+              "RelativeToolTip": "SalesAdventure3000\\Views\\DisplayElements\\EquipmentWindow.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAB/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T14:09:08.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BackpackWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\BackpackWindow.cs",
+              "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\DisplayElements\\BackpackWindow.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\BackpackWindow.cs",
+              "RelativeToolTip": "SalesAdventure3000\\Views\\DisplayElements\\BackpackWindow.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T14:08:54.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BattleMenuWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\BattleMenuWindow.cs",
+              "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\DisplayElements\\BattleMenuWindow.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\BattleMenuWindow.cs",
+              "RelativeToolTip": "SalesAdventure3000\\Views\\DisplayElements\\BattleMenuWindow.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T14:08:39.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ViewEnums.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\ViewEnums.cs",
+              "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\ViewEnums.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\ViewEnums.cs",
+              "RelativeToolTip": "SalesAdventure3000\\Views\\ViewEnums.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T14:03:28.993Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "MenuView.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\MenuView.cs",
+              "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\MenuView.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\MenuView.cs",
+              "RelativeToolTip": "SalesAdventure3000\\Views\\MenuView.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAowBgAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T14:01:34.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MonsterFactory.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Factories\\MonsterFactory.cs",
+              "RelativeDocumentMoniker": "Models\\Factories\\MonsterFactory.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Factories\\MonsterFactory.cs",
+              "RelativeToolTip": "Models\\Factories\\MonsterFactory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T12:33:28.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "WorldDisplay.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\WorldDisplay.cs",
+              "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\DisplayElements\\WorldDisplay.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\WorldDisplay.cs",
+              "RelativeToolTip": "SalesAdventure3000\\Views\\DisplayElements\\WorldDisplay.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T12:00:47.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Updater.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\Updater.cs",
+              "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\DisplayElements\\Updater.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\Updater.cs",
+              "RelativeToolTip": "SalesAdventure3000\\Views\\DisplayElements\\Updater.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T10:59:26.227Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "JsonPackaging.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\JsonPackaging.cs",
+              "RelativeDocumentMoniker": "Models\\JsonPackaging.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\JsonPackaging.cs",
+              "RelativeToolTip": "Models\\JsonPackaging.cs",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAowBkAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T10:56:53.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "AdventureView.cs",
-              "DocumentMoniker": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\AdventureView.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\AdventureView.cs",
               "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\AdventureView.cs",
-              "ToolTip": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\AdventureView.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\AdventureView.cs",
               "RelativeToolTip": "SalesAdventure3000\\Views\\AdventureView.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAgwFAAAAAAAAAA",
+              "ViewState": "AQIAACsAAAAAAAAAAAAgwBsAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T12:02:12.814Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 23,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Program.cs",
               "RelativeDocumentMoniker": "SalesAdventure3000\\Program.cs",
-              "ToolTip": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Program.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Program.cs",
               "RelativeToolTip": "SalesAdventure3000\\Program.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAuwBUAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T11:02:25.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-08T11:02:25.776Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "AvatarDisplay.cs",
-              "DocumentMoniker": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\AvatarDisplay.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\AvatarDisplay.cs",
               "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\DisplayElements\\AvatarDisplay.cs",
-              "ToolTip": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\AvatarDisplay.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\AvatarDisplay.cs",
               "RelativeToolTip": "SalesAdventure3000\\Views\\DisplayElements\\AvatarDisplay.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAgwBYAAAAIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T10:13:33.65Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 22,
               "Title": "DeathWindow.cs",
-              "DocumentMoniker": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\DeathWindow.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\DeathWindow.cs",
               "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\DisplayElements\\DeathWindow.cs",
-              "ToolTip": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\DeathWindow.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\DisplayElements\\DeathWindow.cs",
               "RelativeToolTip": "SalesAdventure3000\\Views\\DisplayElements\\DeathWindow.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T09:57:14.058Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-08T09:57:14.058Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 16,
               "Title": "Monster.cs",
-              "DocumentMoniker": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Monster.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Monster.cs",
               "RelativeDocumentMoniker": "Models\\Models\\Monster.cs",
-              "ToolTip": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Monster.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Monster.cs",
               "RelativeToolTip": "Models\\Models\\Monster.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAewBsAAAAIAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAB8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T09:48:34.344Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Player.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Player.cs",
               "RelativeDocumentMoniker": "Models\\Models\\Player.cs",
-              "ToolTip": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Player.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Player.cs",
               "RelativeToolTip": "Models\\Models\\Player.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAwwCIAAACAAAAA",
+              "ViewState": "AQIAABwAAAAAAAAAAAAcwGgAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T08:45:38.662Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 15,
               "Title": "Creature.cs",
-              "DocumentMoniker": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Creature.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Creature.cs",
               "RelativeDocumentMoniker": "Models\\Models\\Creature.cs",
-              "ToolTip": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Creature.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Models\\Creature.cs",
               "RelativeToolTip": "Models\\Models\\Creature.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAkwD4AAAAIAAAA",
+              "ViewState": "AQIAABsAAAAAAAAAAAAmwD8AAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T08:21:01.12Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "Session.cs",
-              "DocumentMoniker": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Session.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Session.cs",
               "RelativeDocumentMoniker": "Models\\Session.cs",
-              "ToolTip": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Session.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\Models\\Session.cs",
               "RelativeToolTip": "Models\\Session.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAAAFEAAAAAAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAgwJ8AAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T07:45:05.539Z",
               "EditorCaption": ""
@@ -188,11 +442,11 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "BattleView.cs",
-              "DocumentMoniker": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\BattleView.cs",
+              "DocumentMoniker": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\BattleView.cs",
               "RelativeDocumentMoniker": "SalesAdventure3000\\Views\\BattleView.cs",
-              "ToolTip": "C:\\Users\\helge\\OneDrive\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\BattleView.cs",
+              "ToolTip": "C:\\Users\\Jens\\Documents\\GitHub\\SalesAdventure3000\\SalesAdventure3000\\SalesAdventure3000\\Views\\BattleView.cs",
               "RelativeToolTip": "SalesAdventure3000\\Views\\BattleView.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAgwCMAAAAjAAAA",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAgwCMAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T07:35:33.933Z",
               "EditorCaption": ""
