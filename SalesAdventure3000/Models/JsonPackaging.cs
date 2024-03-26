@@ -2,54 +2,56 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using static Engine.Models.Entity;
+using static Engine.Models.Equipment;
 
 namespace Engine
 {
     static public class JsonPackaging
     {
-        public static void CreateJson(Session session)
+        public static void CreateJson(Session session)      //Retrieves and packages data that is needed to recreate the session.
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented                            //For readability.
             };
 
-            List<int> equippedItemsList = new();                    //
-            List<Dictionary<string, string>> backpackList = new();
-            List<Dictionary<string, string>> entityList = new();
+            List<int> equippedItemsList = new();                                //To hold player equipment.
+            List<Dictionary<string, string>> backpackDict = new();              //To hold player backpack.
+            List<Dictionary<string, string>> consumablesDict = new();    //To hold consumables on countdown.
+            List<Dictionary<string, string>> entityList = new();                //To hold entities in world.
 
-            formatEquipmentForJson();
-            formatBackpackForJson();
+            formatEquipmentForJson();       //Helper methods that retrieves and packages data for collections above, no more than is needed to recreate the session.
+            formatBackpackForJson();   
+            formatConsumablesOnTimer();
             formatWorldEntitiesForJson();
-
-            // Create JSON objects for each section of data
-            JObject playerStatsObject = JObject.FromObject(session.CurrentPlayer.GetData());
+            
+            JObject playerStatsObject = JObject.FromObject(session.CurrentPlayer.GetData());    //We create JSON objects for each section of data.
             JObject coordinateObject = JObject.FromObject(session.CurrentPlayer.Coordinates);
             JArray messagesArray = JArray.FromObject(session.GameMessages);
-            JArray equippedItemsObject = JArray.FromObject(equippedItemsList);
-            JArray backpackArray = JArray.FromObject(backpackList);
+            JArray equippedItemsObject = JArray.FromObject(equippedItemsList);                  //Our special collections.
+            JArray backpackArray = JArray.FromObject(backpackDict);
+            JArray consumablesArray = JArray.FromObject(consumablesDict);
             JArray entityArray = JArray.FromObject(entityList);
 
-            // Combine all data into a single JSON object
-            JObject json = new JObject();
+            JObject json = new JObject();                                   //Combines all data into a single JSON object.
             json["PlayerStats"] = playerStatsObject;
             json["PlayerCoordinates"] = coordinateObject;
             json["EquippedItems"] = equippedItemsObject;
             json["Backpack"] = backpackArray;
+            json["Consumables"] = consumablesArray;
             json["Entities"] = entityArray;
             json["Messages"] = messagesArray;
 
-            // Serialize the combined JSON object
-            string jsonString = json.ToString(Formatting.Indented);
+            string jsonString = json.ToString(Formatting.Indented);         //Serialize the combined JSON object.         
 
-            // Write the JSON string to the output file
             File.WriteAllText("output.json", jsonString);
 
+            #region Helper Methods
             void formatWorldEntitiesForJson()
             {
                 foreach (Entity entity in session.CurrentWorld.WorldEntities)
                 {
-                    entityList.Add(new Dictionary<string, string>
+                    entityList.Add(new Dictionary<string, string>       //Id and coordinates are needed to recreate an entity.
                     {
                         { "Id", entity.Id.ToString() },
                         { "Y", entity.Coordinates.Y.ToString() },
@@ -59,8 +61,11 @@ namespace Engine
             }
             void formatEquipmentForJson()
             {
-                foreach (KeyValuePair<Equipment.Slot, Equipment?> item in session.CurrentPlayer.EquippedItems)
-                    equippedItemsList.Add(item.Value.Id);
+                foreach (KeyValuePair<Slot, Equipment?> item in session.CurrentPlayer.EquippedItems)
+                {
+                    if (item.Value != null)
+                        equippedItemsList.Add(item.Value.Id);
+                }
             }
             void formatBackpackForJson()
             {
@@ -69,48 +74,64 @@ namespace Engine
                     if (item is Consumable consumable)
                     {
                         var itemData = consumable.GetStatsOnSave();
-                        backpackList.Add(new Dictionary<string, string>
+                        backpackDict.Add(new Dictionary<string, string>
                         {
-                            { "Id", item.Id.ToString() },
+                            { "Id", item.Id.ToString() },                   //Duration, TimerIsOn, and Uses of a Consumable may need to be adjusted from standard values.
                             { "Duration", itemData.duration.ToString() },
                             { "TimerIsOn", itemData.timerIsOn.ToString() },
                             { "Uses", itemData.uses.ToString() }
                         });
                     }
                     else if (item is Equipment equipment)
-                        backpackList.Add(new Dictionary<string, string> { { "Id", item.Id.ToString() } });
+                        backpackDict.Add(new Dictionary<string, string> { { "Id", item.Id.ToString() } });
                 }
             }
+            void formatConsumablesOnTimer()
+            {
+                foreach (Consumable consumable in session.consumablesOnTimer)
+                {
+                    var itemData = consumable.GetStatsOnSave();
+                    consumablesDict.Add(new Dictionary<string, string>
+                        {
+                            { "Id", consumable.Id.ToString() },
+                            { "Duration", itemData.duration.ToString() },
+                            { "TimerIsOn", itemData.timerIsOn.ToString() },
+                            { "Uses", itemData.uses.ToString() }
+                        });
+                }
+            }
+            #endregion
         }
 
-        public static (Player player, List<Entity> entities, List<string> messages) LoadJson()
+        public static (Player player, List<Consumable> consumables, List<Entity> entities, List<string> messages) LoadJson()  //Loads data from JSON and recreates objects.
         {
-            // Read the JSON string from the file
             string jsonString = File.ReadAllText("output.json");
 
-            // Parse the JSON string into a JObject
-            JObject json = JObject.Parse(jsonString);
+            JObject json = JObject.Parse(jsonString);               //Parse string into JSON object.
 
-            // Deserialize each section of data from the JObject
-            Dictionary<Stat, string> playerStats = json["PlayerStats"].ToObject<Dictionary<Stat, string>>();
+            Dictionary<Stat, string> playerStats = json["PlayerStats"].ToObject<Dictionary<Stat, string>>();        //Each section is deserialized.
             Position playerCoordinates = json["PlayerCoordinates"].ToObject<Position>();
             List<string> loadedMessages = json["Messages"].ToObject<List<string>>();
             List<int> equippedItemsJson = json["EquippedItems"].ToObject<List<int>>();
             List<Dictionary<string, string>> backpackJson = json["Backpack"].ToObject<List<Dictionary<string, string>>>();
+            List<Dictionary<string, string>> consumablesJson = json["Consumables"].ToObject<List<Dictionary<string, string>>>();
             List<Dictionary<string, string>> entitiesJson = json["Entities"].ToObject<List<Dictionary<string, string>>>();
 
-            Dictionary<Equipment.Slot, Equipment?> loadedEquipment = new() { { Equipment.Slot.Head, null }, { Equipment.Slot.Weapon, null }, { Equipment.Slot.Torso, null }, { Equipment.Slot.Bling, null } };
+            Dictionary<Slot, Equipment?> loadedEquipment = new() { { Slot.Head, null }, { Slot.Weapon, null }, { Slot.Torso, null }, { Slot.Bling, null } }; //Collections and instances are created to hold loaded data.
             List<Item> loadedbackpack = new();
             Player loadedPlayer = new();
+            List<Consumable> loadedConsumables = new();
             List<Entity> loadedEntities = new();
 
-            reconstructEquipment();
+            reconstructEquipment();     //Helper methods fill the collections and instances above.
             reconstructBackpack();
             reconstructPlayer();
+            reconstructConsumables();
             reconstructEntitites();
 
-            return (loadedPlayer, loadedEntities, loadedMessages);
+            return (loadedPlayer, loadedConsumables, loadedEntities, loadedMessages);  //Returns reconstructed parts of the session.
 
+            #region Helper Methods
             void reconstructEquipment()
             {
                 foreach (int itemId in equippedItemsJson)
@@ -119,7 +140,7 @@ namespace Engine
                     loadedEquipment[equipment.Type] = equipment;
                 }
             }
-            void reconstructBackpack()
+            void reconstructBackpack()      //Backpack contains both equipment and consumables. We identify the type via Id. Consumable stats are adjusted.
             {
                 foreach (Dictionary<string, string> backpackItem in backpackJson)
                 {
@@ -147,7 +168,18 @@ namespace Engine
                     Convert.ToInt32(playerStats[Stat.Armour]),
                     playerCoordinates, loadedEquipment, loadedbackpack);
             }
-            void reconstructEntitites()
+            void reconstructConsumables()
+            {
+                foreach (Dictionary<string, string> loadedConsumable in consumablesJson)
+                {
+                    int.TryParse(loadedConsumable["Id"], out int itemId);
+                    Consumable consumable = ConsumableFactory.CreateConsumable(itemId);
+                    int? duration = string.IsNullOrEmpty(loadedConsumable["Duration"]) ? null : Convert.ToInt32(loadedConsumable["Duration"]);
+                    consumable.SetStatsOnLoad(duration, Convert.ToBoolean(loadedConsumable["TimerIsOn"]), Convert.ToInt32(loadedConsumable["Uses"]));
+                    loadedConsumables.Add(ConsumableFactory.CreateConsumable(itemId));
+                }
+            }
+            void reconstructEntitites()     //We identify entity type via Id. Reconstruct in the factories.
             {
                 foreach (Dictionary<string, string> item in entitiesJson)
                 {
@@ -161,6 +193,7 @@ namespace Engine
                     loadedEntities.Last().SetCoordinates(new Position(Convert.ToInt32(item["Y"]), Convert.ToInt32(item["X"])));
                 }
             }
+            #endregion
         }
     }
 }

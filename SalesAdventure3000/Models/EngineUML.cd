@@ -30,6 +30,9 @@
   </Class>
   <Class Name="Engine.Session">
     <Position X="19.25" Y="5.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Enum Name="Engine.Session.CombatAction" Collapsed="true">
         <TypeIdentifier>
@@ -38,19 +41,19 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAEAAQAAAAAIAAAAAAAAWAAAAEAAAQgACQAgEgAAIA=</HashCode>
+      <HashCode>AAAEAAQAAAAAIAAAAAAAAWAgAAEAAARgACQAgEgAAIA=</HashCode>
       <FileName>Session.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Engine.Models.Consumable">
-    <Position X="8" Y="8.75" Width="1.5" />
+    <Position X="8.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAACAgBQAAAUAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>Models\Consumable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Engine.Models.Creature">
-    <Position X="11.5" Y="4.75" Width="1.5" />
+    <Position X="11.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AhAAAAgAAAAABAAAAAgAEAAAAIJAEAAAAAAAIAAAAAA=</HashCode>
       <FileName>Models\Creature.cs</FileName>
@@ -58,6 +61,9 @@
   </Class>
   <Class Name="Engine.Models.Entity">
     <Position X="9.5" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Enum Name="Engine.Models.Entity.Stat" Collapsed="true">
         <TypeIdentifier>
@@ -71,12 +77,15 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAACBAAAAAIAAAAAAACAAAQAIAAQAAAAAAAAAAAACAA=</HashCode>
+      <HashCode>AAACBAAAAAIAAAAAAACAAAQAIAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Engine.Models.Equipment">
-    <Position X="5.75" Y="8.75" Width="1.5" />
+    <Position X="6.25" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Enum Name="Engine.Models.Equipment.Slot" Collapsed="true">
         <TypeIdentifier>
@@ -90,23 +99,23 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Engine.Models.Item">
-    <Position X="7" Y="5" Width="1.5" />
+    <Position X="7.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAJAAAAAAgAAAAAAIABAAAAAAAAAAAAAAAAAAABAA=</HashCode>
       <FileName>Models\Item.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Engine.Models.Monster">
-    <Position X="10.5" Y="9.5" Width="1.5" />
+    <Position X="10.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAABAAAAAAAABAAAAAAgAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Monster.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Engine.Models.Player">
-    <Position X="12.75" Y="9.5" Width="1.5" />
+    <Position X="12.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AkCAAAAAEAAAAAAAAAAAAAgAABEAEEAAAAABAAAAAAA=</HashCode>
+      <HashCode>A0CAAAAAEAAAAAAAAAAAAAgAABEAEEAAAAABAAAAAAA=</HashCode>
       <FileName>Models\Player.cs</FileName>
     </TypeIdentifier>
   </Class>

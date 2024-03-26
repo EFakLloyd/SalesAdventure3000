@@ -7,12 +7,10 @@ namespace SalesAdventure3000_UI.Controllers
 {
     public class MapControl
     {
-        public static (int x, int y, ViewEnums.Actions currentAction) GetInput(Session currentSession)
-       
+        public static (int x, int y, ViewEnums.Actions currentAction) GetInput(Position playerCoordinates)  //Player may choose to try to move to a new tile, or enter menus (Action).
         {
-            Console.SetCursorPosition(GameDimensions.Width * 2-1, 0);
-            int y = currentSession.CurrentPlayer.Coordinates.Y;
-            int x = currentSession.CurrentPlayer.Coordinates.X;
+            int y = playerCoordinates.Y;
+            int x = playerCoordinates.X;
             
             ConsoleKeyInfo input = Console.ReadKey();
             switch (input.Key)
@@ -20,36 +18,25 @@ namespace SalesAdventure3000_UI.Controllers
                 case ConsoleKey.LeftArrow:
                     x--;
                     break;
-
                 case ConsoleKey.RightArrow:
                     x++;
                     break;
-
                 case ConsoleKey.DownArrow:
                     y++;
                     break;
-
                 case ConsoleKey.UpArrow:
                     y--;
                     break;
                 case ConsoleKey.B:
                     return(x,y, ViewEnums.Actions.OpenBackpack);
-                    
-
                 case ConsoleKey.E:
                     return (x, y, ViewEnums.Actions.OpenEquipment);
-
                 case ConsoleKey.Escape:
                     return (x, y, ViewEnums.Actions.GoToMenu);
-
                 default:
-                    return (x, y, ViewEnums.Actions.StayOnMap);
-
+                    return (x, y, ViewEnums.Actions.NavigateMap);
             }
-            return (x, y, ViewEnums.Actions.StayOnMap);
-
-           
-
+            return (x, y, ViewEnums.Actions.NavigateMap);
         }
     }
 

@@ -14,7 +14,7 @@
         public bool Countdown()    //Is called to reduce duration, based on TimerIsOn. Upon duration end the boost to the player is withdrawn.
         {
             if (Duration <= 0)
-                return TimerIsOn = false;    //No more need to check consumable. Return false bool to revert stat changes.
+                return false;    //No more need to check consumable. Return false bool to revert stat changes.
             Duration--;
             return true;
         }

@@ -11,11 +11,11 @@
         }
         public enum Actions
         {
-            StayOnMap,
+            NavigateMap,
             OpenEquipment,
             OpenBackpack,
             GoToMenu,
-            ContinueFight
+            Fight
         }
         public enum Element
         {

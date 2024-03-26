@@ -6,7 +6,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     internal static class MessageWindow
     {
-        public static void Draw(List<string> messages)
+        public static void Draw(List<string> messages)  //Displays the latest three strings in GameMessages.
         {
             Console.SetCursorPosition(0, 19);
             Console.WriteLine("╔═MESSAGES".PadRight(GameDimensions.Width * 2 - 1, '═') + "╗");

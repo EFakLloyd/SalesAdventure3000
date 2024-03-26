@@ -5,7 +5,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     public static class WorldDisplay
     {
-        public static void DrawWorld(Tile[,] map)
+        public static void DrawWorld(Tile[,] map)   //Draws the whole map.
         {
             Console.SetCursorPosition(0, 4);
             for (int y = 0; y < GameDimensions.Height; y++)
@@ -23,7 +23,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
             }
             Console.ResetColor();
         }
-        public static void DrawTiles(Tile[,] map, Position oldYX, Position newYX)
+        public static void DrawTiles(Tile[,] map, Position oldYX, Position newYX)   //Updates only the latest affected tiles.
         {
             Console.SetCursorPosition(oldYX.X * 2, oldYX.Y + 4);
             map[oldYX.Y, oldYX.X].DrawTile();

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SalesAdventure3000_UI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01054e436992ee9fd9cc3976e0b2243f953d9ff7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd90c7309d7e65673974f5a70b2f36d426154a9c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SalesAdventure3000_UI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SalesAdventure3000_UI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

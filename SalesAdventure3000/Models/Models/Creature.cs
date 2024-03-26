@@ -55,12 +55,12 @@
                 if (roll.Next(1, 4) == 1)   //Every point in strength gives a 1/3 chance to do 1 damage.
                     damage++;
             }
-            damage = Math.Max(damage - opponent.Armour, 0); //Adjust for armour
+            damage = Math.Max(damage - opponent.Armour, 0);                 //Adjust for armour
             if (damage > 0)
                 opponent.AdjustStat(Stat.Vitality, damage, Adjustment.Down);
             return (MessageUponAttack(damage), opponent.IsDead());
         }
-        protected abstract string MessageUponAttack(int damage); //Returns string for GameMessage.
+        protected abstract string MessageUponAttack(int damage);            //Returns string for GameMessage.
         public bool IsDead() => Vitality > 0 ? false : true;     
     }
 }

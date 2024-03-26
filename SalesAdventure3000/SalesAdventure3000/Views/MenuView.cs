@@ -9,17 +9,28 @@ namespace SalesAdventure3000_UI.Views
 {
     public class MenuView
     {
-        public static int SelectedCommand { get; set; }
-
-        public static View Display(Session currentSession)
+        private static int selectedIndex;
+        private enum menuOptions
         {
-            View returnView = View.Start;
+            Continue,
+            Save_Game,
+            New_Game,
+            Load_Game,
+            Exit
+        }
+
+        public static View Display(Session currentSession)  //Displays start menu and handles input. Adjusts options based on whether a game is in progress.
+        {
+            View returnView = View.Start;   //Determines which View to transition to. 
             bool menuLoop = true;
-            List<string> options = new List<string>(new string[] { "New game", "Load game", "Exit" });
+            List<menuOptions> options = new() { menuOptions.New_Game, menuOptions.Exit };   //Options are added as they become relevant.
+
+            if (currentSession.SaveGameExists)  
+                options.Insert(1, menuOptions.Load_Game);
             if (currentSession.CurrentPlayer != null)
             {
-                options.Insert(0, "Continue");
-                options.Insert(1, "Save Game");
+                options.Insert(0, menuOptions.Continue);
+                options.Insert(1, menuOptions.Save_Game);
             }
 
             while (menuLoop)
@@ -34,48 +45,49 @@ namespace SalesAdventure3000_UI.Views
                                         "\t U\n" +
                                         "\tS\n\n" +
                                         "".PadRight(GameDimensions.Width * 2, '-') + "\n\n");
-
                     Console.ForegroundColor = ConsoleColor.Gray;
+
                     for (int i = 0; i < options.Count; i++)
                     {
-                        string[] selection = i == SelectedCommand ? new string[] { "[", "]" } : new string[] { " ", " " };
-                        Console.Write($"\t{selection[0]}{options[i]}{selection[1]}\n\n");
+                        string[] selection = i == selectedIndex ? new string[] { "[", "]" } : new string[] { " ", " " };
+                        Console.Write($"\t{selection[0]}{options[i].ToString().Replace('_', ' ')}{selection[1]}\n\n");  //Format enum to string.
                     }
 
-                    var input = MenuControl.GetInput(SelectedCommand, options.Count);
-                    if (input.enter)
+                    var input = MenuControl.GetInput(selectedIndex, options.Count);
+                    if (input.confirmed)
                         break;
-                    SelectedCommand = input.val;
+                    selectedIndex = input.command;
                 }
                 Console.Clear();
-                switch (SelectedCommand + (currentSession.CurrentPlayer != null ? -2 : 0))
+
+                switch (options[selectedIndex])     //selected options is used for switch.
                 {
-                    case -2:
+                    case menuOptions.Continue:
                         menuLoop = false;
                         returnView = View.Adventure;
                         break;
-                    case -1:
+                    case menuOptions.Save_Game:
                         Console.Write("\n\tGame Saved.");
                         currentSession.SaveSession();
                         returnView = View.Start;
                         menuLoop = true;
                         break;
-                    case 0:
+                    case menuOptions.New_Game:
                         Console.Write("\n\tEnter your name, brave adventurer: ");
                         string adventurerName = Console.ReadLine();
-                        int adventurerAvatar = chooseAvatar();
+                        int adventurerAvatar = chooseAvatar();      //Helper method to select avatar.
                         Console.WriteLine($"\n\tReady yourself, brave {adventurerName}!");
                         currentSession.StartNewSession(adventurerName, adventurerAvatar);
                         menuLoop = false;
                         returnView = View.Adventure;
                         break;
-                    case 1:
+                    case menuOptions.Load_Game:
                         Console.Write("\n\tLoading game. Ready yourself.");
                         currentSession.LoadSession();
                         menuLoop = false;
                         returnView = View.Adventure;
                         break;
-                    case 2:
+                    case menuOptions.Exit:
                         Console.Write("\n\tExiting game.");
                         menuLoop = false;
                         returnView = View.Exit;
@@ -83,28 +95,30 @@ namespace SalesAdventure3000_UI.Views
                 }
                 Thread.Sleep(1400);
                 Console.Clear();
+            }
+            return returnView;  
 
-                int chooseAvatar()
+            #region Helper Methods
+            int chooseAvatar()
+            {
+                int index = 0;
+
+                while (true)
                 {
-                    int index = 0;
+                    Console.Clear();
+                    Console.WriteLine($"\n\n\tChoose your avatar:\n");
 
-                    while (true)
-                    {
-                        Console.Clear();
-                        Console.WriteLine($"\n\n\tChoose your avatar:\n");
+                    foreach (string line in currentSession.Avatars[index])
+                        Console.WriteLine($"{line}".PadLeft(17 + line.Length / 2));
 
-                        foreach (string line in currentSession.Avatars[index])
-                            Console.WriteLine($"{line}".PadLeft(17 + line.Length / 2));
-
-                        string input = Console.ReadKey().Key.ToString();
-                        if (input == "Enter")
-                            return index;
-                        else
-                            index = index == 0 ? 2 : 0;
-                    }
+                    string input = Console.ReadKey().Key.ToString();
+                    if (input == "Enter")
+                        return index;
+                    else
+                        index = index == 0 ? 2 : 0;
                 }
             }
-            return returnView;
+            #endregion
         }
     }
 }

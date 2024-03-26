@@ -9,8 +9,8 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
     {
         public static void Draw(ViewEnums.Actions currentAction, Dictionary<Equipment.Slot, Equipment?> playerEquipment, int equipmentIndex)
         {
-            List<Equipment?> equipment = new List<Equipment>();
-            List<string> slots = new List<string>();
+            List<Equipment?> equipment = new List<Equipment>(); //List for navigation by index.
+            List<string> slots = new List<string>();            //List for display in equipment window.
 
             foreach (KeyValuePair<Equipment.Slot, Equipment?> post in playerEquipment)
             {
