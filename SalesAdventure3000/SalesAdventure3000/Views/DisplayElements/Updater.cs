@@ -1,4 +1,5 @@
 ﻿using Engine;
+using static SalesAdventure3000_UI.Views.ViewEnums;
 
 namespace SalesAdventure3000_UI.Views.DisplayElements
 {
@@ -7,9 +8,9 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
         public Session currentSession;
         public ref int backpackIndex;
         public ref int battleOrEquipmentIndex;
-        public ref ViewEnums.Actions currentAction;
+        public ref Actions currentAction;
 
-        public Updater(Session session, ref int selectedBackpackIndex, ref int selectedEquipmentIndex, ref ViewEnums.Actions currentAction)
+        public Updater(Session session, ref int selectedBackpackIndex, ref int selectedEquipmentIndex, ref Actions currentAction)   //Updater keeps tabs on values that are frequently updated via refs.
         {
             this.currentSession = session;
             this.backpackIndex = ref selectedBackpackIndex;
@@ -17,28 +18,28 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
             this.currentAction = ref currentAction;
         }
 
-        public void Draw(ViewEnums.Element[] elements)
+        public void Draw(Element[] elements)    //Specified elements are redrawn.
         {
-            foreach (ViewEnums.Element element in elements)
+            foreach (Element element in elements)
             {
                 switch (element)
                 {
-                    case ViewEnums.Element.Stats:
+                    case Element.Stats:
                         StatsWindow.Draw(currentSession.CurrentPlayer.GetData());
                         break;
-                    case ViewEnums.Element.WorldTiles:
+                    case Element.WorldTiles:
                         WorldDisplay.DrawTiles(currentSession.CurrentWorld.Map, currentSession.CurrentPlayer.OldCoordinates, currentSession.CurrentPlayer.Coordinates);
                         break;
-                    case ViewEnums.Element.Messages:
+                    case Element.Messages:
                         MessageWindow.Draw(currentSession.GameMessages);
                         break;
-                    case ViewEnums.Element.BattleMenu:
+                    case Element.BattleMenu:
                         BattleMenuWindow.Draw(currentAction, battleOrEquipmentIndex);
                         break;
-                    case ViewEnums.Element.Equipment:
+                    case Element.Equipment:
                         EquipmentWindow.Draw(currentAction, currentSession.CurrentPlayer.EquippedItems, battleOrEquipmentIndex);
                         break;
-                    case ViewEnums.Element.Backpack:
+                    case Element.Backpack:
                         BackpackWindow.Draw(currentAction, currentSession.CurrentPlayer.Backpack, backpackIndex); 
                         break;
                     }

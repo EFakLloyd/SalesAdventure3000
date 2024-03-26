@@ -5,7 +5,7 @@ namespace SalesAdventure3000_UI.Views.DisplayElements
 {
     public static class DeathWindow
     {
-        public static void Draw()
+        public static void Draw()   //You don't wanna see this!
         {
             Console.ForegroundColor = ConsoleColor.Red;
             for (int i = 0; i < 15; i++) 

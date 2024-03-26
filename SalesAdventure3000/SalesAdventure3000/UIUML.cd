@@ -46,7 +46,7 @@
     <Position X="5.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\DisplayElements\DeathWIndow.cs</FileName>
+      <FileName>Views\DisplayElements\DeathWindow.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SalesAdventure3000_UI.Views.DisplayElements.EquipmentWindow" Collapsed="true">
@@ -79,44 +79,23 @@
   </Class>
   <Class Name="SalesAdventure3000_UI.Views.AdventureView" Collapsed="true">
     <Position X="5.5" Y="0.5" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="SalesAdventure3000_UI.Views.AdventureView.Actions" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Views\AdventureView.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAAAAAAAAAAQAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAA=</HashCode>
       <FileName>Views\AdventureView.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SalesAdventure3000_UI.Views.BattleView" Collapsed="true">
     <Position X="12.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\BattleView.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SalesAdventure3000_UI.Views.MenuView" Collapsed="true">
     <Position X="7.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\MenuView.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SalesAdventure3000_UI.Views.ViewType" Collapsed="true">
-    <Position X="5.5" Y="3.5" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="SalesAdventure3000_UI.Views.ViewType.View" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Views\ViewType.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Views\ViewType.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SalesAdventure3000_UI.GameDimensions" Collapsed="true">

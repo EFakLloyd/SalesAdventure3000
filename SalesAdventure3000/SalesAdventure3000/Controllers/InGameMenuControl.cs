@@ -4,7 +4,7 @@ namespace SalesAdventure3000_UI.Controllers
 {
     public class InGameMenuControl
     {
-        public static (int selectedIndex, bool confirmedChoice, bool stayInLoop) GetInput(int index, int upperLimit)
+        public static (int selectedIndex, bool confirmedChoice, bool stayInLoop) GetInput(int index, int upperLimit)    //Allows left-right-up-down navigation of collection presented in two columns.
         {
             Console.SetCursorPosition(GameDimensions.Width * 2-1, 0);
             bool confirmedChoice = false;
@@ -35,7 +35,7 @@ namespace SalesAdventure3000_UI.Controllers
                     stayInLoop = false;
                     break;
             }
-            return (index, confirmedChoice, stayInLoop);
+            return (index, confirmedChoice, stayInLoop);    //Informs which index is selected, wether the player decided on an item, or if the input should stay in the menu controller
         }
     }
 }

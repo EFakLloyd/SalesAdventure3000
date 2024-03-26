@@ -12,11 +12,10 @@ namespace SalesAdventure3000_UI.Views
         private static int selectedBackpackIndex = 0;
         private static int selectedEquipmentIndex = 0;
 
-        public static View AdventureDisplay(Session currentSession)
+        public static View AdventureDisplay(Session currentSession) //Takes input and handles navigation on map.
         {
-            Position oldCoordinates = currentSession.CurrentPlayer.Coordinates;
-            Actions currentAction = Actions.StayOnMap;
-            Updater updater = new Updater(currentSession, ref selectedBackpackIndex, ref selectedEquipmentIndex, ref currentAction);
+            Actions currentAction = Actions.NavigateMap;            //Standard action is to navigate the map.
+            Updater updater = new Updater(currentSession, ref selectedBackpackIndex, ref selectedEquipmentIndex, ref currentAction);    //Updater object is created view.
 
             Console.Clear();
             WorldDisplay.DrawWorld(currentSession.CurrentWorld.Map);
@@ -25,7 +24,7 @@ namespace SalesAdventure3000_UI.Views
             {
                 updater.Draw(new Element[] { Element.Stats, Element.WorldTiles, Element.Messages, Element.Equipment, Element.Backpack });
 
-                if (currentAction == Actions.StayOnMap)
+                if (currentAction == Actions.NavigateMap)
                     mapNavigation();
                 else if (currentAction == Actions.OpenEquipment)
                     openEquipment();
@@ -33,46 +32,47 @@ namespace SalesAdventure3000_UI.Views
                     openBackpack();
                 else if (currentAction == Actions.GoToMenu)     //The player opted to go back to the main menu
                     return View.Start;
-                else if (currentAction == Actions.ContinueFight)
+                else if (currentAction == Actions.Fight)
                     return View.Battle;
             }
 
+            #region Helper Methods
             void mapNavigation()
             {
-                currentSession.CheckTimersAndResolve();
+                currentSession.CheckTimersAndResolve();     //Every move attempt on map counts as a "tick" for items on countdown.
 
-                var input = MapControl.GetInput(currentSession);
+                var input = MapControl.GetInput(currentSession.CurrentPlayer.Coordinates);  //Controller returns tuple of multiple values.
                 currentAction = input.currentAction;
-                oldCoordinates = currentSession.CurrentPlayer.Coordinates;
 
                 if (currentSession.AnyMonsterAt(input.x, input.y))
-                    currentAction = Actions.ContinueFight;
+                    currentAction = Actions.Fight;
                 else
-                    currentSession.MovePlayer(input.x, input.y);
+                    currentSession.MovePlayer(input.x, input.y);    //Attempts to move player into tile.
             }
             void openBackpack()
             {
-                var input = InGameMenuControl.GetInput(selectedBackpackIndex, currentSession.CurrentPlayer.Backpack.Count); //Controller returns tuple of 3 values
-                selectedBackpackIndex = input.selectedIndex;    //Sets the currently selected item in backpack
+                var input = InGameMenuControl.GetInput(selectedBackpackIndex, currentSession.CurrentPlayer.Backpack.Count);
+                selectedBackpackIndex = input.selectedIndex;        //Sets the currently selected item in backpack
 
-                if (input.confirmedChoice == true)  //Player decided to use an item
+                if (input.confirmedChoice == true)                  //Player decided to use an item
                 {
                     currentSession.UseItem(currentSession.CurrentPlayer.Backpack[selectedBackpackIndex]);
-                    selectedBackpackIndex = selectedBackpackIndex == currentSession.CurrentPlayer.Backpack.Count ? selectedBackpackIndex - 1 : selectedBackpackIndex;
+                    selectedBackpackIndex = selectedBackpackIndex == currentSession.CurrentPlayer.Backpack.Count ? selectedBackpackIndex - 1 : selectedBackpackIndex;   //Adjust index to avoid exception.
                 }
-                if (!input.stayInLoop)
-                    currentAction = Actions.StayOnMap;
+                if (!input.stayInLoop)                              //Player decided to leave the backpack menu.
+                    currentAction = Actions.NavigateMap;
             }
             void openEquipment()
             {
                 var input = InGameMenuControl.GetInput(selectedEquipmentIndex, currentSession.CurrentPlayer.EquippedItems.Count);
                 selectedEquipmentIndex = input.selectedIndex;
 
-                if (input.confirmedChoice == true)
-                    currentSession.UseItem(currentSession.CurrentPlayer.GetEquippedItems()[selectedEquipmentIndex], "removeEquipment");
+                if (input.confirmedChoice == true && currentSession.CurrentPlayer.GetEquippedItems()[selectedEquipmentIndex] != null)   //Check for null to avoid exception.
+                    currentSession.UseItem(currentSession.CurrentPlayer.GetEquippedItems()[selectedEquipmentIndex], removeEquipment: true);     //UseItem called from here removes equipment.
                 if (!input.stayInLoop)
-                    currentAction = Actions.StayOnMap;
+                    currentAction = Actions.NavigateMap;
             }
+            #endregion
         }
     }
 }

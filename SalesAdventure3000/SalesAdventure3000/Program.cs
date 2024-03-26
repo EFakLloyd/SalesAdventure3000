@@ -12,15 +12,14 @@ namespace SalesAdventure3000
         {
             Console.CursorVisible = false;
 
-            View currentView = View.Start;
+            View currentView = View.Start;  //Game starts in the menu.
 
-            Session currentSession = new Session(GameDimensions.Height, GameDimensions.Width);
+            Session currentSession = new Session(GameDimensions.Height, GameDimensions.Width);  //currentSession is created with global dimensions.
 
             while (true)
             {
                 if (currentView == View.Start)
                     currentView = MenuView.Display(currentSession);
-                //currentView = BattleView.Display(currentSession); //display BattleView, testing purposes.
 
                 if (currentView == View.Adventure)
                     currentView = AdventureView.AdventureDisplay(currentSession);

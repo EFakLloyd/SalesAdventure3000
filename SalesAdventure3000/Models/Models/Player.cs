@@ -5,14 +5,14 @@ namespace Engine.Models
     public class Player : Creature
     {
         public Position OldCoordinates { get; private set; }
-        public Dictionary<Equipment.Slot, Equipment?> EquippedItems { get; private set; } //Dict with a key for each of the equipment slots. Null = empty.
-                                                                                          //Dict only takes unique keys, so we cannot wear more than one item per slot.
+        public Dictionary<Slot, Equipment?> EquippedItems { get; private set; } //Dict with a key for each of the equipment slots. Null = empty.
+                                                                                //Dict only takes unique keys, so we cannot wear more than one item per slot.
         public Player() { }
         public Player(string name, Position coordinates, int avatarId)
             : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, avatarId, 0, 0)
         {
             this.MaxVitality = Vitality;
-            this.EquippedItems = new Dictionary<Equipment.Slot, Equipment?>
+            this.EquippedItems = new Dictionary<Slot, Equipment?>   
             {
                 { Slot.Head, null },
                 { Slot.Weapon, null },
@@ -27,7 +27,7 @@ namespace Engine.Models
         {
             int damage = 0;
             Random roll = new Random();
-            for (int i = 0; i < Strength * 1.5; i++)
+            for (int i = 0; i < Strength * 1.5; i++)    
             {
                 if (roll.Next(1, 4) == 1)   //Every point in strength gives a 1/3 chance to do 1 damage
                     damage++;
@@ -44,7 +44,7 @@ namespace Engine.Models
                 return "You miss!";
             return "You swing your " + weapon + " for " + damage + " damage.";
         }
-        public void TakeOff(Equipment.Slot type)  //Removes equipment from slot and places it in the backpack.
+        public void TakeOff(Slot type)  //Removes equipment from slot and places it in the backpack.
         {
             PutInBackpack(EquippedItems[type]);
             AdjustStat(EquippedItems[type].AffectedStat, EquippedItems[type].Modifier, Adjustment.Down);    //Readjusts player stats.
@@ -65,7 +65,7 @@ namespace Engine.Models
             if (consumable.Uses == 0)
                 RemoveFromBackpack(consumable);
         }
-        public Dictionary<Stat, string> GetData()
+        public Dictionary<Stat, string> GetData()       //Provides player stats for saving to json or display in the stats window.
         {
             Dictionary<Stat, string> playerStats = new Dictionary<Stat, string>
             {
@@ -79,14 +79,15 @@ namespace Engine.Models
             };
             return playerStats;
         }
-        public Item?[] GetEquippedItems()
+        public Item?[] GetEquippedItems()               //Provides array of equipment that can be navigated via index, for equipment window.
         {
             List<Equipment?> equipment = new List<Equipment>();
-            foreach (KeyValuePair<Equipment.Slot, Equipment?> item in EquippedItems)
+            foreach (KeyValuePair<Slot, Equipment?> item in EquippedItems)
                 equipment.Add(item.Value);
             return equipment.ToArray();
         }
-        public void SetLoadedValues(string name, int avatarId, int maxVitality, int vitality, int strength, int coolness, int armour, Position coordinates, Dictionary<Equipment.Slot, Equipment?> equippedItems, List<Item> backpack)
+                                                        //Sets values loaded from json.
+        public void SetLoadedValues(string name, int avatarId, int maxVitality, int vitality, int strength, int coolness, int armour, Position coordinates, Dictionary<Slot, Equipment?> equippedItems, List<Item> backpack)
         {
             Name = name;
             Appearance = "@";
@@ -97,7 +98,7 @@ namespace Engine.Models
             Strength = strength;
             Coolness = coolness;
             Armour = armour;
-            Coordinates = coordinates;
+            Coordinates = OldCoordinates = coordinates;
             EquippedItems = equippedItems;
             Backpack = backpack;
         }
