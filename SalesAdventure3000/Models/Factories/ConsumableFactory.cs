@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-    public class ConsumableFactory
+    internal static class ConsumableFactory
     {
         public static Consumable CreateConsumable(int id)
         {

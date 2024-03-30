@@ -5,7 +5,7 @@ using System;
 
 namespace SalesAdventure3000_UI.Controllers
 {
-    public class MapControl
+    public static class MapControl
     {
         public static (int x, int y, ViewEnums.Actions currentAction) GetInput(Position playerCoordinates)  //Player may choose to try to move to a new tile, or enter menus (Action).
         {

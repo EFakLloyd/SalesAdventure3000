@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace SalesAdventure3000_UI.Views.DisplayElements
 {
-    public static class DeathWindow
+    internal static class DeathWindow
     {
         public static void Draw()   //You don't wanna see this!
         {

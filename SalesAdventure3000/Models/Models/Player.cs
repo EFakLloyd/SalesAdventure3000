@@ -6,12 +6,11 @@ namespace Engine.Models
     {
         public Position OldCoordinates { get; private set; }
         public Dictionary<Slot, Equipment?> EquippedItems { get; private set; } //Dict with a key for each of the equipment slots. Null = empty.
-                                                                                //Dict only takes unique keys, so we cannot wear more than one item per slot.
         public Player() { }
         public Player(string name, Position coordinates, int avatarId)
             : base(name, "@", ConsoleColor.DarkMagenta, 15, 15, 5, avatarId, 0, 0)
         {
-            this.MaxVitality = Vitality;
+            this.maxVitality = vitality;
             this.EquippedItems = new Dictionary<Slot, Equipment?>   
             {
                 { Slot.Head, null },
@@ -27,7 +26,7 @@ namespace Engine.Models
         {
             int damage = 0;
             Random roll = new Random();
-            for (int i = 0; i < Strength * 1.5; i++)    
+            for (int i = 0; i < strength * 1.5; i++)    
             {
                 if (roll.Next(1, 4) == 1)   //Every point in strength gives a 1/3 chance to do 1 damage
                     damage++;
@@ -35,9 +34,9 @@ namespace Engine.Models
             damage = Math.Max(damage - opponent.Armour, 0); //Adjust for armour
             if (damage > 0)
                 opponent.AdjustStat(Stat.Vitality, damage, Adjustment.Down);
-            return (MessageUponAttack(damage), opponent.IsDead());
+            return (messageUponAttack(damage), opponent.IsDead());
         }
-        protected override string MessageUponAttack(int damage) //Returns string for GameMessage. Takes into account the weapon used.
+        protected override string messageUponAttack(int damage) //Returns string for GameMessage. Takes into account the weapon used.
         {
             string weapon = EquippedItems[Slot.Weapon] == null ? "fists" : EquippedItems[Slot.Weapon].Name;
             if (damage == 0)
@@ -56,24 +55,24 @@ namespace Engine.Models
                 TakeOff(equipment.Type);
             EquippedItems[equipment.Type] = equipment;
             AdjustStat(equipment.AffectedStat, equipment.Modifier, Adjustment.Up);   //Apply bonus from equipment.
-            RemoveFromBackpack(equipment);
+            removeFromBackpack(equipment);
         }
         public void UseConsumable(Consumable consumable)    //Raises relevant stat, turns on timer for consumables which have one.
         {
             AdjustStat(consumable.AffectedStat, consumable.Modifier, Adjustment.Up);
             consumable.Activate();
             if (consumable.Uses == 0)
-                RemoveFromBackpack(consumable);
+                removeFromBackpack(consumable);
         }
         public Dictionary<Stat, string> GetData()       //Provides player stats for saving to json or display in the stats window.
         {
             Dictionary<Stat, string> playerStats = new Dictionary<Stat, string>
             {
                 { Stat.Name,Name },
-                { Stat.Vitality,Vitality.ToString() },
-                { Stat.Strength,Strength.ToString() },
-                { Stat.MaxVitality,MaxVitality.ToString() },
-                { Stat.Coolness,Coolness.ToString() },
+                { Stat.Vitality,vitality.ToString() },
+                { Stat.Strength,strength.ToString() },
+                { Stat.MaxVitality,maxVitality.ToString() },
+                { Stat.Coolness,coolness.ToString() },
                 { Stat.Armour,Armour.ToString() },
                 { Stat.AvatarId,AvatarId.ToString() }
             };
@@ -90,13 +89,13 @@ namespace Engine.Models
         public void SetLoadedValues(string name, int avatarId, int maxVitality, int vitality, int strength, int coolness, int armour, Position coordinates, Dictionary<Slot, Equipment?> equippedItems, List<Item> backpack)
         {
             Name = name;
-            Appearance = "@";
-            FGColor = ConsoleColor.DarkMagenta;
+            appearance = "@";
+            fgColor = ConsoleColor.DarkMagenta;
             AvatarId = avatarId;
-            MaxVitality = maxVitality;
-            Vitality = vitality;
-            Strength = strength;
-            Coolness = coolness;
+            base.maxVitality = maxVitality;
+            base.vitality = vitality;
+            base.strength = strength;
+            base.coolness = coolness;
             Armour = armour;
             Coordinates = OldCoordinates = coordinates;
             EquippedItems = equippedItems;
@@ -104,6 +103,6 @@ namespace Engine.Models
         }
         public void SetOldCoordinates(Position position) => OldCoordinates = position;  //Used for redrawing tiles on map.
         public void PutInBackpack(Item item) => Backpack.Add(item);
-        private void RemoveFromBackpack(Item item) => Backpack.Remove(item);
+        private void removeFromBackpack(Item item) => Backpack.Remove(item);
     }
 }

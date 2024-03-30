@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-    public static class MonsterFactory
+    internal static class MonsterFactory
     {
         public static Monster CreateMonster(int id)
         {

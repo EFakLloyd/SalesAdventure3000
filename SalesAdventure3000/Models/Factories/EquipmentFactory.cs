@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-    public static class EquipmentFactory
+    internal static class EquipmentFactory
     {
         public static Equipment CreateEquipment(int id)
         {

@@ -1,8 +1,4 @@
 ﻿using Engine.Models;
-using System.ComponentModel.Design;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using static Engine.Models.Entity;
 
 namespace Engine
@@ -17,7 +13,7 @@ namespace Engine
             Flee
         }
         private Position gameDimensions;
-        internal List<Consumable> consumablesOnTimer { get; private set; }
+        public List<Consumable> ConsumablesOnTimer;
         public bool SaveGameExists { get; private set; }
         public World CurrentWorld { get; private set; }
         public Player CurrentPlayer { get; private set; }
@@ -28,9 +24,9 @@ namespace Engine
         {
             this.SaveGameExists = File.Exists("output.json");
             this.GameMessages = new List<string>();
-            this.Avatars = LoadAvatars();
+            this.Avatars = loadAvatars();
             this.gameDimensions = new Position(height, width);
-            this.consumablesOnTimer = new List<Consumable>();
+            this.ConsumablesOnTimer = new List<Consumable>();
             this.CurrentMonster = MonsterFactory.CreateMonster(1001);
         }
         public void StartNewSession(string name, int avatar)
@@ -45,7 +41,7 @@ namespace Engine
             var loadedObjects = JsonPackaging.LoadJson();   
 
             CurrentPlayer = loadedObjects.player;
-            consumablesOnTimer = loadedObjects.consumables;
+            ConsumablesOnTimer = loadedObjects.consumables;
             CurrentWorld = new World(gameDimensions);
             CurrentWorld.Map[CurrentPlayer.Coordinates.Y, CurrentPlayer.Coordinates.X].NewOccupant(CurrentPlayer);
             CurrentWorld.InsertLoadedEntities(loadedObjects.entities);
@@ -152,7 +148,7 @@ namespace Engine
             {
                 CurrentPlayer.UseConsumable((Consumable)item);
                 if (((Consumable)item).TimerIsOn)
-                    consumablesOnTimer.Add(((Consumable)item));
+                    ConsumablesOnTimer.Add(((Consumable)item));
             }
             if (item is Equipment)
                 CurrentPlayer.PutOn((Equipment)item);
@@ -160,17 +156,17 @@ namespace Engine
         }
         public void CheckTimersAndResolve()     //Checks consumables that are on timer. Reverses stat modification and removes from list if done.
         {
-            for (int i = consumablesOnTimer.Count - 1; i >= 0; i--)
+            for (int i = ConsumablesOnTimer.Count - 1; i >= 0; i--)
             {
-                Consumable consumable = consumablesOnTimer[i];
+                Consumable consumable = ConsumablesOnTimer[i];
                 if (!consumable.Countdown())
                 {
                     CurrentPlayer.AdjustStat(consumable.AffectedStat, consumable.Modifier, Adjustment.Down);
-                    consumablesOnTimer.RemoveAt(i);
+                    ConsumablesOnTimer.RemoveAt(i);
                 }
             }
         }
-        private List<string[]> LoadAvatars()    //Loads avatars from file.
+        private List<string[]> loadAvatars()    //Loads avatars from file.
         {
             List<string[]> avatars = new List<string[]>();
 
