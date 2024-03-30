@@ -6,7 +6,7 @@ using static Engine.Models.Equipment;
 
 namespace Engine
 {
-    static public class JsonPackaging
+    internal static class JsonPackaging
     {
         public static void CreateJson(Session session)      //Retrieves and packages data that is needed to recreate the session.
         {
@@ -88,7 +88,7 @@ namespace Engine
             }
             void formatConsumablesOnTimer()
             {
-                foreach (Consumable consumable in session.consumablesOnTimer)
+                foreach (Consumable consumable in session.ConsumablesOnTimer)
                 {
                     var itemData = consumable.GetStatsOnSave();
                     consumablesDict.Add(new Dictionary<string, string>

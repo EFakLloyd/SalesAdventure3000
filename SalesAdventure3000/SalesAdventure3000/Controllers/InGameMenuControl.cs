@@ -2,7 +2,7 @@
 
 namespace SalesAdventure3000_UI.Controllers
 {
-    public class InGameMenuControl
+    public static class InGameMenuControl
     {
         public static (int selectedIndex, bool confirmedChoice, bool stayInLoop) GetInput(int index, int upperLimit)    //Allows left-right-up-down navigation of collection presented in two columns.
         {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SalesAdventure3000_UI.Views.DisplayElements
 {
-    public static class StatsWindow
+    internal static class StatsWindow
     {
         public static void Draw(Dictionary<Entity.Stat, string> playerStats)
         {

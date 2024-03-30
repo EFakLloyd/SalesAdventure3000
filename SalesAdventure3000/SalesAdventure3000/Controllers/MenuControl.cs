@@ -2,7 +2,7 @@
 
 namespace SalesAdventure3000_UI.Controllers
 {
-    public class MenuControl
+    public static class MenuControl
     {
         public static (int command, bool confirmed) GetInput(int selectedCommand, int upperLimit)   //Simple navigation of start menu. Is called repeatedly while confirmedChoice is false.
         {

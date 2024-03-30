@@ -7,7 +7,7 @@ using static SalesAdventure3000_UI.Views.ViewEnums;
 
 namespace SalesAdventure3000_UI.Views
 {
-    public class MenuView
+    public static class MenuView
     {
         private static int selectedIndex;
         private enum menuOptions

@@ -8,7 +8,7 @@ using static SalesAdventure3000_UI.Views.ViewEnums;
 
 namespace SalesAdventure3000_UI.Views
 {
-    public class BattleView
+    public static class BattleView
     {
         public static View BattleDisplay(Session currentSession)    //Takes input and calls methods for resolving fightning.
         {

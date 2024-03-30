@@ -1,5 +1,4 @@
 ﻿using Engine;
-using Engine.Models;
 using SalesAdventure3000_UI.Controllers;
 using SalesAdventure3000_UI.Views.DisplayElements;
 using System;
@@ -7,7 +6,7 @@ using static SalesAdventure3000_UI.Views.ViewEnums;
 
 namespace SalesAdventure3000_UI.Views
 {
-    public class AdventureView
+    public static class AdventureView
     {
         private static int selectedBackpackIndex = 0;
         private static int selectedEquipmentIndex = 0;

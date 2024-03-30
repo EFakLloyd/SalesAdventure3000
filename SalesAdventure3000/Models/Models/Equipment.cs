@@ -10,7 +10,6 @@
             Bling
         }
         public Slot Type { get; set; }
-        public Equipment() { }
         public Equipment(string name, string appearance, ConsoleColor fgColor, Slot type, Stat stat, int modifier, string useMessage, int id) : base(name, appearance, fgColor, stat, modifier, useMessage, id)
         {
             this.Type = type;

@@ -3,7 +3,7 @@ using System;
 
 namespace SalesAdventure3000_UI.Views.DisplayElements
 {
-    public static class WorldDisplay
+    internal static class WorldDisplay
     {
         public static void DrawWorld(Tile[,] map)   //Draws the whole map.
         {
